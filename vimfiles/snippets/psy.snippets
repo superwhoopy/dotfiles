@@ -1,0 +1,90 @@
+snippet worker
+	worker ${1:WorkerName} (uses ${2:realtime})
+	{
+	  global
+	  {
+	    /* global vars */${3}
+	  }
+
+	  init
+	  {
+	    /* initialization code */${4}
+	  }
+
+	  input
+	  {
+	    /* input jobs */${5}
+	  }
+
+	  output
+	  {
+	    /* output jobs */${6}
+	  }
+
+	  internal
+	  {
+	    /* internal jobs */${7}
+	  }
+	}
+
+snippet job
+	job ${1:JobName} (onclock ${2}, starttime ${3}${4:, jitter JJ})
+	{
+	  khibody${5: (timebudget BB)}
+	  {
+	    ${6}
+	  }
+	}
+
+snippet agent
+	agent ${1:AgName} (uses ${2:realtime}, defaultclock ${3:<default_clock>}, starttime ${4} with ${5})
+	{
+	  global
+	  {
+	    /* global vars */${6}
+	  }
+	
+	  body ${7:start}
+	  {
+	    /* execution starts here */
+	    ${8}
+	  }
+	}
+
+snippet display
+	display
+	{
+	  ${1:tv}: ${2:TaskName};
+	}
+
+snippet consult
+	consult
+	{
+	  ${1:depth} $ ${2:tv}
+
+snippet pushto
+	pushto
+	{
+	  ${1:streamName} expiration ${2:<duration>};
+	}
+
+snippet popfrom
+	popfrom
+	{
+	  ${1:streamName} : ${2:all};
+	}
+
+snippet fractional
+	fractional clock ${1:fracClockName} within ${2:clockName};
+
+snippet stream
+	stream ${1:<type>} ${2:streamName}, expiration ${3:<duration>};
+
+snippet duration
+	duration ${1:<duration>} = clockperiod(${2:<clock>});
+
+snippet adv
+	timebudget ${1:<tb>},
+	  releasein ${2} with ${3},
+	  advance ${4} with ${5},
+	  waitfor ${6} with ${7};

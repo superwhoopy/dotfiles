@@ -1,0 +1,86 @@
+[alias]
+  # shorthands
+  st         = status -s
+  df         = diff
+  co         = checkout --recurse-submodules
+  ci         = commit -a
+  cia        = commit -a --amend --no-edit
+  cinv       = commit -a --no-verify
+  wip        = commit -a --no-verify -m "WIP"
+  br         = branch -a
+  lformat    = log --pretty=format:'%C(auto)%w(80,0,2)%h%d%n %s %n%Cgreen(%ar) %Cblue<%an>%Creset'
+  l          = lformat --graph --decorate --no-merges
+  lg         = lformat --graph --decorate
+  lag        = lformat --graph --decorate --all
+  dft        = difftool
+  diffshort = diff --name-status
+  b          = rev-parse --abbrev-ref HEAD
+  pusho      = "!git push origin --set-upstream $(git b);"
+  fetcha     = fetch --all --prune --tags
+  pff        = pull --ff-only --recurse-submodules
+  pll        = pull --rebase --recurse-submodules
+  raster     = rebase origin/master
+
+  # change default behavior
+  clone      = clone --recurse-submodules # clone submodules
+  push       = push --tags
+  stash      = stash --include-untracked
+  checkout   = checkout --recurse-submodules
+
+[core]
+  excludesfile = ~/.config/config/git/gitignore_global
+  pager    = less -r
+  editor   = nvim
+  whitespace = blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent
+  hooksPath = .githooks
+  untrackedCache = true
+
+[include]
+  # use this file to set autocrlf to input on Linux, true on Windows
+  path = ~/.gitconfig.os
+
+[diff]
+  tool = nvimdiff
+  wsErrorHighlight = all
+
+[difftool]
+  prompt=False
+
+[merge]
+  tool = nvimdiff
+  guitool = gvimdiff
+
+[user]
+  name  = Emmanuel Ohayon
+  email = eohayon@mail.ks.int
+
+[push]
+  default = simple
+  autoSetupRemote = true
+
+[color]
+  ui     = always
+  status = always
+  branch = always
+
+[status]
+  submoduleSummary = true
+
+[oh-my-zsh]
+  # hide-status = 1
+  hide-dirty  = 1
+[winUpdater]
+  recentlySeenVersion = 2.25.0.windows.1
+[credential]
+  helper = manager-core
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[credential "helperselector"]
+	selected = manager-core
+[pull]
+  rebase = false
+[credential "http://dev.ks.int"]
+  provider = generic

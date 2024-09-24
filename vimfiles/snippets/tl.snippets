@@ -1,0 +1,77 @@
+snippet qtimeline
+	qtimeline(
+	    dateset        = ${1},
+	    showticklabels = ${2:False},
+	    label          = '${3}',
+	    labelpos       = Position.${4:LEFT},
+	    color          = Color.${5:BLACK},
+	    linestyle      = LineStyle.${6:PLAIN},
+	)
+
+snippet timeline
+	timeline(
+	    clk            = ${1},
+	    start          = ${2},
+	    end            = ${3},
+	    showticklabels = ${4:False},
+	    label          = '${5}',
+	    labelpos       = Position.${6:LEFT},
+	    color          = Color.${6:BLACK},
+	    linestyle      = LineStyle.${7:PLAIN},
+	)
+
+snippet frame
+	frame(
+	    start     = ${1},
+	    end       = ${2},
+	    label     = '${3}',
+	    labelpos  = Position.${4:MIDDLE},
+	    color     = Color.${5:BLACK},
+	    fillcolor = Color.${6:GRAY},
+	)
+
+snippet textbox
+	textbox(
+	    date      = ${1},
+	    label     = '${2}',
+	    labelpos  = Position.${3:MIDDLE},
+	    align     = Position.${4:MIDDLE},
+	    width     = ${5:1},
+	    color     = Color.${6:BLACK},
+	)
+
+snippet tick
+	tick(
+	    date      = ${1},
+	    height    = ${2:1},
+	    label     = '${3}',
+	    labelpos  = Position.${4:TOP},
+	    linestyle = LineStyle.${5:PLAIN},
+	)
+
+snippet arrow
+	arrow(
+	    start    = ${1},
+	    end      = ${2},
+	    startpos = Position.${3:BOTTOM},
+	    endpos   = Position.${4:TOP},
+	    double   = ${5:False},
+	    color    = Color.${6:BLACK},
+	    label    = '${7}',
+	)
+
+snippet centerframe
+	centerframe(
+	    tstart = ${1},
+	    tend   = ${2},
+	    ratio  = ${3},
+	)
+
+snippet parallelarrow
+	parallelarrow(
+	    timeline = ${1},
+	    t_start  = ${2},
+	    t_end    = ${3},
+	    vpos     = ${4:Position.TOP},
+	    height   = ${5:2},
+	)

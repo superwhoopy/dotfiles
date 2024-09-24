@@ -1,0 +1,2 @@
+source ~/vimfiles/gvimrc
+:set columns=200
