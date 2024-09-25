@@ -3,9 +3,10 @@ README.md
 
 # Files ignored on Windows
 {{ if eq .chezmoi.os "windows" }}
-dot_config/i3
-dot_config/i3status
-dot_config/lxterminal
+.config/i3
+.config/i3status
+.config/lxterminal
+.config/ctags
 {{ end }}
 
 # Files ignored on Linux
