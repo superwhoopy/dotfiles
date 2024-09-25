@@ -16,6 +16,8 @@
     [ ] Windows Terminal Configuration
     [ ] Get OpenVPN configuration from Drive?
 [ ] Blank test run in Sandbox
+[ ] Linux/WSL setup
+    [ ] ...
 [ ] Install nvim plugin
 
 

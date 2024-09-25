@@ -70,3 +70,9 @@
   su_packages = [
     "openvpn"
   ]
+
+[msys2]
+  packages = [
+    "zsh",
+
+  ]
