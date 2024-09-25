@@ -30,7 +30,7 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 scoop install git chezmoi
 
 # get the dotfiles repo and install
-chezmoi init --apply superwhoopy
+chezmoi init --apply --verbose superwhoopy
 ```
 
 
