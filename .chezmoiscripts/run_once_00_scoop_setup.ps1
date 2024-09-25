@@ -1,6 +1,7 @@
+# TODO: make idempotent!
 
 # install and enable aria2
-scoop install aria2 sudo
+scoop install aria2
 scoop config aria2-enabled true
 scoop config aria2-warning-enabled false
 

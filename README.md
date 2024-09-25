@@ -7,9 +7,13 @@
 [X] Add ahk file somewhere?
 [X] Find a way to add project files
 [ ] Windows scripts:
-    [ ] Install from list of packages in a file
+    [X] Install from list of packages in a file
     [ ] Setup zsh prompt
-    [ ] Enable native links in MSYS
+    [ ] MSYS2
+        [ ] Install pacman packages list
+        [ ] Enable native links
+        [ ] Dirlinks between home directories
+    [ ] Windows Terminal Configuration
     [ ] Get OpenVPN configuration from Drive?
 [ ] Blank test run in Sandbox
 [ ] Install nvim plugin
