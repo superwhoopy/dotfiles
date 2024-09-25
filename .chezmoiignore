@@ -1,1 +1,15 @@
+# Files that must always be ignored
 README.md
+
+# Files ignored on Windows
+{{ if eq .chezmoi.os "windows" }}
+dot_config/i3
+dot_config/i3status
+dot_config/lxterminal
+{{ end }}
+
+# Files ignored on Linux
+{{ if eq .chezmoi.os "linux" }}
+AppData
+ctags.d
+{{ end }}
