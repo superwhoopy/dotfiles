@@ -1,6 +1,6 @@
 
 # install and enable aria2
-scoop install aria2
+scoop install aria2 sudo
 scoop config aria2-enabled true
 scoop config aria2-warning-enabled false
 

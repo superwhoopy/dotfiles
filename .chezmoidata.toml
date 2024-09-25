@@ -6,7 +6,6 @@
     "CascadiaCode-NF",
     "cascadiacode-nf-mono",
     "chezmoi",
-    "cmake",
     "cpu-z",
     "cryptomator",
     "draw.io",
@@ -44,7 +43,6 @@
     "openjdk",
     "openjdk17",
     "openssl",
-    "openvpn",
     "pdftk",
     "plantuml",
     "powertoys",
@@ -69,4 +67,7 @@
     "windirstat",
     "xmind",
     "xnview",
+  ]
+  su_packages = [
+    "openvpn"
   ]
