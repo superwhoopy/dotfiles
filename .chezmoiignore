@@ -1,5 +1,6 @@
 # Files that must always be ignored
 README.md
+projects
 
 # Files ignored on Windows
 {{ if eq .chezmoi.os "windows" }}
@@ -11,6 +12,7 @@ README.md
 
 # Files ignored on Linux
 {{ if eq .chezmoi.os "linux" }}
+.config/ahk
 AppData
 ctags.d
 {{ end }}

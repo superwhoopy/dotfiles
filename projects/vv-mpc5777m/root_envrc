@@ -1,0 +1,163 @@
+#!zsh
+
+################################################################################
+
+function _iswin() {
+  [ "${OS}" = "Windows_NT" ]
+}
+
+# print a message in light gray
+function _echogray() {
+  echo -e "\e[90m${*}\e[39m"
+}
+
+# Set variables RTK_PKG, COVERAGE_DIR, BOOTLOADER and ASTEK, according to the
+# chosen parameters:
+#   1st parameter: RTK pkg dir name (e.g. rtk-power-mpc5777m-module-5.2.1)
+#   2nd parameter: variant name (e.g. power-mpc5777m-module-p)
+function _setversion() {
+  export RTK_PKG=${1}
+  export COVERAGE_DIR="${KRONOSAFE_INSTALL_DIR}/${1}"
+  export BOOTLOADER="${KRONOSAFE_INSTALL_DIR}/${1}/${2}/bin/boot_ccv2/BOOT.elf"
+  export ASTEK="${KRONOSAFE_INSTALL_DIR}/${1}/${2}/bin/k2.elf"
+  _echogray "AsteK path set to: ${ASTEK}"
+}
+
+# Compares RTK_PKG to the value of the first parameter, and prints out an emoji
+# if they match
+function _isversion() {
+  [[ "${RTK_PKG}" == "${1}" ]] && echo "👈"
+}
+
+# Interactive function to switch between AsteK versions
+function verswitch() {
+  echo "Select a version:"
+  echo "  [1] K19.4   $(_isversion ${RTK_PKG_REG_194})"
+  echo "  [2] K19.4   coverage $(_isversion ${RTK_PKG_DEV_194})"
+  echo "  [3] K19.5   $(_isversion ${RTK_PKG_REG_195})"
+  echo "  [4] K19.5   coverage $(_isversion ${RTK_PKG_DEV_195})"
+  echo "  [5] K19.5.4 $(_isversion ${RTK_PKG_REG_1954})"
+  echo "  [6] K19.5.4 coverage $(_isversion ${RTK_PKG_DEV_1954})"
+  read -r _select
+
+  case ${_select} in
+
+    1)
+      _setversion ${RTK_PKG_REG_194} ${VARIANT}
+      echo "switched to K19.4"
+      ;;
+
+    2)
+      _setversion ${RTK_PKG_DEV_194} ${VARIANT_COV}
+      echo "switched to K19.4 coverage"
+      ;;
+
+    3)
+      _setversion ${RTK_PKG_REG_195} ${VARIANT}
+      echo "switched to K19.5"
+      ;;
+
+    4)
+      _setversion ${RTK_PKG_DEV_195} ${VARIANT_COV}
+      echo "switched to K19.5 coverage"
+      ;;
+
+    5)
+      _setversion ${RTK_PKG_REG_1954} ${VARIANT}
+      echo "switched to K19.5.4"
+      ;;
+
+    6)
+      _setversion ${RTK_PKG_DEV_1954} ${VARIANT_COV}
+      echo "switched to K19.5.4 coverage"
+      ;;
+
+    *)
+      echo "Keep unchanged."
+      ;;
+
+  esac
+}
+
+# Be sure to have defined:
+# - KRONOSAFE_INSTALL_DIR
+# - T32_DIR
+function checkVarDefined () {
+  [ -v ${1} ] || {
+    local RED='\033[0;31m'
+    local NC='\033[0m' # No Color
+    printf "${RED}WARNING: variable ${1} (${2}) must be defined\n"
+    return 1
+  }
+}
+checkVarDefined T32_DIR "Path to Trace32 root directory"
+checkVarDefined KRONOSAFE_INSTALL_DIR "Root installation directory of ASTERIOS products"
+
+################################################################################
+
+# root directory of this script
+_here="$(dirname ${0})"
+
+# Python virtual environment
+{ _iswin && _venv_sh="${_here}/.venv/Scripts/activate"; } || \
+  _venv_sh="${_here}/.venv/bin/activate"
+source "${_venv_sh}"
+
+export KS_HAAS_TOKEN="ffb4068cfea67f85eff848141f5f5317dccb6c824085fc13f36ee3c3c84be86e"
+export JENKINS_USER="eohayon"
+export JENKINS_TOKEN="11d3c39220afa89701e26e7bfa885e9980"
+
+export HAAS_BOARDS="module-ccv2,module"
+
+# psyko version
+export PSYKO_PKG_194="psyko-9.2.1"
+export PSYKO_PKG_195="psyko-9.5.0"
+export PSYKO_PKG="${PSYKO_PKG_195}"
+
+{ _iswin && export T32="${T32_DIR}/bin/windows64/t32mppc.exe"; } || \
+  export T32="${T32_DIR}/bin/pc_linux64/t32mppc"
+
+export VARIANT="power-mpc5777m-module-p"
+export VARIANT_COV="power-mpc5777m-module-p-mcdc"
+
+# RTK version
+export RTK_PKG_REG_194="rtk-power-mpc5777m-module-5.2.1"
+export RTK_PKG_DEV_194="rtk-power-mpc5777m-module-dev-5.2.1+fix.0"
+export RTK_PKG_REG_195="rtk-power-mpc5777m-module-7.1.0"
+export RTK_PKG_DEV_195="rtk-power-mpc5777m-module-dev-7.1.0"
+export RTK_PKG_REG_1954="rtk-power-mpc5777m-module-7.2.0"
+export RTK_PKG_DEV_1954="rtk-power-mpc5777m-module-dev-7.2.0"
+
+################################################################################
+
+# set default version to K19.5.4 regular (no coverage)
+_setversion ${RTK_PKG_REG_1954} ${VARIANT}
+_echogray "Use function 'verswitch' to switch between RTK versions."
+
+# define some useful aliases
+_pythonpath=$(readlink --canonicalize ${_here})
+alias jenkins="PYTHONPATH=${_pythonpath} python -m tools.jenkins"
+alias ctp="PYTHONPATH=${_pythonpath} python -m tools.ctp"
+alias mkbaseline="PYTHONPATH=${_pythonpath} python -m tools.mkbaseline"
+
+################################################################################
+
+function mktags () {
+  ctags -R --languages=python,c,c++,asm                                  \
+    --regex-asm='/^[[:space:]]*FUNC[[:space:]]+([a-zA-Z0-9_]+)/\1/l/'    \
+    --regex-asm='/^[[:space:]]*\.macro[[:space:]]+([a-zA-Z0-9_]+)/\1/l/' \
+    _pylib                                                               \
+    component_tests/lib                                                  \
+    component_tests/misc                                                 \
+    component_tests/conftest.py                                          \
+    component_tests/xcompile.py                                          \
+    component_tests/utils.py                                             \
+    software_tests/procedures/common                                     \
+    software_tests/procedures/multicore/lib                              \
+    software_tests/conftest.py                                           \
+    software_tests/utils.py                                              \
+    rtk-mpc5777m/bundle                                                  \
+    rtk-mpc5777m/sources_bundle                                          \
+    include
+}
+# vim: set ft=sh:

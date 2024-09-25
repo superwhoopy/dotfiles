@@ -1,3 +1,4 @@
+{{/* vim:set ft=gitconfig: */}}
 [alias]
   # shorthands
   st         = status -s
@@ -28,16 +29,13 @@
   checkout   = checkout --recurse-submodules
 
 [core]
-  excludesfile = ~/.config/config/git/gitignore_global
+  excludesfile = ~/.gitignore_global
   pager    = less -r
   editor   = nvim
   whitespace = blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent
   hooksPath = .githooks
   untrackedCache = true
-
-[include]
-  # use this file to set autocrlf to input on Linux, true on Windows
-  path = ~/.gitconfig.os
+  autocrlf = {{ if eq .chezmoi.os "windows" }}true{{ else }}input{{ end }}
 
 [diff]
   tool = nvimdiff
