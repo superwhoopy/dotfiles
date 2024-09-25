@@ -8,6 +8,8 @@ projects
 .config/i3status
 .config/lxterminal
 .config/ctags
+.config/rofi
+.config/terminator
 {{ end }}
 
 # Files ignored on Linux
