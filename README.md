@@ -9,3 +9,4 @@
     [ ] Install scoop if missing
     [ ] Install from list of packages in a file
     [ ] Setup zsh prompt
+    [ ] Get OpenVPN configuration from Drive?
