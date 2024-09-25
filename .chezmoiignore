@@ -4,10 +4,10 @@ projects
 
 # Files ignored on Windows
 {{ if eq .chezmoi.os "windows" }}
+.config/ctags
 .config/i3
 .config/i3status
 .config/lxterminal
-.config/ctags
 .config/rofi
 .config/terminator
 {{ end }}
