@@ -1,7 +1,6 @@
 [scoop]
   packages = [
     "7zip",
-    "aria2",
     "autohotkey",
     "bat",
     "CascadiaCode-NF",
@@ -13,6 +12,7 @@
     "draw.io",
     "eza",
     "fd",
+    "firefox",
     "FiraCode",
     "FiraCode-NF",
     "FiraCode-NF-Mono",
