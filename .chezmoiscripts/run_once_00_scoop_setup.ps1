@@ -1,4 +1,5 @@
-# TODO: make idempotent!
+# This scipt is idempotent: all of these comment succed even if they have
+# already been executed once.
 
 # install and enable aria2
 scoop install aria2

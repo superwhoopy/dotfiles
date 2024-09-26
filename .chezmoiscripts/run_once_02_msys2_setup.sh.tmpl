@@ -1,0 +1,5 @@
+#!sh
+# vim:set ft=sh:
+
+# install packages
+pacman --sync {{ range .msys2.packages }}{{ . }} {{ end }}

@@ -3,3 +3,6 @@
 # install a bunch of scoop packages
 scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
 sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
+
+# first launch of msys2 + upgrade
+ucrt64.cmd -c "pacman -Syu --noconfirm"
