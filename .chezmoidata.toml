@@ -78,4 +78,16 @@
   ]
 
 [apt]
-  install = []
+  install = [
+  ]
+
+[brew]
+  install = [
+    "bash-language-server",
+    "fzf",
+    "lua-language-server",
+    "neovide",
+    "neovim",
+    "node",
+    "tree-sitter"
+  ]

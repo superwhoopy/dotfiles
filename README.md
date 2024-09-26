@@ -15,6 +15,7 @@
         [ ] Dirlinks between home directories
     [ ] Windows Terminal Configuration
     [ ] Get OpenVPN configuration from Drive?
+    [ ] Make sure that .profile file is sourced by MSYS2
 [ ] Blank test run in Sandbox
 [ ] Linux/WSL setup
     [ ] ...
