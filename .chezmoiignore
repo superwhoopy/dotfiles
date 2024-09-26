@@ -1,3 +1,4 @@
+# vim: ft=gitignore:
 # Files that must always be ignored
 README.md
 projects

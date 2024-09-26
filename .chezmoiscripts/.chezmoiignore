@@ -1,0 +1,6 @@
+# vim: ft=gitignore:
+
+{{ if eq .chezmoi.os "windows" }}
+*.ps1
+*.cmd
+{{ end }}

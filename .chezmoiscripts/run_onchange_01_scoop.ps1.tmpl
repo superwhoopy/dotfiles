@@ -6,3 +6,10 @@ sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
 
 # first launch of msys2 + upgrade
 ucrt64.cmd -c "pacman -Syu --noconfirm"
+# install msys2 packages
+ucrt64.cmd -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }}{{ end }}"
+
+# TODO:
+#   - setup ucrt64.ini
+#   - create link to home directoru
+#   - change shell to zsh
