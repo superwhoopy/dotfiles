@@ -1,5 +1,4 @@
 #!/bin/bash
-# vim:set ft=sh:
 
 # install brew if needed
 if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ];

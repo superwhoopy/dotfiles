@@ -177,27 +177,6 @@ function _wupdate() (
   _scoopupdate
 )
 
-function _nuxupdate() (
-  set -euo pipefail
-
-  _command_exists apt && (
-    sudo -- sh -c 'apt update && apt upgrade -y && apt autoclean --yes && apt autoremove --purge --yes'
-  )
-
-  _command_exists pamac && pamac upgrade --aur --no-confirm
-
-  _command_exists flatpak && (
-    echo "Running flatpak update..."
-    flatpak update --assumeyes --noninteractive
-    flatpak uninstall --assumeyes --unused
-  )
-
-  _command_exists brew && (
-    echo "Running brew upgrade..."
-    brew upgrade
-  )
-)
-
 
 function fullupdate() (
   set -euo pipefail
@@ -208,11 +187,11 @@ function fullupdate() (
   if _iswin;
   then
     _wupdate
+    _confupdate
   else
-    _nuxupdate
+    chezmoi update
+    # TODO: print message if `chezmoi status --exclude scripts` is not empty
   fi
-
-  _confupdate
 
   touch "${_lastupdate_file}"
   rm -f "${_pendingupdate_lockfile}"
