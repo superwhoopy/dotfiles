@@ -11,7 +11,7 @@ projects
 .config/lxterminal
 .config/rofi
 .config/terminator
-.chezmoiscripts/linux
+.chezmoiscripts/linux/*
 {{ end }}
 
 # Files ignored on Linux
@@ -19,5 +19,5 @@ projects
 .config/ahk
 AppData
 ctags.d
-.chezmoiscripts/windows
+.chezmoiscripts/windows/*
 {{ end }}
