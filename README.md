@@ -16,6 +16,7 @@
     [ ] Windows Terminal Configuration
     [ ] Get OpenVPN configuration from Drive?
     [ ] Make sure that .profile file is sourced by MSYS2
+    [ ] Install Windows Terminal?
 [ ] Blank test run in Sandbox
 [ ] Linux/WSL setup
     [ ] ...
@@ -29,15 +30,9 @@
 Run this script:
 
 ```ps1
-# install scoop
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-
-# install git+chezmoi
-scoop install git chezmoi
-
-# get the dotfiles repo and install
-chezmoi init --apply --progress=true superwhoopy
+# install chezmoi and everything else
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply superwhoopy"
 ```
 
 

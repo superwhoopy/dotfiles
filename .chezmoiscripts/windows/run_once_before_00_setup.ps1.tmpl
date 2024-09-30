@@ -1,0 +1,77 @@
+# vim:set ft=ps1:
+
+# This scipt is idempotent: all of these comment succed even if they have
+# already been executed once.
+
+# safe PowerShell mode
+$ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
+
+function ChezMoi-Echo {
+  param (
+    $Message
+  )
+  Write-Output ""
+  Write-Output "************************************************"
+  Write-Output " CHEZMOI - $Message"
+  Write-Output "************************************************"
+  Write-Output ""
+}
+
+################################################################################
+# SCOOP
+################################################################################
+try {
+  $scoop = Get-Command "scoop" -ErrorAction Stop
+  Write-Output "Command 'scoop' exists: skipping install"
+} catch {
+  # install scoop
+  ChezMoi-Echo "Installing scoop"
+  Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+  # install and enable aria2
+  scoop install aria2
+  scoop config aria2-enabled true
+  scoop config aria2-warning-enabled false
+
+  # add buckets - requires git
+  scoop install git
+  {{- range .scoop.buckets }}
+  scoop bucket add {{ . }}
+  {{- end }}
+}
+
+
+################################################################################
+# MSYS2
+################################################################################
+try {
+  $ucrt64 = Get-Command "ucrt64" -ErrorAction Stop
+  Write-Output "Command 'ucrt64' exists: skipping msys2 install"
+} catch {
+  ChezMoi-Echo "Installing msys2"
+  # install msys2
+  scoop install msys2
+
+  # link home directory
+  $msys2_prefix = scoop prefix msys2
+  $msys2_home = "$msys2_prefix\home\$($env:USERNAME.ToLower())"
+  cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
+  # first launch of msys2 + upgrade
+  ucrt64 -c "pacman -Syu --noconfirm"
+  # install msys2 packages, including zsh
+  ucrt64 -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
+}
+
+################################################################################
+# WSL
+################################################################################
+
+try {
+  $wsl = Get-Command "wsl" -ErrorAction Stop
+  ChezMoi-Echo "Setting up WSL"
+  wsl --install -d Ubuntu --no-launch
+  # TODO: setup chezmoi within the VM
+} catch {
+  ChezMoi-Echo "Command 'wsl' unavailable: skipping"
+}

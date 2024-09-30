@@ -21,3 +21,7 @@ AppData
 ctags.d
 .chezmoiscripts/windows/*
 {{ end }}
+
+# files that are WIP
+.chezmoiscripts/**/*
+AppData/Local/Packages/**/*
