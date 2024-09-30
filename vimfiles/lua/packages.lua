@@ -472,7 +472,7 @@ local function lspconfig_fn()
 
   -- Bash
   local _bash_opts = {}
-  if vim.fn.has('win32') then
+  if vim.fn.has('win32') == 1 then
     _bash_opts = { cmd = { "bash-language-server.cmd", "start" } }
   end
   require('lspconfig').bashls.setup(_bash_opts)
