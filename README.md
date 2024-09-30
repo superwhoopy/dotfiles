@@ -8,18 +8,18 @@
 [X] Find a way to add project files
 [ ] Windows scripts:
     [X] Install from list of packages in a file
-    [ ] Setup zsh prompt
     [ ] MSYS2
-        [ ] Install pacman packages list
-        [ ] Enable native links
-        [ ] Dirlinks between home directories
+        [ ] Install and maintain pacman packages list
+        [X] Dirlinks between home directories
     [ ] Windows Terminal Configuration
-    [ ] Get OpenVPN configuration from Drive?
-    [ ] Make sure that .profile file is sourced by MSYS2
+        [ ] Enable native links
+    [ ] Get and setup OpenVPN configuration from Drive?
+    [X] Make sure that .profile file is sourced by MSYS2 - it's not
     [ ] Install Windows Terminal?
-[ ] Blank test run in Sandbox
+    [ ] Install WSL
 [ ] Linux/WSL setup
-    [ ] ...
+    [ ] Setup /etc/hosts
+    [ ] Setup OpenVPN?
 [ ] Install nvim plugin
 
 
