@@ -6,17 +6,20 @@
 [X] Add missing git files: rofi, terminator, gitconfig.os
 [X] Add ahk file somewhere?
 [X] Find a way to add project files
+[ ] Setup zsh shell: oh-my-zsh, zsh-autosuggestions, zsh-autocompletion
 [ ] Windows scripts:
     [X] Install from list of packages in a file
+    [ ] Handle global update process with `chezmoi update`
     [ ] MSYS2
         [ ] Install and maintain pacman packages list
         [X] Dirlinks between home directories
-    [ ] Windows Terminal Configuration
         [ ] Enable native links
+    [ ] Windows Terminal Configuration
     [ ] Get and setup OpenVPN configuration from Drive?
     [X] Make sure that .profile file is sourced by MSYS2 - it's not
     [ ] Install Windows Terminal?
     [ ] Install WSL
+    [ ] Setup text with Sandbox
 [ ] Linux/WSL setup
     [ ] Setup /etc/hosts
     [ ] Setup OpenVPN?
