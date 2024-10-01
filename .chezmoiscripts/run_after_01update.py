@@ -13,7 +13,7 @@ UPDATE_COMMANDS = {
 
     "brew": ("upgrade",),
 
-    "nvim": ('--headless', '"+Lazy! sync"', '+qa'),
+    "nvim": ('--headless', '+Lazy! sync', '+qa'),
 
     "npm": ('update', '-g'),
 
@@ -24,14 +24,16 @@ UPDATE_COMMANDS = {
 
 
 def _run_command(lock, cmd, args):
-    if shutil.which(cmd) is None:
+    if (fullcmd := shutil.which(cmd)) is None:
+        with lock:
+            print(f'Ignoring `{cmd}` commands…')
         return
 
     if isinstance(args[0], str):
         args = (args,)
 
     for a in args:
-        command = [cmd, *a]
+        command = [fullcmd, *a]
         with lock:
             print(' '.join(command))
         out = subprocess.run(command, check=False, stdout=subprocess.PIPE,
@@ -41,6 +43,7 @@ def _run_command(lock, cmd, args):
 
 
 def main():
+    print("Running update subcommands…")
     stdout_lock = threading.Lock()
 
     threads = tuple(
