@@ -1,4 +1,12 @@
 [scoop]
+  buckets = [
+    "extras",
+    # "versions",
+    # "nirsoft",
+    # "nerd-fonts",
+    # "java",
+    # "games"
+  ]
   packages = [
     # "7zip",
     # "autohotkey",
@@ -28,7 +36,6 @@
     # "lua",
     # "lua-language-server",
     # "luarocks",
-    "msys2",
     # "marp",
     # "mattermost",
     # "Monoid-NF",
@@ -55,7 +62,7 @@
     # "shellcheck",
     # "spotify",
     # "starship",
-    # "sudo",
+    "sudo",
     # "sumatrapdf",
     # "sysinternals",
     # "tlaplus-toolbox",
@@ -75,4 +82,19 @@
   packages = [
     "zsh",
     "ucrt64/mingw-w64-ucrt-x86_64-gcc",
+  ]
+
+[apt]
+  install = [
+  ]
+
+[brew]
+  install = [
+    "bash-language-server",
+    "fzf",
+    "lua-language-server",
+    "neovide",
+    "neovim",
+    "node",
+    "tree-sitter"
   ]

@@ -1,3 +1,4 @@
+# vim: ft=gitignore:
 # Files that must always be ignored
 README.md
 projects
@@ -10,6 +11,7 @@ projects
 .config/lxterminal
 .config/rofi
 .config/terminator
+.chezmoiscripts/linux/*
 {{ end }}
 
 # Files ignored on Linux
@@ -17,4 +19,9 @@ projects
 .config/ahk
 AppData
 ctags.d
+.chezmoiscripts/windows/*
 {{ end }}
+
+# files that are WIP
+.chezmoiscripts/windows/*
+AppData/Local/Packages/**/*

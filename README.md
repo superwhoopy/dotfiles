@@ -8,16 +8,18 @@
 [X] Find a way to add project files
 [ ] Windows scripts:
     [X] Install from list of packages in a file
-    [ ] Setup zsh prompt
     [ ] MSYS2
-        [ ] Install pacman packages list
-        [ ] Enable native links
-        [ ] Dirlinks between home directories
+        [ ] Install and maintain pacman packages list
+        [X] Dirlinks between home directories
     [ ] Windows Terminal Configuration
-    [ ] Get OpenVPN configuration from Drive?
-[ ] Blank test run in Sandbox
+        [ ] Enable native links
+    [ ] Get and setup OpenVPN configuration from Drive?
+    [X] Make sure that .profile file is sourced by MSYS2 - it's not
+    [ ] Install Windows Terminal?
+    [ ] Install WSL
 [ ] Linux/WSL setup
-    [ ] ...
+    [ ] Setup /etc/hosts
+    [ ] Setup OpenVPN?
 [ ] Install nvim plugin
 
 
@@ -28,15 +30,9 @@
 Run this script:
 
 ```ps1
-# install scoop
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
-
-# install git+chezmoi
-scoop install git chezmoi
-
-# get the dotfiles repo and install
-chezmoi init --apply --progress=true superwhoopy
+# install chezmoi and everything else
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply superwhoopy"
 ```
 
 
