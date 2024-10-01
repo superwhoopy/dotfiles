@@ -43,7 +43,7 @@ def _run_command(lock, cmd, args):
 
 
 def main():
-    print("Running update subcommands…")
+    print("Running update subcommands...")
     stdout_lock = threading.Lock()
 
     threads = tuple(

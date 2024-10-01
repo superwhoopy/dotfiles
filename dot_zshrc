@@ -187,9 +187,9 @@ else
 fi
 
 # FzF (fuzzy-search) ###########################################################
-if [ -f ~/.fzf.zsh ];
+if _command_exists fzf;
 then
-  source ~/.fzf.zsh
+  source <$(fzf --zsh)
 else
   _warnmsg "Consider installing FzF"
 fi

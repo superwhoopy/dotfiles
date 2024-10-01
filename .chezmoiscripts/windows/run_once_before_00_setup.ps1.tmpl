@@ -57,11 +57,10 @@ try {
   $msys2_prefix = scoop prefix msys2
   $msys2_home = "$msys2_prefix\home\$($env:USERNAME.ToLower())"
   cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
-  # TODO: patch .ini files to use native symlinks
   # first launch of msys2 + upgrade
-  ucrt64 -c "pacman -Syu --noconfirm" --norc
+  sh --noprofile --norc -c "pacman -Syu --noconfirm"
   # install msys2 packages, including zsh
-  ucrt64 -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}" --norc
+  sh --noprofile --norc -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
 }
 
 # comment

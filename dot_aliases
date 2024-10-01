@@ -184,14 +184,8 @@ function fullupdate() (
   _pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
 
   touch ${_pendingupdate_lockfile}
-  if _iswin;
-  then
-    _wupdate
-    _confupdate
-  else
-    chezmoi update
-    # TODO: print message if `chezmoi status --exclude scripts` is not empty
-  fi
+  chezmoi update
+  # TODO: print message if `chezmoi status --exclude scripts` is not empty
 
   touch "${_lastupdate_file}"
   rm -f "${_pendingupdate_lockfile}"
