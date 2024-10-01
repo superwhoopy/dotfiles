@@ -1,0 +1,11 @@
+# vim:set ft=yaml:
+progress: true
+
+data:
+  {{- if promptBool "Main monitor on the left" true }}
+  main_monitor: 0
+  secondary_monitor: 1
+  {{- else }}
+  main_monitor: 1
+  secondary_monitor: 0
+  {{- end }}
