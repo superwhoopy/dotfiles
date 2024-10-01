@@ -57,21 +57,24 @@ try {
   $msys2_prefix = scoop prefix msys2
   $msys2_home = "$msys2_prefix\home\$($env:USERNAME.ToLower())"
   cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
+  # TODO: patch .ini files to use native symlinks
   # first launch of msys2 + upgrade
-  ucrt64 -c "pacman -Syu --noconfirm"
+  ucrt64 -c "pacman -Syu --noconfirm" --norc
   # install msys2 packages, including zsh
-  ucrt64 -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
+  ucrt64 -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}" --norc
 }
+
+# comment
 
 ################################################################################
 # WSL
 ################################################################################
+# TODO: really want to do that?
 
-try {
-  $wsl = Get-Command "wsl" -ErrorAction Stop
-  ChezMoi-Echo "Setting up WSL"
-  wsl --install -d Ubuntu --no-launch
-  # TODO: setup chezmoi within the VM
-} catch {
-  ChezMoi-Echo "Command 'wsl' unavailable: skipping"
-}
+# try {
+#   $wsl = Get-Command "wsl" -ErrorAction Stop
+#   ChezMoi-Echo "Setting up WSL"
+#   wsl --install -d Ubuntu --no-launch
+# } catch {
+#   ChezMoi-Echo "Command 'wsl' unavailable: skipping"
+# }

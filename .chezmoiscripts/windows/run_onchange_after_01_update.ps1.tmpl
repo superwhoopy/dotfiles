@@ -1,13 +1,15 @@
 # vim:set ft=ps1:
 
+# TODO: split this script: run pacman and scoop separately
+
 # refresh Path environment variable, in case a setup script ran before
 $env:Path = `
   [System.Environment]::GetEnvironmentVariable("Path","Machine") `
   + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
 # install scoop packages
-scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
-sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
+# scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
+# sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
 
 # install msys2 packages
-ucrt64.cmd -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
+ucrt64 -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
