@@ -9,3 +9,6 @@ data:
   main_monitor: 1
   secondary_monitor: 0
   {{- end }}
+
+  {{- $machine := promptChoice "Machine type" (list "home" "work") }}
+  machine: "{{ $machine }}"

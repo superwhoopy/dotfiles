@@ -26,7 +26,9 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '2%'
+    top: {{if eq .machine "home" -}}        '2%'
+         {{- else if eq .machine "work" -}} '25px'
+         {{- end }}
     right: '2px'
     bottom: '2px'
     left: '2px'
