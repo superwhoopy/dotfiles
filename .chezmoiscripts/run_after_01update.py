@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """TODO"""
 
-import itertools
 import subprocess
 import threading
 import shutil
@@ -33,10 +32,11 @@ def _run_command(lock, cmd, args):
 
     for a in args:
         command = [cmd, *a]
+        with lock:
+            print(' '.join(command))
         out = subprocess.run(command, check=False, stdout=subprocess.PIPE,
                              stderr=subprocess.STDOUT)
         with lock:
-            print(' '.join(command))
             print(out.stdout.decode())
 
 

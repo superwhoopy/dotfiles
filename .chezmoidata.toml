@@ -81,6 +81,7 @@
 [msys2]
   packages = [
     "zsh",
+    "msys/man-pages-posix",
     "ucrt64/mingw-w64-ucrt-x86_64-gcc",
   ]
 
