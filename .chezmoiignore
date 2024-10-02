@@ -12,15 +12,13 @@ projects
 .config/rofi
 .config/terminator
 .chezmoiscripts/linux/*
+.chezmoitemplates/windows-terminal-settings.json
 {{ end }}
 
 # Files ignored on Linux
 {{ if eq .chezmoi.os "linux" }}
 .config/ahk
-AppData
+.config/windows-terminal-settings.json
 ctags.d
 .chezmoiscripts/windows/*
 {{ end }}
-
-# files that are WIP
-AppData/Local/Packages/**/*

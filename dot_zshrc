@@ -189,7 +189,7 @@ fi
 # FzF (fuzzy-search) ###########################################################
 if _command_exists fzf;
 then
-  source <$(fzf --zsh)
+  eval "$(fzf --zsh)"
 else
   _warnmsg "Consider installing FzF"
 fi

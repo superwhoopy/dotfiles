@@ -1,3 +1,5 @@
+# vim: set ft=gitignore:
+
 .*.sw*
 *.sw*
 *.pyc

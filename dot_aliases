@@ -17,16 +17,14 @@ _iswin && {                                                                 \
 alias l="exa --icons --group-directories-first"
 alias ll="exa -al --icons --group-directories-first"
 alias la="exa -a --git --icons --group-directories-first"
+alias lt="exa --tree --git --icons --group-directories-first"
 
 alias grep='grep --color'
 alias du='/usr/bin/du -hc --max-depth=1'
 alias df='df -h'
 alias shred='shred -u'
-alias hd=hexdump
-alias tree='tree -C' # colors on
-
-alias aupdate='sudo apt update'
-alias ainstall='sudo apt install'
+alias hd=hexyl
+alias tree='lt'
 
 alias pipupgrade='python -m pip install --upgrade pip'
 alias pip='python -m pip'
@@ -51,13 +49,9 @@ alias vim='nvim -p'
 # Short date
 alias sdate='date +%d.%m.%y-%H.%M.%S'
 
-alias tmux='tmux attach'
-
 alias livelog='watch --color -n 2 git --no-pager lag --color=always -35'
 
 alias pytest='pytest -v'
-
-alias psytags='ctags -R --map-c=+.psy'
 
 # TLA+ tools
 if _iswin; then
@@ -124,31 +118,6 @@ function notify() {
 # UPDATE TOOLS
 ################################################################################
 
-function _confupdate() {
-  for dir in ~/.vim ~/.config/config;
-  do
-    echo "updating git repo in ${dir}"
-    ( git -C ${dir} pff || \
-      _errormsg "Failed to fast-forward pull git repository!" ) &
-
-    if [ "$(git -C ${dir} status --porcelain)" ]; then
-      _warnmsg "Warning: git repo ${dir} is not clean. Wanna push?"
-    fi
-    echo
-  done
-  wait
-
-  # each of the following lines is executed in parallel
-  { cat << EOF
-  echo "\nupdating nvim plugins..."; command -v nvim && nvim --headless "+Lazy! sync" +qa
-  echo "\nupdating nodejs packages"; command -v npm  && npm update -g
-  echo "\nupdating Python packages"; command -v pipx && pipx upgrade-all
-  echo "\nupdating Ruby packages";   command -v gem  && gem update
-EOF
-  } | parallel --verbose
-
-}
-
 function _pacmanupdate() (
   set -euo pipefail
   pacman="pacman"
@@ -167,16 +136,6 @@ function _scoopupdate() (
   scoop cleanup "*"
   scoop cache rm -a
 )
-
-# update windows tools
-function _wupdate() (
-  _iswin || {
-    _warnmsg "You're not on Windows, dumbass!"; return
-  }
-  _pacmanupdate
-  _scoopupdate
-)
-
 
 function fullupdate() (
   set -euo pipefail

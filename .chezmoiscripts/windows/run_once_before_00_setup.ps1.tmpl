@@ -24,6 +24,7 @@ function ChezMoi-Echo {
 try {
   $scoop = Get-Command "scoop" -ErrorAction Stop
   Write-Output "Command 'scoop' exists: skipping install"
+  # TODO: create %USERPROFILE%\scoop junction if it does not exist
 } catch {
   # install scoop
   ChezMoi-Echo "Installing scoop"
@@ -63,7 +64,6 @@ try {
   sh --noprofile --norc -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
 }
 
-# comment
 
 ################################################################################
 # WSL

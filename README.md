@@ -11,14 +11,15 @@
 [ ] Windows scripts:
     [X] Install from list of packages in a file
     [X] Handle global update process with `chezmoi update`
+    [X] Make sure that .profile file is sourced by MSYS2 - it's not
+    [X] Install Windows Terminal?
     [ ] MSYS2
         [X] Dirlinks between home directories
         [ ] Install and maintain pacman packages list
-    [ ] Windows Terminal Configuration
-        [ ] Enable native links
+    [ ] Windows Terminal Configuration + Enable native links / use env. variables for MSYS2
+        [ ] Setup link to windows terminal configuration in `scoop/persist/wt/settings/settings.json`, make sure it works on a fresh install + on updates
     [ ] Get and setup OpenVPN configuration from Drive?
-    [X] Make sure that .profile file is sourced by MSYS2 - it's not
-    [ ] Install Windows Terminal?
+    [ ] Setup ahk script auto-startup
     [ ] Install WSL?
     [ ] Setup test with Sandbox
 [ ] Linux/WSL setup

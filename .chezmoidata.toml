@@ -71,6 +71,7 @@
     # "universal-ctags",
     # "vscode",
     # "windirstat",
+    "windows-terminal",
     # "xmind",
     # "xnview",
   ]
