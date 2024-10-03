@@ -100,3 +100,9 @@
     "node",
     "tree-sitter"
   ]
+
+[python]
+  pip = [
+    "rich",
+    "colorama",
+  ]

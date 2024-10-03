@@ -40,7 +40,23 @@ try {
   {{- range .scoop.buckets }}
   scoop bucket add {{ . }}
   {{- end }}
+
+  {{- if .scoop.packages }}
+  scoop install {{range .scoop.packages}}{{ . }} {{end}}
+  {{- end }}
+
 }
+
+
+################################################################################
+# Python base packages
+################################################################################
+{{- if .python.pip }}
+python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
+{{- end }}
+
+# TODO: pipx, npm stuff? Or perhaps it should be implemented with a Python
+# script, so that it's common to Win and Nux?
 
 
 ################################################################################
