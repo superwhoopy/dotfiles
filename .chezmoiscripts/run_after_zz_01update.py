@@ -4,6 +4,7 @@
 import subprocess
 import threading
 import shutil
+import typing
 
 from rich.progress import (Progress, SpinnerColumn, TextColumn,
                            TimeElapsedColumn, Column)
@@ -16,7 +17,7 @@ UPDATE_COMMANDS = {
 
     "brew": ("upgrade",),
 
-    "nvim": ('--headless', '+Lazy! sync', '+qa'),
+    "nvim": ('--headless', "+Lazy! sync", '+qa'),
 
     "npm": ('update', '-g'),
 
@@ -26,14 +27,19 @@ UPDATE_COMMANDS = {
 }
 
 
-def _run_command(lock: threading.Lock, progress: Progress, tid, cmd, args):
+class ProgressContext(typing.NamedTuple):
+    ctx: Progress
+    task_id: int
+
+
+def _run_command(lock: threading.Lock, progress: ProgressContext, cmd, args,
+                 output: list):
     with lock:
-        progress.start_task(tid)
+        progress.ctx.start_task(progress.task_id)
     if (fullcmd := shutil.which(cmd)) is None:
         with lock:
-            progress.remove_task(tid)
+            progress.ctx.remove_task(progress.task_id)
         return
-
 
     if isinstance(args[0], str):
         args = (args,)
@@ -42,17 +48,16 @@ def _run_command(lock: threading.Lock, progress: Progress, tid, cmd, args):
         command = [fullcmd, *a]
         out = subprocess.run(command, check=False, stdout=subprocess.PIPE,
                              stderr=subprocess.STDOUT)
-        # TODO: log output somewhere to make the main thread print it out at the
-        # end
-        # TODO: update progress bar with a notification when the command failed
 
     with lock:
-        progress.advance(tid, 100)
+        output.append(out.stdout.decode())
+        # TODO: update progress bar with a notification when the command failed
+        progress.ctx.advance(progress.task_id, 100)
 
 
 def main():
     print("Running update subcommands...")
-    stdout_lock = threading.Lock()
+    global_lock = threading.Lock()
 
     with Progress(
         TextColumn("{task.description}", table_column=Column(ratio=1)),
@@ -61,13 +66,18 @@ def main():
         transient=True
     ) as progress:
 
+        threads_output = []
 
         threads = tuple(
-             threading.Thread(target=_run_command,
-                              args=(stdout_lock, progress,
-                                    progress.add_task(f'{cmd}...', total=100,
-                                                      start=False),
-                                    cmd, args))
+            threading.Thread(
+              target=_run_command,
+              args=(global_lock,
+                    ProgressContext(progress,
+                                    progress.add_task(f'{cmd}...',
+                                                      total=100,
+                                                      start=False)),
+                    cmd, args, threads_output)
+            )
             for cmd, args in UPDATE_COMMANDS.items()
         )
 
@@ -77,9 +87,10 @@ def main():
         for t in threads:
             t.join()
 
+        for o in threads_output:
+            print(o)
+
         print('...completed')
-
-
 
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ projects
 .config/i3
 .config/i3status
 .config/lxterminal
+.config/pip
 .config/rofi
 .config/terminator
 .chezmoiscripts/linux/*
@@ -17,6 +18,7 @@ projects
 
 # Files ignored on Linux
 {{ if eq .chezmoi.os "linux" }}
+AppData
 .config/ahk
 .config/windows-terminal-settings.json
 ctags.d
