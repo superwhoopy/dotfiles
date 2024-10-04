@@ -11,12 +11,15 @@ function ChezMoi-Echo {
   param (
     $Message
   )
+  $color = "DarkBlue"
   Write-Output ""
-  Write-Output "************************************************"
-  Write-Output " CHEZMOI - $Message"
-  Write-Output "************************************************"
+  Write-Host "************************************************" -ForegroundColor $color
+  Write-Host " CHEZMOI - $Message" -ForegroundColor $color
+  Write-Host "************************************************" -ForegroundColor $color
   Write-Output ""
 }
+
+ChezMoi-Echo "Running initial setup script"
 
 ################################################################################
 # SCOOP
