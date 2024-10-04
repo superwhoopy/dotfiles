@@ -27,7 +27,7 @@ ChezMoi-Echo "Initial setup script"
 try {
   $scoop = Get-Command "scoop" -ErrorAction Stop
   Write-Output "Command 'scoop' exists: skipping install"
-  # TODO: create %USERPROFILE%\scoop junction if it does not exist
+  # TODO: create %USERPROFILE%\scoop junction if it does not exist?
 } catch {
   # install scoop
   ChezMoi-Echo "Installing scoop"
@@ -44,20 +44,18 @@ try {
   scoop bucket add {{ . }}
   {{- end }}
 
-  {{- if .scoop.packages }}
-  scoop install {{range .scoop.packages}}{{ . }} {{end}}
-  {{- end }}
-
+  # install sudo, so that regular update scripts can run
+  scoop install sudo
 }
 
 
 ################################################################################
 # Python base packages
 ################################################################################
+
 {{- if .python.pip }}
 python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
 {{- end }}
-
 # TODO: pipx, npm stuff? Or perhaps it should be implemented with a Python
 # script, so that it's common to Win and Nux?
 
@@ -79,8 +77,6 @@ try {
   cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
   # first launch of msys2 + upgrade
   sh --noprofile --norc -c "pacman -Syu --noconfirm"
-  # install msys2 packages, including zsh
-  sh --noprofile --norc -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
 }
 
 

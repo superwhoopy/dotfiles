@@ -105,4 +105,5 @@
   pip = [
     "rich",
     "colorama",
+    "icecream",
   ]

@@ -23,8 +23,16 @@ UPDATE_COMMANDS = {
 
     'pipx': ('upgrade-all',),
 
-    'gem': ('update',),
+    # 'gem': ('update',),
 }
+
+def _blueprint(s: str):
+    print(f"\033[94m{s}\033[0m")
+
+def _chezmoiprint(s: str):
+    _blueprint(80 * '#')
+    _blueprint(f" CHEZMOI - {s}")
+    _blueprint(80 * '#')
 
 
 class ProgressContext(typing.NamedTuple):
@@ -56,7 +64,7 @@ def _run_command(lock: threading.Lock, progress: ProgressContext, cmd, args,
 
 
 def main():
-    print("Running update subcommands...")
+    _chezmoiprint('Secondary package managers update')
     global_lock = threading.Lock()
 
     with Progress(
@@ -87,8 +95,8 @@ def main():
         for t in threads:
             t.join()
 
-        for o in threads_output:
-            print(o)
+        # for o in threads_output:
+        #     print(o)
 
         print('...completed')
 

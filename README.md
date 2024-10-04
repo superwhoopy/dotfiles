@@ -29,6 +29,7 @@
     [ ] Initial setup: brew, pipx, etc.
     [ ] Find a way to test it (Docker?)
 
+The initial setup script may be a good place for the broad installation of all packages, *only if it is re-run on update*. But I don't know if that's true: is a `run_once` *templated* script re-executed on change, considering that the template data may have changed? Or is it only re-executed if the template file itself has changed?
 
 ## Initial Setup
 

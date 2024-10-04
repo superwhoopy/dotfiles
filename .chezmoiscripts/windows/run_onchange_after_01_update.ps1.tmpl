@@ -1,15 +1,39 @@
 # vim:set ft=ps1:
+$ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
 
-# TODO: split this script: run pacman and scoop separately
+function ChezMoi-Echo {
+  param (
+    $Message
+  )
+  $color = "DarkBlue"
+  Write-Output ""
+  Write-Host "************************************************" -ForegroundColor $color
+  Write-Host " CHEZMOI - $Message" -ForegroundColor $color
+  Write-Host "************************************************" -ForegroundColor $color
+  Write-Output ""
+}
+
+################################################################################
+
+ChezMoi-Echo "System packages initial installation"
 
 # refresh Path environment variable, in case a setup script ran before
-# $env:Path = `
-#   [System.Environment]::GetEnvironmentVariable("Path","Machine") `
-#   + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+$env:Path = `
+  [System.Environment]::GetEnvironmentVariable("Path","Machine") `
+  + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-# # install scoop packages
-# # scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
-# # sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
+# install scoop packages
+{{- if .scoop.packages }}
+scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
+{{- end }}
+{{- if .scoop.su_packages }}
+sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
+{{- end }}
 
-# # install msys2 packages
-# ucrt64 -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
+# install msys2 packages
+{{- if .msys2.packages }}
+sh --noprofile --norc -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
+{{- end }}
+
+# install python base packages
