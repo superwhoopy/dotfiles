@@ -23,7 +23,7 @@
     [ ] Install WSL?
     [ ] Setup test with Sandbox
 [ ] Linux/WSL setup
-    [ ] Setup /etc/hosts
+    [X] Setup /etc/hosts
     [ ] Setup OpenVPN?
     [ ] Maintain list of packages
     [ ] Initial setup: brew, pipx, etc.
