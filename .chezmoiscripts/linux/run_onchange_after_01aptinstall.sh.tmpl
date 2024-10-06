@@ -1,0 +1,37 @@
+{{/* vim:set ft=sh: */}}
+#!/bin/bash
+set -euo pipefail
+
+function _command_exists() {
+  command -v "${*}" &> /dev/null
+}
+
+function _blue() {
+  printf "\e[34m%s\033[0m\n" "${*}"
+}
+
+function _chezmoiprint() {
+  _blue "###############################################################################"
+  _blue "CHEZMOI - ${*}"
+  _blue "###############################################################################"
+}
+
+################################################################################
+
+_chezmoiprint "Default packages installation"
+
+{{- if .apt.install }}
+sudo apt install {{ range .apt.install }}{{ . }} {{ end }}
+{{- end }}
+
+{{- if .brew.install }}
+brew install {{ range .brew.install }}{{ . }} {{ end }}
+{{- end }}
+
+{{- if .python.pip }}
+python3 -m pip install --user {{ range .python.pip }}{{ . }} {{ end }}
+{{- end }}
+
+{{- if .python.pipx }}
+pipx install {{ range .python.pipx }}{{ . }} {{ end }}
+{{- end }}

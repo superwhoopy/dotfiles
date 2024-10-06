@@ -88,6 +88,11 @@
 
 [apt]
   install = [
+    "firefox",
+    "flatpak",
+    "git",
+    "network-manager-openvpn",
+    "zsh",
   ]
 
 [brew]
@@ -98,6 +103,7 @@
     "neovide",
     "neovim",
     "node",
+    "python",
     "tree-sitter"
   ]
 
@@ -106,4 +112,9 @@
     "rich",
     "colorama",
     "icecream",
+    "pipx",
   ]
+  pipx = [
+    "python-lsp-server[all]",
+  ]
+
