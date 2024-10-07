@@ -78,8 +78,8 @@ try {
   # first launch of msys2 + upgrade (twice, to account for full system upgrade)
   msys2 -no-start -c 'echo MSYS2 init. complete'
   $sh = Join-Path $msys2_prefix "usr\bin\sh"
-  & $sh --login --norc -c "pacman -Syu --noconfirm"
-  & $sh --login --norc -c "pacman -Syu --noconfirm"
+  & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
+  & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
 }
 
 ################################################################################

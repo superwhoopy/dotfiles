@@ -1,5 +1,5 @@
-{{/* vim:set ft=sh: */}}
 #!/bin/bash
+{{/* vim:set ft=sh: */}}
 set -euo pipefail
 
 function _command_exists() {
@@ -21,7 +21,7 @@ function _chezmoiprint() {
 _chezmoiprint "Default packages installation"
 
 {{- if .apt.install }}
-sudo apt install {{ range .apt.install }}{{ . }} {{ end }}
+sudo apt install --yes {{ range .apt.install }}{{ . }} {{ end }}
 {{- end }}
 
 {{- if .brew.install }}
