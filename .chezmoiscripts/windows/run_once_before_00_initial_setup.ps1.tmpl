@@ -55,13 +55,6 @@ try {
 }
 
 
-################################################################################
-# Python base packages
-################################################################################
-
-{{- if .python.pip }}
-python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
-{{- end }}
 # TODO: pipx, npm stuff? Or perhaps it should be implemented with a Python
 # script, so that it's common to Win and Nux?
 
@@ -81,6 +74,7 @@ try {
   $msys2_prefix = scoop prefix msys2
   $msys2_home = "$msys2_prefix\home\$($env:USERNAME.ToLower())"
   cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
+  # TODO: set `db_home: windows cygwin desc` in /etc/nsswitch.conf
   # first launch of msys2 + upgrade
   msys2 -no-start -c 'echo MSYS2 init. complete'
   $sh = Join-Path $msys2_prefix "usr\bin\sh"

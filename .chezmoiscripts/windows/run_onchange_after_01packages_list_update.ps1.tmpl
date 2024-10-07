@@ -30,6 +30,10 @@ scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
 {{- if .scoop.su_packages }}
 sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
 {{- end }}
+{{- if .python.pip }}
+python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
+{{- end }}
+# TODO: setup pipx
 
 # install msys2 packages
 {{- if .msys2.packages }}

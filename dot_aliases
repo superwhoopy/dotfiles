@@ -4,9 +4,6 @@ function _iswin() {
   [ "${OS-'None'}" = "Windows_NT" ]
 }
 
-# temporary hack, to use scoop python39 by default with Windows
-_iswin && alias python3=python39
-
 ################################################################################
 # USUAL STUFF
 ################################################################################

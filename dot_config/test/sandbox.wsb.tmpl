@@ -1,7 +1,7 @@
 <!-- vim: set ft=xml: -->
 <Configuration>
   <LogonCommand>
-    <Command>powershell -Command "Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force; start powershell -NoExit C:\Test\runtest.ps1"</Command>
+    <Command>powershell -executionpolicy unrestricted -command "start powershell {-noexit -file C:\Test\runtest.ps1}"</Command>
   </LogonCommand>
   <MappedFolders>
     <MappedFolder>
