@@ -40,7 +40,9 @@ Run this script:
 ```ps1
 # install chezmoi and everything else
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply superwhoopy"
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+scoop install chezmoi
+chezmoi init --apply superwhoopy
 ```
 
 

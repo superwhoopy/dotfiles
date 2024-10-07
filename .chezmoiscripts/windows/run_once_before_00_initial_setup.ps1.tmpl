@@ -27,6 +27,8 @@ function Write-Blue {
 
 ChezMoi-Echo "Initial setup script"
 
+# TODO: better to start off assuming that scoop is available, everything will be much easier
+
 ################################################################################
 # SCOOP
 ################################################################################
@@ -55,10 +57,6 @@ try {
 }
 
 
-# TODO: pipx, npm stuff? Or perhaps it should be implemented with a Python
-# script, so that it's common to Win and Nux?
-
-
 ################################################################################
 # MSYS2
 ################################################################################
@@ -75,9 +73,10 @@ try {
   $msys2_home = "$msys2_prefix\home\$($env:USERNAME.ToLower())"
   cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
   # TODO: set `db_home: windows cygwin desc` in /etc/nsswitch.conf
-  # first launch of msys2 + upgrade
+  # first launch of msys2 + upgrade (twice, to account for full system upgrade)
   msys2 -no-start -c 'echo MSYS2 init. complete'
   $sh = Join-Path $msys2_prefix "usr\bin\sh"
+  & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
   & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
 }
 

@@ -22,6 +22,11 @@ function Write-Blue {
 
 Write-Chezmoi "Setting up symbolic links"
 
+# refresh Path environment variable, in case a setup script ran before
+$env:Path = `
+  [System.Environment]::GetEnvironmentVariable("Path","Machine") `
+  + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
 ################################################################################
 
 Write-Blue "Windows Terminal config. file"

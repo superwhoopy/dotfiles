@@ -2,5 +2,7 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-# download chezmoi and apply, see how it goes
-iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply superwhoopy"
+# download scoop, chezmoi and apply, see how it goes
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+scoop install chezmoi
+chezmoi init --apply superwhoopy
