@@ -1,1 +1,244 @@
-{{- template "windows-terminal-settings.json" . -}}
+{{/* vim: set ft=json: */}}
+{{- $msys2:= (output "scoop" "prefix" "msys2" | trim) }}
+{{- $msys2 = $msys2 | replace "\\" "\\\\" }}
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions":
+    [
+        {
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "shift+insert"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "id": "User.moveFocus.6CD791B",
+            "keys": "alt+k"
+        },
+        {
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "down",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.10B260D2",
+            "keys": "ctrl+shift+i"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "id": "User.moveFocus.87C324ED",
+            "keys": "alt+l"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "id": "User.moveFocus.2A0DA8E0",
+            "keys": "alt+h"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "id": "User.moveFocus.F747588A",
+            "keys": "alt+j"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "right",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.FEF0D40B",
+            "keys": "ctrl+shift+e"
+        },
+        {
+            "command": "closePane",
+            "id": "User.closePane",
+            "keys": "ctrl+shift+w"
+        }
+    ],
+    "alwaysShowTabs": false,
+    "copyFormatting": "none",
+    "copyOnSelect": true,
+    "defaultProfile": "{318e117a-81d3-49fb-a46e-8f59080783bb}",
+    "disabledProfileSources":
+    [
+        "Windows.Terminal.Azure"
+    ],
+    "initialCols": 80,
+    "initialRows": 60,
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles":
+    {
+        "defaults":
+        {
+            "antialiasingMode": "cleartype",
+            "colorScheme": "One Half Dark",
+            "cursorShape": "bar",
+            "font":
+            {
+                "face": "UbuntuMono Nerd Font",
+                "size": 10
+            },
+            "opacity": 80,
+            "padding": "20",
+            "scrollbarState": "hidden",
+            "useAcrylic": true
+        },
+        "list":
+        [
+            {
+                "altGrAliasing": true,
+                "closeOnExit": "automatic",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "elevate": false,
+                "guid": "{e161bfc8-6c89-4d59-a392-22a2da8cabd5}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
+                "name": "Windows PowerShell",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "elevate": true,
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell (Admin)"
+            },
+            {
+                "altGrAliasing": true,
+                "closeOnExit": "automatic",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "elevate": false,
+                "guid": "{80c71773-3e40-46b1-b33f-b523f75a84fc}",
+                "hidden": false,
+                "historySize": 9001,
+                "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
+                "name": "Command Prompt",
+                "snapOnInput": true,
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "elevate": true,
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt (Admin)"
+            },
+            {
+                "closeOnExit": "always",
+                "colorScheme": "One Half Dark",
+                "commandline": "{{$msys2}}\\usr\\bin\\env.exe MSYS=winsymlinks:nativestrict MSYS2_PATH_TYPE=inherit MSYSTEM=MINGW64 MSYSCON=defterm CHERE_INVOKING=enabled_from_arguments /usr/bin/zsh --login --interactive",
+                "experimental.retroTerminalEffect": false,
+                "guid": "{e6bfbdd1-b318-47e8-a7bb-5b19b75d9eca}",
+                "hidden": false,
+                "icon": "{{$msys2}}\\mingw64.ico",
+                "intenseTextStyle": "bright",
+                "name": "MINGW64 zsh",
+                "opacity": 85,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": true
+            },
+            {
+                "commandline": "C:\\msys32-core\\usr\\bin\\env MSYSTEM=MINGW32 CHERE_INVOKING=1 MSYS2_PATH_TYPE=inherit /usr/bin/bash --login -i",
+                "guid": "{2395df22-09a4-4750-8057-9c560c393a62}",
+                "hidden": false,
+                "icon": "C:\\msys32-core\\msys2.ico",
+                "name": "MINGW32-core",
+                "padding": "8",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "closeOnExit": "always",
+                "colorScheme": "One Half Dark",
+                "commandline": "{{$msys2}}\\usr\\bin\\env.exe MSYS=winsymlinks:nativestrict MSYS2_PATH_TYPE=inherit MSYSTEM=MINGW32 MSYSCON=defterm CHERE_INVOKING=enabled_from_arguments /usr/bin/zsh --login --interactive",
+                "experimental.retroTerminalEffect": false,
+                "guid": "{794347ee-5a89-47af-a086-126a0898ec7a}",
+                "hidden": false,
+                "icon": "{{$msys2}}\\mingw32.ico",
+                "intenseTextStyle": "bright",
+                "name": "MINGW32 zsh",
+                "opacity": 70,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": true
+            },
+            {
+                "closeOnExit": "always",
+                "colorScheme": "One Half Dark",
+                "commandline": "{{$msys2}}\\usr\\bin\\env.exe MSYS=winsymlinks:nativestrict MSYS2_PATH_TYPE=inherit MSYSTEM=UCRT64 MSYSCON=defterm CHERE_INVOKING=enabled_from_arguments /usr/bin/zsh --login --interactive",
+                "experimental.retroTerminalEffect": false,
+                "guid": "{318e117a-81d3-49fb-a46e-8f59080783bb}",
+                "hidden": false,
+                "icon": "{{$msys2}}\\ucrt64.ico",
+                "intenseTextStyle": "bright",
+                "name": "UCRT64 zsh",
+                "opacity": 70,
+                "startingDirectory": "%USERPROFILE%",
+                "useAcrylic": true
+            },
+            {
+                "commandline": "C:\\WINDOWS\\system32\\wsl.exe -d Ubuntu",
+                "guid": "{1218d041-e6d0-4c9d-bbc2-a6f75ff013bc}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+                "name": "Ubuntu",
+                "startingDirectory": "~"
+            }
+        ]
+    },
+    "schemes":
+    [
+        {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        }
+    ],
+    "tabWidthMode": "compact",
+    "themes": [],
+    "useAcrylicInTabRow": true
+}

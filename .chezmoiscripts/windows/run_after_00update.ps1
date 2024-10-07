@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-function ChezMoi-Echo {
+function Trace-Chezmoi {
   param (
     $Message
   )
@@ -16,7 +16,7 @@ function ChezMoi-Echo {
 
 ################################################################################
 
-ChezMoi-Echo "System packages update script"
+Trace-Chezmoi "System packages update script"
 
 Write-Output "Scoop update..."
 # scoop update
@@ -26,4 +26,6 @@ scoop cache rm -a
 
 # pacman full update
 Write-Output "MSYS2 update..."
-sh --noprofile --norc -c "pacman -Syu --noconfirm"
+$msys2_prefix = scoop prefix msys2
+$sh = Join-Path $msys2_prefix "usr\bin\sh"
+& $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"

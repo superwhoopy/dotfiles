@@ -479,6 +479,13 @@ local function lspconfig_fn()
 
   -- typescript / javascript
   require'lspconfig'.ts_ls.setup{}
+
+  -- powershell
+  if vim.fn.has('win32') == 1 then
+    require'lspconfig'.powershell_es.setup{
+      bundle_path = os.getenv('USERPROFILE') .. '\\.local\\share\\powershell_es',
+    }
+  end
 end
 
 -- #############################################################################

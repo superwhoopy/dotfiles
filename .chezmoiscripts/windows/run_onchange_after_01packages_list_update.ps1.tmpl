@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-function ChezMoi-Echo {
+function Write-Chezmoi {
   param (
     $Message
   )
@@ -16,7 +16,7 @@ function ChezMoi-Echo {
 
 ################################################################################
 
-ChezMoi-Echo "System packages initial installation"
+Write-Chezmoi "Base system packages list update"
 
 # refresh Path environment variable, in case a setup script ran before
 $env:Path = `
@@ -33,7 +33,9 @@ sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
 
 # install msys2 packages
 {{- if .msys2.packages }}
-sh --noprofile --norc -c "pacman -S --noconfirm {{ range .msys2.packages }}{{ . }} {{ end }}"
+$sh = Join-Path $(scoop prefix msys2) "usr\bin\sh"
+& $sh --noprofile --norc -c `
+    "/usr/bin/pacman -S --noconfirm --needed {{ range .msys2.packages }}{{ . }} {{ end }}"
 {{- end }}
 
 # install python base packages

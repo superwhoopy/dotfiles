@@ -1,0 +1,13 @@
+<!-- vim: set ft=xml: -->
+<Configuration>
+  <LogonCommand>
+    <Command>powershell -Command "Set-ExecutionPolicy -ExecutionPolicy unrestricted -Force; start powershell -NoExit C:\Test\runtest.ps1"</Command>
+  </LogonCommand>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>{{ .chezmoi.homeDir }}\.config\test</HostFolder>
+      <SandboxFolder>C:\Test</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+</Configuration>

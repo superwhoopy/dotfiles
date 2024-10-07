@@ -19,18 +19,24 @@ function ChezMoi-Echo {
   Write-Output ""
 }
 
+function Write-Blue {
+  param ( $Message )
+  $color = "DarkBlue"
+  Write-Host $Message -ForegroundColor $color
+}
+
 ChezMoi-Echo "Initial setup script"
 
 ################################################################################
 # SCOOP
 ################################################################################
 try {
-  $scoop = Get-Command "scoop" -ErrorAction Stop
-  Write-Output "Command 'scoop' exists: skipping install"
+  Get-Command "scoop" -ErrorAction Stop
+  Write-Blue "Command 'scoop' exists: skipping install"
   # TODO: create %USERPROFILE%\scoop junction if it does not exist?
 } catch {
   # install scoop
-  ChezMoi-Echo "Installing scoop"
+  Write-Blue "Installing scoop"
   Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
   # install and enable aria2
@@ -64,21 +70,22 @@ python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
 # MSYS2
 ################################################################################
 try {
-  $ucrt64 = Get-Command "ucrt64" -ErrorAction Stop
-  Write-Output "Command 'ucrt64' exists: skipping msys2 install"
+  Get-Command "ucrt64" -ErrorAction Stop
+  Write-Blue "Command 'ucrt64' exists: skipping msys2 install"
 } catch {
-  ChezMoi-Echo "Installing msys2"
+  Write-Blue "Installing msys2"
+
   # install msys2
   scoop install msys2
-
   # link home directory
   $msys2_prefix = scoop prefix msys2
   $msys2_home = "$msys2_prefix\home\$($env:USERNAME.ToLower())"
   cmd /c "mklink /J `"$msys2_home`" `"$env:USERPROFILE`""
   # first launch of msys2 + upgrade
-  sh --noprofile --norc -c "pacman -Syu --noconfirm"
+  msys2 -no-start -c 'echo MSYS2 init. complete'
+  $sh = Join-Path $msys2_prefix "usr\bin\sh"
+  & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
 }
-
 
 ################################################################################
 # WSL
