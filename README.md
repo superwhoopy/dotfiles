@@ -13,21 +13,23 @@
     [X] Handle global update process with `chezmoi update`
     [X] Make sure that .profile file is sourced by MSYS2 - it's not
     [X] Install Windows Terminal?
-    [ ] MSYS2
+    [X] MSYS2
         [X] Dirlinks between home directories
-        [ ] Install and maintain pacman packages list
-    [ ] Windows Terminal Configuration + Enable native links / use env. variables for MSYS2
-        [ ] Setup link to windows terminal configuration in `scoop/persist/wt/settings/settings.json`, make sure it works on a fresh install + on updates
+        [X] Install and maintain pacman packages list
+    [X] Windows Terminal Configuration + Enable native links / use env. variables for MSYS2
+        [X] Setup link to windows terminal configuration in `scoop/persist/wt/settings/settings.json`, make sure it works on a fresh install + on updates
+    [X] Setup test with Sandbox
+    [X] Setup ahk script auto-startup
     [ ] Get and setup OpenVPN configuration from Drive?
-    [ ] Setup ahk script auto-startup
     [ ] Install WSL?
-    [ ] Setup test with Sandbox
 [ ] Linux/WSL setup
     [X] Setup /etc/hosts
     [ ] Setup OpenVPN?
     [ ] Maintain list of packages
     [ ] Initial setup: brew, pipx, etc.
+    [ ] Install nerdfonts
     [ ] Find a way to test it (Docker?)
+[ ] Update this README
 
 The initial setup script may be a good place for the broad installation of all packages, *only if it is re-run on update*. But I don't know if that's true: is a `run_once` *templated* script re-executed on change, considering that the template data may have changed? Or is it only re-executed if the template file itself has changed?
 

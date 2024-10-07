@@ -40,8 +40,8 @@ pipx install {{range .python.pipx}}{{ . }} {{end}}
 # install msys2 packages
 {{- if .msys2.packages }}
 $sh = Join-Path $(scoop prefix msys2) "usr\bin\sh"
-& $sh --noprofile --norc -c `
-    "/usr/bin/pacman -S --noconfirm --needed {{ range .msys2.packages }}{{ . }} {{ end }}"
+& $sh --login --norc -c `
+    "pacman -S --noconfirm --needed {{ range .msys2.packages }}{{ . }} {{ end }}"
 {{- end }}
 
 # install python base packages

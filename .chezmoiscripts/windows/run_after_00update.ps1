@@ -28,4 +28,4 @@ scoop cache rm -a
 Write-Output "MSYS2 update..."
 $msys2_prefix = scoop prefix msys2
 $sh = Join-Path $msys2_prefix "usr\bin\sh"
-& $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
+& $sh --login --norc -c "pacman -Syu --noconfirm"

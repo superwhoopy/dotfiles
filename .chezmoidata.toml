@@ -51,6 +51,7 @@
     # "openjdk17",
     # "openssl",
     # "pdftk",
+    "pipx",
     # "plantuml",
     # "powertoys",
     "python",
@@ -113,7 +114,6 @@
     "rich",
     "colorama",
     "icecream",
-    "pipx",
   ]
   pipx = [
     "python-lsp-server[all]",

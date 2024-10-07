@@ -2,13 +2,14 @@
 progress: true
 
 data:
-  {{- if promptBool "Main monitor on the left" true }}
+  {{- $machine := promptChoice "Machine type" (list "home" "work") }}
+  machine: "{{ $machine }}"
+
+  {{- if eq $machine "work" }}
   main_monitor: 0
   secondary_monitor: 1
-  {{- else }}
+  {{- else if eq $machine "home" }}
   main_monitor: 1
   secondary_monitor: 0
   {{- end }}
 
-  {{- $machine := promptChoice "Machine type" (list "home" "work") }}
-  machine: "{{ $machine }}"
