@@ -6,7 +6,7 @@
     "nerd-fonts",
     "java",
     "games",
-    "ks ssh://git@dev.ks.int:7999/tools/tdr.git",
+    # "ks ssh://git@dev.ks.int:7999/tools/tdr.git",
   ]
   packages = [
     "7zip",

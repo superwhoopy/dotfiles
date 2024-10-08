@@ -38,4 +38,4 @@ if [ -f ${_brew} ]; then
 fi
 
 _cargo="${HOME}/.cargo/env"
-[ -f ${_cargo} ] && . ${_cargo}
+[ -f "${_cargo}" ] && . "${_cargo}"

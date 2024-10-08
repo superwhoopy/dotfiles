@@ -354,7 +354,7 @@ end
 
 -- NEO-TREE --------------------------------------------------------------------
 
-local neotree_opts = {
+P.neotree_opts = {
   close_if_last_window = true,
   source_selector = {
     winbar = true
@@ -581,7 +581,7 @@ P.plugins = {
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim"
     },
-    opts = neotree_opts
+    opts = P.neotree_opts
   },
 
   -- Visual search and replace
