@@ -155,8 +155,7 @@ function () {
 if _iswin;
 then
   # scoop setup: Python path
-  # TODO: when SCOOP does not exist, use default (USERPROFILE/scoop)
-  local _scoop=$(cygpath -u "${SCOOP}")
+  local _scoop=$(cygpath -u "${SCOOP-${HOME}/scoop}")
   local python_root="${_scoop}/apps/python/current"
   path=( \
     "${_scoop}/shims" \

@@ -149,7 +149,7 @@ function fullupdate() (
 
 function maybeupdate()
 {
-  python3 "${HOME}/.config/config/update.py" || fullupdate
+  python3 "${HOME}/.config/update.py" || fullupdate
 }
 
 ################################################################################
