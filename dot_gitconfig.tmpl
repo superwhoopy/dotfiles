@@ -81,7 +81,7 @@
            {{- else }}libsecret{{ end }}
 {{ if eq .chezmoi.os "windows" -}}
 [credential "helperselector"]
-  selected = manager-core
+	selected = manager
 {{ end -}}
 [credential "http://dev.ks.int"]
   provider = generic

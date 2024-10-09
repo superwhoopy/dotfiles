@@ -168,7 +168,7 @@ command! ClearBufs call utils#DeleteAllBuffersButCurrent()
 if has('win32')
     " shorthand command to spawn a terminal with my zsh shell - need to define a
     " msys2.cmd command somewhere in the PATH that does what's necessary
-    command! Terminal execute('terminal msys2')
+    command! Terminal execute('terminal ucrt64 -no-start -full-path -shell zsh')
 endif
 
 
