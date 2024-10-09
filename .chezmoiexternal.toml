@@ -1,0 +1,9 @@
+{{- if eq .chezmoi.os "windows" }}
+# PowerShell Editor Services (language server): no installer exists, must
+# download and unzip dat shit
+[".local/share/powershell_es"]
+  type = "archive"
+  exact = true
+  url = "https://github.com/PowerShell/PowerShellEditorServices/releases/latest/download/PowerShellEditorServices.zip"
+  refreshPeriod = "672h"
+{{- end }}

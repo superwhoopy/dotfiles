@@ -4,6 +4,8 @@ local P = {}
 -- PLUGINS CONFIGURATION
 -- #############################################################################
 
+local haswin32 = (vim.fn.has('win32') == 1)
+
 -- LUALINE ---------------------------------------------------------------------
 
 local lualine_opts = {
@@ -418,8 +420,13 @@ local function lspconfig_fn()
   --Enable (broadcasting) snippet capability for completion
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
+  local cmd = {
+    'vscode-json-language-server' .. (haswin32 and '.cmd' or ''),
+    '--stdio'
+  }
   require'lspconfig'.jsonls.setup {
       capabilities = capabilities,
+      cmd = cmd,
   }
 
   -- CSS LS
@@ -471,17 +478,19 @@ local function lspconfig_fn()
   }
 
   -- Bash
-  local _bash_opts = {}
-  if vim.fn.has('win32') == 1 then
-    _bash_opts = { cmd = { "bash-language-server.cmd", "start" } }
-  end
+  local _bash_opts = {
+    cmd = {
+      "bash-language-server" .. (haswin32 and '.cmd' or ''),
+      "start"
+    },
+  }
   require('lspconfig').bashls.setup(_bash_opts)
 
   -- typescript / javascript
   require'lspconfig'.ts_ls.setup{}
 
   -- powershell
-  if vim.fn.has('win32') == 1 then
+  if haswin32 then
     require'lspconfig'.powershell_es.setup{
       bundle_path = os.getenv('USERPROFILE') .. '\\.local\\share\\powershell_es',
     }
