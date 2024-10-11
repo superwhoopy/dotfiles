@@ -3,7 +3,7 @@ if vim.fn.has('win32') == 1 then
   vim.opt.makeprg = 'start \\%USERPROFILE\\%\\.config\\test\\sandbox.wsb'
 end
 
--- get base neo-tree opts and update them
+-- get base neo-tree opts and update them, so that hidden files are shown by default
 local opts = require('packages').neotree_opts
 opts.filesystem = opts.filesystem or {}
 opts.filesystem.filtered_items = opts.filesystem.filtered_items or {}

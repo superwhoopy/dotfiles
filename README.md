@@ -29,9 +29,8 @@
     [ ] Initial setup: brew, pipx, etc.
     [ ] Install nerdfonts
     [ ] Find a way to test it (Docker?)
+    [ ] Setup /etc/hosts for VPN
 [ ] Update this README
-
-The initial setup script may be a good place for the broad installation of all packages, *only if it is re-run on update*. But I don't know if that's true: is a `run_once` *templated* script re-executed on change, considering that the template data may have changed? Or is it only re-executed if the template file itself has changed?
 
 ## Initial Setup
 
@@ -40,13 +39,14 @@ The initial setup script may be a good place for the broad installation of all p
 Run this script:
 
 ```ps1
-# install chezmoi and everything else
+# enable PowerShell script execution
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+# download scoop, use it to install chezmoi
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 scoop install chezmoi
+# bootstrap the rest of the world
 chezmoi init --apply superwhoopy
 ```
-
 
 ### Linux
 

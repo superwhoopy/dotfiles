@@ -295,9 +295,9 @@ local function alphanvim_fn()
         '<cmd>edit ~/.vim/lua/packages.lua<CR>'),
       mybutton("i", "⚙  Neovim: init.vim", '<cmd>edit ~/.vim/init.vim<CR>'),
       mybutton("l", "⚙  Neovim: init.lua", '<cmd>edit ~/.vim/lua/init.lua<CR>'),
-      mybutton("g", "🔵 GlazeWM", '<cmd>edit ~/.glaze-wm/config.yaml<CR>'),
+      mybutton("g", "🔵 GlazeWM", '<cmd>edit ~/.glzr/glazewm/config.yaml<CR>'),
       mybutton("a", "⌨  AutoHotKey",
-        '<cmd>edit ~/.config/config/ahk/default.ahk<CR>'),
+        '<cmd>edit ~/.config/ahk/default.ahk<CR>'),
     },
     position = "center",
   }
