@@ -83,7 +83,9 @@
 
 [msys2]
   packages = [
+    "unzip",
     "zsh",
+    "msys/cloc",
     "msys/man-pages-posix",
     "ucrt64/mingw-w64-ucrt-x86_64-gcc",
   ]
