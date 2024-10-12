@@ -110,7 +110,8 @@
     "node",
     "pipx",
     "python",
-    "tree-sitter"
+    "tree-sitter",
+    "typescript-language-server",
   ]
 
 [python]
