@@ -269,12 +269,6 @@ elseif has('win32')
     let g:ast_kernel_dir = s:ks_root . '\ksim-9.5.0'
 endif
 
-" WebDevIcons and NERDTree coloring stuff
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {
-            \ 'psy': 'Ψ',
-            \ 'bgt': '祥',
-            \ }
-
 " LSP servers ##################################################################
 
 :lua << EOF

@@ -115,7 +115,7 @@ local function nvim_treesitter_fn()
   require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = {
-      "c", "rst", "bash", "json", "hjson", "lua", "tlaplus", "vimdoc"
+      "c", "rst", "bash", "javascript", "json", "hjson", "lua", "tlaplus", "vimdoc"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
