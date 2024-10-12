@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 function _command_exists() {
@@ -23,11 +23,11 @@ _chezmoiprint "Initial setup script"
 if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ];
 then
   _blue "Installing brew"
-  NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
+  /usr/bin/env NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # update /etc/hosts if needed
-if ! $(/bin/grep --silent mattermost.ks.int /etc/hosts);
+if ! /bin/grep --silent mattermost.ks.int /etc/hosts;
 then
   _blue "Editing /etc/hosts file"
   sudo -- sh << EOF

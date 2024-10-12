@@ -21,6 +21,7 @@ projects
 AppData
 .config/ahk
 .config/windows-terminal-settings.json
+.glzr
 ctags.d
 .chezmoiscripts/windows/*
 {{ end }}

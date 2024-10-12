@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 {{/* vim:set ft=sh: */}}
 set -euo pipefail
 
@@ -21,7 +21,10 @@ function _chezmoiprint() {
 _chezmoiprint "Default packages installation"
 
 {{- if .apt.install }}
-sudo apt install --yes {{ range .apt.install }}{{ . }} {{ end }}
+if _command_exists apt;
+then
+  sudo apt install --yes {{ range .apt.install }}{{ . }} {{ end }}
+fi
 {{- end }}
 
 {{- if .brew.install }}

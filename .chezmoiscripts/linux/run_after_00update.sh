@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 function _command_exists() {
@@ -19,6 +19,10 @@ function _chezmoiprint() {
 
 _chezmoiprint "System packages update script"
 
-_command_exists apt && (
+if _command_exists apt;
+then
   sudo -- sh -c 'apt update && apt upgrade -y && apt autoclean --yes && apt autoremove --purge --yes'
-)
+elif _command_exists pamac
+then
+  pamac upgrade --aur --no-confirm
+fi
