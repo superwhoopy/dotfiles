@@ -95,7 +95,7 @@
     "firefox",
     "flatpak",
     "git",
-    # "network-manager-openvpn",
+    "git-lfs",
     "zsh",
   ]
   # TODO: reduced list for WSL?
