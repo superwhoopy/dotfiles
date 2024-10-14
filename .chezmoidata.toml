@@ -83,6 +83,8 @@
 
 [msys2]
   packages = [
+    "dos2unix",
+    "openssh",
     "unzip",
     "zsh",
     "msys/cloc",
@@ -95,7 +97,6 @@
     "firefox",
     "flatpak",
     "git",
-    "git-lfs",
     "zsh",
   ]
   # TODO: reduced list for WSL?

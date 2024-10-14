@@ -36,6 +36,10 @@
   hooksPath = .githooks
   untrackedCache = true
   autocrlf = {{ if eq .chezmoi.os "windows" }}true{{ else }}input{{ end }}
+  {{- if eq .chezmoi.os "windows" }}
+  # currently on Windows there seem to be a problem with ssh bundled with Git
+  sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+  {{- end }}
 
 [diff]
   tool = nvimdiff
