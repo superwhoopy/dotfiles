@@ -48,6 +48,9 @@ if($?) {
   scoop bucket add {{ . }}
   {{- end }}
 
+  # install age to decipher the encryption key
+  scoop install age
+
   # install sudo, so that regular update scripts can run
   scoop install sudo
 }
@@ -81,6 +84,13 @@ try {
   & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
   & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
 }
+
+
+################################################################################
+# Decipher age encryption key
+################################################################################
+# TODO
+
 
 ################################################################################
 # WSL

@@ -19,6 +19,19 @@ function _chezmoiprint() {
 
 _chezmoiprint "Initial setup script"
 
+# TODO: install apt packages
+
+# decrypt age private key
+_age_private_key="${HOME}/.config/chezmoi/key.txt"
+_age_private_key_enc="{{ .chezmoi.sourceDir }}/key.txt.age"
+if [ ! -f "${_age_private_key}" ]; then
+  _blue "Decrypt age private key from ${_age_private_key_enc}"
+  mkdir -p "$(dirname "${_age_private_key}")"
+  chezmoi age decrypt --output "${_age_private_key}" --passphrase \
+    "${_age_private_key_enc}"
+  chmod 600 "${_age_private_key}"
+fi
+
 # install brew if needed
 if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ];
 then
