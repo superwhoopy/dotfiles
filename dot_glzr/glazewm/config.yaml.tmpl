@@ -1,4 +1,5 @@
 # vim:set ft=yaml:
+# chezmoi:template:line-endings=native
 general:
   # Commands to run when the WM has started (e.g. to run a script or launch
   # another application). Here we are running a batch script to start Zebar.
@@ -113,6 +114,7 @@ window_rules:
       - window_process: { equals: 'zebar' }
       - window_process: { equals: 't32mppc' }
       - window_process: { equals: 'msrdc' }
+      - window_process: { equals: 'KeePassXC' }
       - window_process: { regex: 'Telegram|ApplicationFrameHost|ScreenToGif|AutoHotkeyUX|xnview' }
       - window_process: { regex: 'Taskmgr|ScreenClippingHost' }
       - window_process: { equals: 'POWERPNT' }

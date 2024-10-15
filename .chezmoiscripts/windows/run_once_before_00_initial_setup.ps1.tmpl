@@ -31,7 +31,7 @@ ChezMoi-Echo "Initial setup script"
 # SCOOP
 ################################################################################
 # run scoop prefix git: if it does not return anything, assume this is a fresh install
-scoop prefix git
+scoop prefix git | Out-Null
 if($?) {
   Write-Blue "git installed through scoop: skipping scoop initial setup"
 } else {
@@ -59,7 +59,7 @@ if($?) {
 # MSYS2
 ################################################################################
 try {
-  Get-Command "ucrt64" -ErrorAction Stop
+  Get-Command "ucrt64" -ErrorAction Stop | Out-Null
   Write-Blue "Command 'ucrt64' exists: skipping msys2 install"
 } catch {
   Write-Blue "Installing msys2"
