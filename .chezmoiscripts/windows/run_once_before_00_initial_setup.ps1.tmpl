@@ -90,14 +90,15 @@ try {
 ################################################################################
 $age_private_key = Join-Path $env:USERPROFILE ".config\chezmoi\key.txt"
 $age_private_key_dir = Split-Path -Parent -Path $age_private_key
-$age_private_key_enc = {{ .chezmoi.sourceDir }}\key.txt.age
+$age_private_key_enc = "{{ .chezmoi.sourceDir }}\key.txt.age"
 $private_key_is_decrypted = Test-Path -Path $age_private_key -PathType leaf
-if ($private_key_is_decrypted) {
+if (! $private_key_is_decrypted) {
   Write-Blue "Decrypt age private key from $age_private_key_enc"
-  New-Item -ItemType "directory" -Path $age_private_key_dir
+  New-Item -ItemType "directory" -Path $age_private_key_dir -Force | Out-Null
   # prompt for passphrase and decode key into $age_private_key
   chezmoi age decrypt --output $age_private_key --passphrase $age_private_key_enc
   # TODO: restrict permissions on $age_private_key?
+  Write-Blue "Done."
 }
 
 
