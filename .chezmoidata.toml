@@ -67,7 +67,7 @@
     "sudo",
     "sumatrapdf",
     "sysinternals",
-    "tlaplus-toolbox",
+    # "tlaplus-toolbox",
     "Ubuntu-NF",
     "UbuntuMono-NF",
     "universal-ctags",

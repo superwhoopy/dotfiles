@@ -2,19 +2,16 @@
 
 ## TODO-List
 
-[X] Add Linux config directories with a templated `.chezmoiignore` file
-[X] Add missing git files: rofi, terminator, gitconfig.os
-[X] Add ahk file somewhere?
-[X] Find a way to add project files
-[X] Setup zsh shell: oh-my-zsh, zsh-autosuggestions, zsh-autocompletion
-    [X] Test it?
 [ ] Setup fetching of sensitive files from KeePassXC: require to download the
     database somewhere on disk first, then get from there:
-    [ ] SSH pub & private keys
     [ ] OpenVPN configuration
+[ ] SSH
+    [ ] Setup creation of SSH keys if they don't exist
+    [ ] Version known hosts?
 [ ] Windows scripts:
     [ ] Get and setup OpenVPN configuration?
     [ ] Install WSL?
+    [ ] Set decent execution policy for PS scripts
 [ ] Linux/WSL setup
     [X] Setup /etc/hosts
     [ ] Setup OpenVPN?
