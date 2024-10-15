@@ -48,11 +48,10 @@ if($?) {
   scoop bucket add {{ . }}
   {{- end }}
 
-  # install age to decipher the encryption key
-  scoop install age
-
-  # install sudo, so that regular update scripts can run
-  scoop install sudo
+  # install:
+  # - age to decipher the encryption key
+  # - sudo, so that regular update scripts can run
+  scoop install age sudo
 }
 
 
@@ -81,15 +80,25 @@ try {
   # first launch of msys2 + upgrade (twice, to account for full system upgrade)
   msys2 -no-start -c 'echo MSYS2 init. complete'
   $sh = Join-Path $msys2_prefix "usr\bin\sh"
-  & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
-  & $sh --noprofile --norc -c "/usr/bin/pacman -Syu --noconfirm"
+  & $sh --login --norc -c "/usr/bin/pacman -Syu --noconfirm"
+  & $sh --login --norc -c "/usr/bin/pacman -Syu --noconfirm"
 }
 
 
 ################################################################################
 # Decipher age encryption key
 ################################################################################
-# TODO
+$age_private_key = Join-Path $env:USERPROFILE ".config\chezmoi\key.txt"
+$age_private_key_dir = Split-Path -Parent -Path $age_private_key
+$age_private_key_enc = {{ .chezmoi.sourceDir }}\key.txt.age
+$private_key_is_decrypted = Test-Path -Path $age_private_key -PathType leaf
+if ($private_key_is_decrypted) {
+  Write-Blue "Decrypt age private key from $age_private_key_enc"
+  New-Item -ItemType "directory" -Path $age_private_key_dir
+  # prompt for passphrase and decode key into $age_private_key
+  chezmoi age decrypt --output $age_private_key --passphrase $age_private_key_enc
+  # TODO: restrict permissions on $age_private_key?
+}
 
 
 ################################################################################

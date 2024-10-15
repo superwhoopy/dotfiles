@@ -38,3 +38,5 @@ python3 -m pip install --user {{ range .python.pip }}{{ . }} {{ end }}
 {{- if .python.pipx }}
 pipx install {{ range .python.pipx }}{{ . }} {{ end }}
 {{- end }}
+
+# TODO: find a way to install nerdfonts decently
