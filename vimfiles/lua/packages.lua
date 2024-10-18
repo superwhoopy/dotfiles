@@ -106,6 +106,7 @@ local function telescope_fn()
 }
   require("telescope").load_extension("live_grep_args")
   require("telescope").load_extension("project")
+  require("telescope").load_extension('chezmoi')
 end
 
 
@@ -281,6 +282,8 @@ local function alphanvim_fn()
         '<cmd>execute("edit " .. tempname() .. ".md")<CR>'),
     mybutton("P", "🗃 Select Project",
         '<cmd>Telescope project<CR>'),
+    mybutton("C", "⚙  Chezmoi Files",
+        '<cmd>Telescope chezmoi find_files<CR>'),
     mybutton("c", "🧹 Clear all buffers",
         '<cmd>call utils#DeleteAllBuffersButCurrent() | AlphaRedraw<CR>'),
     mybutton("q", "❌ Quit", "<cmd>qa!<CR>"),
@@ -346,8 +349,8 @@ local function alphanvim_fn()
     { type = "padding", val = 2 },
     theta.buttons,
     { type = "padding", val = 2 },
-    conffiles_buttons,
-    { type = "padding", val = 2 },
+    -- conffiles_buttons,
+    -- { type = "padding", val = 2 },
     date,
     lazystats,
   }
@@ -631,6 +634,17 @@ P.plugins = {
   'vim-python/python-syntax',
   'Vimjas/vim-python-pep8-indent',
   'w0rp/ale',
+  {
+    'xvzc/chezmoi.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require("chezmoi").setup {
+        edit = {
+          watch = true
+        }
+      }
+    end
+  },
   'zchee/vim-flatbuffers', -- syntax highlighting
 
   { url='ssh://git@dev.ks.int:7999/prot/vim-ks.git' },

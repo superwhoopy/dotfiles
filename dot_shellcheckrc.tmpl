@@ -1,0 +1,6 @@
+{{/* vim: set ft=config: */ -}}
+
+{{- if eq .chezmoi.os "windows" }}
+# On Windows, disable error about "Literal carriage return"
+disable=SC1017
+{{- end }}

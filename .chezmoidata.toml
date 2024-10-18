@@ -85,7 +85,9 @@
 
 [msys2]
   packages = [
+    "diffutils",
     "dos2unix",
+    "make",
     "openssh",
     "unzip",
     "zsh",

@@ -246,6 +246,12 @@ set omnifunc=ale#completion#OmniFunc
 let g:ale_c_parse_compile_commands = 1
 let g:ale_completion_enabled = 1
 let g:ale_c_build_dir_names = ['out/Debug']
+if has('win32')
+    let b:scoop_path = empty(getenv('SCOOP'))
+                \ ? getenv('USERPROFILE') . '\scoop'
+                \ : getenv('SCOOP')
+    let g:ale_c_cc_executable = b:scoop_path . '\apps\msys2\current\ucrt64\bin\gcc.exe'
+endif
 let g:ale_linters = {
             \ 'cpp' : ['g++'],
             \ 'c' : ['gcc'],

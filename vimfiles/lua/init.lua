@@ -94,6 +94,9 @@ vim.keymap.set({ 'n', }, '<Leader>g',
 vim.keymap.set({ 'n', }, '<Leader>D',
                require("telescope.builtin").diagnostics,
                { desc = 'Telescope: Diagnostics' })
+vim.keymap.set('n', '<leader>cz',
+               require("telescope").extensions.chezmoi.find_files,
+               { desc = 'Telescope: chezmoi files' })
 
 
 -- TERMINAL MAPPINGS ###########################################################
