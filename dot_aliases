@@ -105,10 +105,28 @@ function c {
 # Run a command and issue a notification when it completes. Requires notify-py
 # and Python
 function notify() {
-  ( ${*} && notifypy --title "✅ Command successful" --message "${*}" \
+  ( "$@" && notifypy --title "✅ Command successful" --message "${@}" \
                      --applicationName "Console notify" ) || \
   notifypy --title "❌ Command failed" --message "${*}" \
            --applicationName "Console notify"
+}
+
+# Run a command in a loop until it fails
+function runtilldeath() {
+  local _tmpfile
+  local _iter
+  _tmpfile=$(mktemp rununtil.XXX)
+  _iter=0
+  echo "Running. Output redirected to ${_tmpfile}..."
+  echo ""
+  while "${@}" &> "${_tmpfile}";
+  do
+    _iter=$((_iter + 1))
+    echo -ne "\r"
+    echo -n "Ran ${_iter} times successfully, continue..."
+  done
+  echo -e "\nExecution failed after ${_iter} successful runs."
+  echo "Output of last run is logged in ${_tmpfile}"
 }
 
 ################################################################################
