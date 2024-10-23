@@ -93,6 +93,7 @@
     "zsh",
     "msys/cloc",
     "msys/man-pages-posix",
+    "msys/procps-ng",
     "ucrt64/mingw-w64-ucrt-x86_64-gcc",
   ]
 
