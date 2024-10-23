@@ -115,6 +115,9 @@ function notify() {
 function runtilldeath() {
   local _tmpfile
   local _iter
+  local _greem _endcolor
+  _green="\e[32m"
+  _endcolor="\e[0m"
   _tmpfile=$(mktemp rununtil.XXX)
   _iter=0
   echo "Running. Output redirected to ${_tmpfile}..."
@@ -123,7 +126,7 @@ function runtilldeath() {
   do
     _iter=$((_iter + 1))
     echo -ne "\r"
-    echo -n "Ran ${_iter} times successfully, continue..."
+    echo -ne "Ran ${_green}${_iter}${_endcolor} times successfully, continue..."
   done
   echo -e "\nExecution failed after ${_iter} successful runs."
   echo "Output of last run is logged in ${_tmpfile}"
