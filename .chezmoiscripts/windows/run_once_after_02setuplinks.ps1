@@ -20,12 +20,22 @@ function Write-Blue {
   Write-Host $Message -ForegroundColor $color
 }
 
-Write-Chezmoi "Setting up symbolic links"
+Write-Chezmoi "SSH Keys & Symbolic links"
 
 # refresh Path environment variable, in case a setup script ran before
 $env:Path = `
   [System.Environment]::GetEnvironmentVariable("Path","Machine") `
   + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
+################################################################################
+
+Write-Blue "SSH keys verification"
+$ssh_private_key = Join-Path $env:USERPROFILE ".ssh/id_ecdsa"
+if (not Test-Path $ssh_private_key) {
+  # generate the SSH key with empty passphrase
+  Write-Blue "No SSH key found: generate one in $ssh_private_key"
+  ssh-keygen -t ecdsa -P ""
+}
 
 ################################################################################
 
@@ -52,3 +62,7 @@ if (Test-Path $destconf) {
     New-Item -ItemType SymbolicLink -Path $destconf -Target $srcconf
     Write-Output "Symbolic link created."
 }
+
+################################################################################
+
+Write-Blue "SSH keys setup"

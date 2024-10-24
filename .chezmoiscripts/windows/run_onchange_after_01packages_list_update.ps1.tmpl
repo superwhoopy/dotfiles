@@ -25,7 +25,9 @@ $env:Path = `
 
 # install scoop packages
 {{- if .scoop.packages }}
-scoop install {{ range .scoop.packages }}{{ . }} {{ end }}
+  {{- range .scoop.packages }}
+scoop install {{ . }}
+  {{- end }}
 {{- end }}
 {{- if .scoop.su_packages }}
 sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
