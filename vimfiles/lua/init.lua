@@ -215,3 +215,18 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+-- configure PsyC tree-sitter grammar
+local treesitter_psyc_path = vim.fn.expand('$HOME/workspace/tree-sitter-psyc')
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config['psyc'] = {
+  install_info = {
+    url = treesitter_psyc_path, -- local path or git repo
+    files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    -- optional entries:
+    -- branch = "main", -- default branch in case of git repo if different from master
+    -- generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = "psy",
+}
