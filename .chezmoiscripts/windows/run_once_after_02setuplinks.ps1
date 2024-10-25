@@ -32,7 +32,7 @@ $env:Path = `
 # TODO: put this in a Python script common to Windows & Linux instead
 Write-Blue "SSH keys verification"
 $ssh_private_key = Join-Path $env:USERPROFILE ".ssh/id_ecdsa"
-if (not Test-Path $ssh_private_key) {
+if (! (Test-Path $ssh_private_key)) {
   # generate the SSH key with empty passphrase
   Write-Blue "No SSH key found: generate one in $ssh_private_key"
   ssh-keygen -t ecdsa -P ""
@@ -66,4 +66,3 @@ if (Test-Path $destconf) {
 
 ################################################################################
 
-Write-Blue "SSH keys setup"
