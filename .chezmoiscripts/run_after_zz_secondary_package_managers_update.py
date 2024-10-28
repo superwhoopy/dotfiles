@@ -8,27 +8,10 @@ import typing
 from rich.progress import (Progress, SpinnerColumn, TextColumn,
                            TimeElapsedColumn, Column)
 
-UPDATE_COMMANDS = {
-    "flatpak": (
-        ("update", "--assumeyes", '--noninteractive'),
-        ('uninstall', "--assumeyes", '--unused'),
-    ),
-
-    "brew": ("upgrade",),
-
-    "nvim": ('--headless', "+Lazy! sync", '+qa'),
-
-    "npm": ('update', '-g'),
-
-    'pipx': ('upgrade-all',),
-
-    'rustup': ('update',),
-
-    # 'gem': ('update',),
-}
 
 def _blueprint(s: str):
     print(f"\033[94m{s}\033[0m")
+
 
 def _chezmoiprint(s: str):
     print()
@@ -63,14 +46,12 @@ async def _run_command(progress: ProgressContext, cmd, args):
         stdout, _ = await proc.communicate()
         output.append(stdout.decode())
 
-    # TODO: update progress bar with a notification when the command failed
+    progress.ctx.finished_text = '❌' if proc.returncode else '✅'
     progress.ctx.advance(progress.task_id, 100)
     return output
 
 
-async def main():
-    _chezmoiprint('Secondary package managers update')
-
+async def run_batch(update_commands: dict):
     with Progress(
         TextColumn("{task.description}", table_column=Column(ratio=1)),
         SpinnerColumn(spinner_name='bouncingBall', finished_text='✅'),
@@ -86,13 +67,36 @@ async def main():
                                                       total=100,
                                                       start=False)),
                     cmd, args))
-                for cmd, args in UPDATE_COMMANDS.items()
+                for cmd, args in update_commands.items()
             )
 
-        # for t in tasks:
-        #     print(t.result())
+        # TODO: appropriate progress icon on failure
+        # TODO: print stdout/stderr on error
 
-        print('...completed')
+
+async def main():
+    _chezmoiprint('Secondary package managers update')
+
+    await run_batch({
+        "flatpak": (
+            ("update", "--assumeyes", '--noninteractive'),
+            ('uninstall', "--assumeyes", '--unused'),
+            ),
+
+        "brew": ("upgrade",),
+        })
+
+    await run_batch({
+        "nvim": ('--headless', "+Lazy! sync", '+qa'),
+
+        "npm": ('update', '-g'),
+
+        'pipx': ('upgrade-all',),
+
+        'rustup': ('update',),
+        })
+
+    print('...completed')
 
 
 if __name__ == "__main__":
