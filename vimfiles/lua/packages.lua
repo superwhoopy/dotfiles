@@ -499,6 +499,9 @@ local function lspconfig_fn()
       bundle_path = os.getenv('USERPROFILE') .. '\\.local\\share\\powershell_es',
     }
   end
+
+  -- psyc
+  require('lspconfig').psycls.setup({})
 end
 
 -- #############################################################################
@@ -632,7 +635,6 @@ P.plugins = {
   'tpope/vim-surround',
   'vim-latex/vim-latex',
   'vim-python/python-syntax',
-  'Vimjas/vim-python-pep8-indent',
   'w0rp/ale',
   {
     'xvzc/chezmoi.nvim',

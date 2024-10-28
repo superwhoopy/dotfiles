@@ -31,9 +31,11 @@ def _blueprint(s: str):
     print(f"\033[94m{s}\033[0m")
 
 def _chezmoiprint(s: str):
+    print()
     _blueprint(80 * '#')
     _blueprint(f" CHEZMOI - {s}")
     _blueprint(80 * '#')
+    print()
 
 
 class ProgressContext(typing.NamedTuple):

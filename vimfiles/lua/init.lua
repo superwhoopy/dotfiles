@@ -216,7 +216,7 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
--- configure PsyC tree-sitter grammar
+-- configure PsyC tree-sitter grammar and Language Server
 local treesitter_psyc_path = vim.fn.expand('$HOME/workspace/tree-sitter-psyc')
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config['psyc'] = {
@@ -230,3 +230,6 @@ parser_config['psyc'] = {
   },
   filetype = "psy",
 }
+
+-- increase verbosity level for LS logs
+vim.lsp.log.set_level(vim.lsp.log.levels.DEBUG)
