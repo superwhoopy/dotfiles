@@ -28,8 +28,13 @@ fi
 {{- end }}
 
 {{- if .brew.install }}
-brew install {{ range .brew.install }}{{ . }} {{ end }}
+brew install --quiet {{ range .brew.install }}{{ . }} {{ end }}
 {{- end }}
+
+{{- if .flatpak.install }}
+flatpak install --assumeyes {{ range .flatpak.install }}{{ . }} {{ end }}
+{{- end }}
+
 
 {{- if .python.pip }}
 python3 -m pip install --user {{ range .python.pip }}{{ . }} {{ end }}

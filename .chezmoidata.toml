@@ -63,6 +63,7 @@
     "rustup",
     "scoop-search",
     "screentogif",
+    "sed",
     "shellcheck",
     "spotify",
     "starship",
@@ -102,6 +103,8 @@
     "firefox",
     "flatpak",
     "git",
+    "rclone",
+    "spotify-client",
     "zsh",
   ]
   # TODO: reduced list for WSL?
@@ -118,6 +121,15 @@
     "python",
     "tree-sitter",
     "typescript-language-server",
+  ]
+
+[flatpak]
+  install = [
+    "com.mattermost.Desktop",
+    "it.mijorus.smile",
+    "md.obsidian.Obsidian",
+    "net.xmind.XMind",
+    "org.telegram.desktop",
   ]
 
 [python]
