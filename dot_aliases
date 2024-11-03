@@ -89,6 +89,9 @@ if _iswin; then
   }
 fi
 
+# mount Google Drive with rclone
+alias gdrivemount='rclone mount --daemon gdrive: ${HOME}/gdrive'
+
 ################################################################################
 # FUNCTIONS
 ################################################################################
