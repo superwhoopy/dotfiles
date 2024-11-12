@@ -20,6 +20,7 @@
     * AppData nvim symlink
     * Setup `SCOOP` environment variable
     * Apend `/ucrt64/bin` to PATH to have a working gcc
+    * Install bash language server
 * Linux/WSL setup
     * FIND A WAY TO TEST IT (DOCKER?)
     * Setup /etc/hosts
@@ -27,6 +28,10 @@
     * Install nerdfonts
     * Must be `sudo` to install *brew*: force INTERACTIVE
     * brew dir not in PATH after install, fails everything
+    * distinction between WSL and actual Linux machine (no firefox, spotify and other stuff)
+    * Try to continue on error in install scripts?
+    * Miss: starship, eza, zoxide
+    * Mattermost fails to install with snap
 * Update this README
 
 ## Initial Setup

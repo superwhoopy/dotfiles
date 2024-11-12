@@ -11,10 +11,10 @@ _iswin && {                                                                 \
   alias pkill='tskill';                                                     \
 }
 
-alias l="exa --icons --group-directories-first"
-alias ll="exa -al --icons --group-directories-first"
-alias la="exa -a --git --icons --group-directories-first"
-alias lt="exa --tree --git --icons --group-directories-first"
+alias l="eza --icons --group-directories-first"
+alias ll="eza -al --icons --group-directories-first"
+alias la="eza -a --git --icons --group-directories-first"
+alias lt="eza --tree --git --icons --group-directories-first"
 
 alias grep='grep --color'
 alias du='/usr/bin/du -hc --max-depth=1'
