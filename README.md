@@ -2,22 +2,28 @@
 
 ## TODO-List
 
-[ ] Setup fetching of sensitive files from KeePassXC: require to download the
+* Setup fetching of sensitive files from KeePassXC: require to download the
     database somewhere on disk first, then get from there:
-    [ ] OpenVPN configuration
-[ ] SSH
-    [ ] Setup creation of SSH keys if they don't exist
-    [ ] Version known hosts?
-[ ] Windows scripts:
-    [ ] Get and setup OpenVPN configuration?
-    [ ] Install WSL?
-    [ ] Set decent execution policy for PS scripts
-[ ] Linux/WSL setup
-    [X] Setup /etc/hosts
-    [ ] Setup OpenVPN?
-    [ ] Install nerdfonts
-    [ ] Find a way to test it (Docker?)
-[ ] Update this README
+    * OpenVPN configuration
+* SSH
+    * Setup creation of SSH keys if they don't exist
+    * Version known hosts?
+* Windows scripts:
+    * Get and setup OpenVPN configuration?
+    * Install WSL?
+    * Set decent execution policy for PS scripts
+    * Set symlink authorization
+    * Manifest for cascadiacode cannot be found
+    * Google Drive App
+    * SSH keygen fails
+    * install zoxide
+    * AppData nvim symlink
+* Linux/WSL setup
+    * Setup /etc/hosts
+    * Setup OpenVPN?
+    * Install nerdfonts
+    * Find a way to test it (Docker?)
+* Update this README
 
 ## Initial Setup
 

@@ -1,22 +1,30 @@
 # vim: ft=gitignore:
-# Files that must always be ignored
+################################################################################
+# FILES THAT MUST ALWAYS BE IGNORED
+################################################################################
 README.md
 projects
 
-# Files ignored on Windows
+################################################################################
+# FILES IGNORED ON WINDOWS
+################################################################################
 {{ if eq .chezmoi.os "windows" }}
+# ctags config file is in ctags.d/ on Windows
 .config/ctags
 .config/i3
 .config/i3status
 .config/lxterminal
+# pip config files are in AppData/ on Windows
 .config/pip
+.config/rclone
 .config/rofi
 .config/terminator
 .chezmoiscripts/linux/*
-.chezmoitemplates/windows-terminal-settings.json
 {{ end }}
 
-# Files ignored on Linux
+################################################################################
+# FILES IGNORED ON LINUX
+################################################################################
 {{ if eq .chezmoi.os "linux" }}
 AppData
 .config/ahk

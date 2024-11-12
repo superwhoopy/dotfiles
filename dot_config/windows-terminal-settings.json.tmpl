@@ -1,5 +1,8 @@
 {{/* chezmoi:template:line-endings=native */}}
 {{/* vim: set ft=json: */}}
+{{/* this configuration file does not end up in the expected location for
+  Windows Terminal conf. files: the script 02setuplinks.ps1 creates a symlink
+  from the actual location to this file */}}
 {{- $msys2:= (output "scoop" "prefix" "msys2" | trim) }}
 {{- $msys2 = $msys2 | replace "\\" "\\\\" }}
 {
