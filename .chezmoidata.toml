@@ -12,6 +12,7 @@
     "7zip",
     "autohotkey",
     "bat",
+    "btop",
     "CascadiaCode-NF",
     "cascadiacode-nf-mono",
     "cpu-z",
@@ -103,7 +104,6 @@
     "flatpak",
     "git",
     "rclone",
-    "spotify-client",
     "zsh",
   ]
   # TODO: reduced list for WSL?

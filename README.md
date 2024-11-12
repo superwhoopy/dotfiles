@@ -10,19 +10,23 @@
     * Version known hosts?
 * Windows scripts:
     * Get and setup OpenVPN configuration?
-    * Install WSL?
+    * Install WS
     * Set decent execution policy for PS scripts
     * Set symlink authorization
-    * Manifest for cascadiacode cannot be found
+    * Verify that all scoop buckets are there
     * Google Drive App
     * SSH keygen fails
     * install zoxide
     * AppData nvim symlink
+    * Setup `SCOOP` environment variable
+    * Apend `/ucrt64/bin` to PATH to have a working gcc
 * Linux/WSL setup
+    * FIND A WAY TO TEST IT (DOCKER?)
     * Setup /etc/hosts
     * Setup OpenVPN?
     * Install nerdfonts
-    * Find a way to test it (Docker?)
+    * Must be `sudo` to install *brew*: force INTERACTIVE
+    * brew dir not in PATH after install, fails everything
 * Update this README
 
 ## Initial Setup

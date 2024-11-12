@@ -26,7 +26,7 @@ _linuxbrew_dir="/home/linuxbrew/.linuxbrew"
 if [ ! -f ${_linuxbrew_dir}/bin/brew ];
 then
   _blue "Installing brew"
-  /usr/bin/env NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   # setup environment variables to run brew commands in this shell
   export HOMEBREW_PREFIX="${_linuxbrew_dir}";
   export HOMEBREW_CELLAR="${_linuxbrew_dir}/Cellar";
