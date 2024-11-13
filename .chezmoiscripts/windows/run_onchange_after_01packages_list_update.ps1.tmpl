@@ -29,12 +29,15 @@ $env:Path = `
 scoop install {{ . }}
   {{- end }}
 {{- end }}
+
 {{- if .scoop.su_packages }}
 sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
 {{- end }}
+
 {{- if .python.pip }}
 python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
 {{- end }}
+
 {{- if .python.pipx }}
 pipx install {{range .python.pipx}}{{ . }} {{end}}
 {{- end }}
@@ -46,4 +49,6 @@ $sh = Join-Path $(scoop prefix msys2) "usr\bin\sh"
     "pacman -S --noconfirm --needed {{ range .msys2.packages }}{{ . }} {{ end }}"
 {{- end }}
 
-# install python base packages
+{{- if .node.npm }}
+npm install -g {{range .node.npm}}{{ . }} {{end}}
+{{- end }}

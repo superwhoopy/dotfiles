@@ -6,21 +6,22 @@
     database somewhere on disk first, then get from there:
     * OpenVPN configuration
 * SSH
-    * Setup creation of SSH keys if they don't exist
+    * ✅ Setup creation of SSH keys if they don't exist
     * Version known hosts?
 * Windows scripts:
     * Get and setup OpenVPN configuration?
-    * Install WS
-    * Set decent execution policy for PS scripts
+    * Install WSL
+    * ✅ Set decent execution policy for PS scripts
     * Set symlink authorization
-    * Verify that all scoop buckets are there
+    * ✅ Verify that all scoop buckets are there
     * Google Drive App
-    * SSH keygen fails
-    * install zoxide
-    * AppData nvim symlink
+    * ✅ SSH keygen fails
+    * ✅ install zoxide
+    * ✅ AppData nvim symlink
     * Setup `SCOOP` environment variable
-    * Apend `/ucrt64/bin` to PATH to have a working gcc
-    * Install bash language server
+    * Append `/ucrt64/bin` to PATH to have a working gcc
+    * Append `$env:USERPROFILE\.local\bin` to PATH for pipx
+    * ✅ Install bash language server
 * Linux/WSL setup
     * FIND A WAY TO TEST IT (DOCKER?)
     * Setup /etc/hosts
@@ -43,6 +44,7 @@ Run this script:
 ```ps1
 # enable PowerShell script execution
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+# TODO: set SCOOP environment variable to $env:USERPROFILE\scoop
 # download scoop, use it to install chezmoi
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 scoop install chezmoi

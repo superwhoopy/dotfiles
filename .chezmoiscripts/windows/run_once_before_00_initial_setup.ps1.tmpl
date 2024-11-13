@@ -30,29 +30,23 @@ ChezMoi-Echo "Initial setup script"
 ################################################################################
 # SCOOP
 ################################################################################
-# run scoop prefix git: if it does not return anything, assume this is a fresh install
-scoop prefix git | Out-Null
-if($?) {
-  Write-Blue "git installed through scoop: skipping scoop initial setup"
-} else {
-  # install scoop base packages
-  Write-Blue "Initializing scoop packages"
-  # install and enable aria2
-  scoop install aria2
-  scoop config aria2-enabled true
-  scoop config aria2-warning-enabled false
+# install scoop base packages
+Write-Blue "Initializing scoop packages"
+# install and enable aria2
+scoop install aria2
+scoop config aria2-enabled true
+scoop config aria2-warning-enabled false
 
-  # add buckets - requires git
-  scoop install git
-  {{- range .scoop.buckets }}
-  scoop bucket add {{ . }}
-  {{- end }}
+# add buckets - requires git
+scoop install git
+{{- range .scoop.buckets }}
+scoop bucket add {{ . }}
+{{- end }}
 
-  # install:
-  # - age to decipher the encryption key
-  # - sudo, so that regular update scripts can run
-  scoop install age sudo
-}
+# install:
+# - age to decipher the encryption key
+# - sudo, so that regular update scripts can run
+scoop install age sudo
 
 
 ################################################################################

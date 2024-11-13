@@ -56,6 +56,7 @@
     "pdftk",
     "pipx",
     "plantuml",
+    "pwsh",
     "python",
     "ripgrep",
     "ruby",
@@ -79,9 +80,10 @@
     "windows-terminal",
     "xmind",
     "xnview",
+    "zoxide",
   ]
   su_packages = [
-    "openvpn"
+    # "openvpn"
   ]
 
 [msys2]
@@ -141,3 +143,7 @@
     "python-lsp-server[all]",
   ]
 
+[node]
+  npm = [
+    "bash-language-server",
+  ]

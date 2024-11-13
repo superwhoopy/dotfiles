@@ -11,14 +11,16 @@ projects
 {{ if eq .chezmoi.os "windows" }}
 # ctags config file is in ctags.d/ on Windows
 .config/ctags
+# pip config files are in AppData/ on Windows
+.config/pip
+# purely linux tools or shortcuts
 .config/i3
 .config/i3status
 .config/lxterminal
-# pip config files are in AppData/ on Windows
-.config/pip
 .config/rclone
 .config/rofi
 .config/terminator
+.config/nvim
 .chezmoiscripts/linux/*
 {{ end }}
 

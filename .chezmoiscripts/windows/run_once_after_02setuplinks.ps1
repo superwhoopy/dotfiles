@@ -35,8 +35,11 @@ $ssh_private_key = Join-Path $env:USERPROFILE ".ssh/id_ecdsa"
 if (! (Test-Path $ssh_private_key)) {
   # generate the SSH key with empty passphrase
   Write-Blue "No SSH key found: generate one in $ssh_private_key"
-  ssh-keygen -t ecdsa -P ""
+  ssh-keygen -t ecdsa -P '' -f $ssh_private_key
 }
+
+# TODO: add msys2/ucrt64/bin to PATH
+# [System.Environment]::SetEnvironmentVariable('ResourceGroup','AZ_Resource_Group')
 
 ################################################################################
 
