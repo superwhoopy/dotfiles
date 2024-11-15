@@ -141,6 +141,7 @@
   ]
   pipx = [
     "python-lsp-server[all]",
+    "notify-py",
   ]
 
 [node]
