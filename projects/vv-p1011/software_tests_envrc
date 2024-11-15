@@ -1,0 +1,11 @@
+# vim: set ft=sh:
+
+. ../.envrc
+
+# be sure to keep the contents of the build directory before rebuilding:
+# necessary when compiling regular AND profiling versions of an application
+export NO_CLEAN_BUILDDIR="y"
+
+alias pytest='pytest --t32-exe="${T32}" --bootloader="${BOOTLOADER}" --astek="${ASTEK}"'
+alias pythaast='pytest --haas="${HAAS_BOARDS}" --astek="${ASTEK}"'
+alias pytestloop='runtilldeath pytest --t32-exe="${T32}" --bootloader="${BOOTLOADER}" --astek="${ASTEK}"'
