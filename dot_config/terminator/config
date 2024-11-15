@@ -10,14 +10,14 @@
     background_darkness = 0.89
     background_type = transparent
     cursor_shape = ibeam
-    cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 15
+    font = UbuntuMono Nerd Font 11
     foreground_color = "#839496"
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 2000
     palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     use_system_font = False
+    use_theme_colors = True
     copy_on_selection = True
 [layouts]
   [[default]]
@@ -27,4 +27,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
 [plugins]
