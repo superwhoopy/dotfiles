@@ -11,17 +11,12 @@
 * Windows scripts:
     * Get and setup OpenVPN configuration?
     * Install WSL
-    * ✅ Set decent execution policy for PS scripts
     * Set symlink authorization
-    * ✅ Verify that all scoop buckets are there
     * Google Drive App
-    * ✅ SSH keygen fails
-    * ✅ install zoxide
-    * ✅ AppData nvim symlink
     * Setup `SCOOP` environment variable
     * Append `/ucrt64/bin` to PATH to have a working gcc
     * Append `$env:USERPROFILE\.local\bin` to PATH for pipx
-    * ✅ Install bash language server
+    * Find a way to prevent msys2 scopp update: fucks up everything
 * Linux/WSL setup
     * FIND A WAY TO TEST IT (DOCKER?)
     * Setup /etc/hosts
