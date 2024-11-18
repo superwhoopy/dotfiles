@@ -3,6 +3,11 @@
   tab_position = left
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, ActivityWatch
 [keybindings]
+  switch_to_tab_1 = <Primary>1
+  switch_to_tab_2 = <Primary>2
+  switch_to_tab_3 = <Primary>3
+  switch_to_tab_4 = <Primary>4
+  switch_to_tab_5 = <Primary>5
 [profiles]
   [[default]]
     visible_bell = True
