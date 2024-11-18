@@ -107,7 +107,7 @@ _echogray "Use function 'verswitch' to switch between RTK versions."
 
 # define some useful aliases
 _pythonpath=$(readlink --canonicalize ${_here})
-alias jenkins="PYTHONPATH=${_pythonpath} python -m tools.jenkins"
+alias jenkins="PYTHONPATH=${_pythonpath} python -m _pylib.jenkins"
 alias ctp="PYTHONPATH=${_pythonpath} python -m tools.ctp"
 alias mkbaseline="PYTHONPATH=${_pythonpath} python -m tools.mkbaseline"
 
@@ -125,7 +125,7 @@ function mktags () {
     software_tests/conftest.py                                           \
     software_tests/utils.py                                              \
     rtk-p1011/bundle                                                  \
-    rtk-p1011/sources_bundle                                          \
+    rtk-p1011/source_bundle                                          \
     include
 }
 # vim: set ft=sh:
