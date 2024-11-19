@@ -147,4 +147,6 @@
 [node]
   npm = [
     "bash-language-server",
+    "vim-language-server",
+    "vscode-json-languageservices"
   ]
