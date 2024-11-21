@@ -414,6 +414,9 @@ end
 
 -- lspconfig for various languages
 local function lspconfig_fn()
+  -- clangd
+  require'lspconfig'.clangd.setup{}
+
   -- Rust LS
   require'lspconfig'.rust_analyzer.setup{}
 
