@@ -1,22 +1,17 @@
-{{/* chezmoi:template:line-endings=native */}}
-{{/* vim: set ft=json: */}}
-{{/* this configuration file does not end up in the expected location for
+{{- /* chezmoi:template:line-endings=lf */}}
+{{- /* vim: set ft=json: */}}
+{{- /* this configuration file does not end up in the expected location for
   Windows Terminal conf. files: the script 02setuplinks.ps1 creates a symlink
   from the actual location to this file */}}
-{{- $msys2:= (output "scoop" "prefix" "msys2" | trim) }}
-{{- $msys2 = $msys2 | replace "\\" "\\\\" }}
+{{- $msys2:= (output "scoop" "prefix" "msys2" | trim) -}}
+{{- $msys2 = $msys2 | replace "\\" "\\\\" -}}
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command": "paste",
-            "id": "User.paste",
-            "keys": "shift+insert"
-        },
-        {
-            "command":
+            "command": 
             {
                 "action": "moveFocus",
                 "direction": "up"
@@ -25,12 +20,12 @@
             "keys": "alt+k"
         },
         {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "command": "paste",
+            "id": "User.paste",
+            "keys": "shift+insert"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "down",
@@ -40,16 +35,12 @@
             "keys": "ctrl+shift+i"
         },
         {
-            "command":
-            {
-                "action": "moveFocus",
-                "direction": "right"
-            },
-            "id": "User.moveFocus.87C324ED",
-            "keys": "alt+l"
+            "command": "find",
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "moveFocus",
                 "direction": "left"
@@ -58,7 +49,16 @@
             "keys": "alt+h"
         },
         {
-            "command":
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "id": "User.moveFocus.87C324ED",
+            "keys": "alt+l"
+        },
+        {
+            "command": 
             {
                 "action": "moveFocus",
                 "direction": "down"
@@ -67,7 +67,7 @@
             "keys": "alt+j"
         },
         {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "right",
@@ -86,26 +86,26 @@
     "copyFormatting": "none",
     "copyOnSelect": true,
     "defaultProfile": "{318e117a-81d3-49fb-a46e-8f59080783bb}",
-    "disabledProfileSources":
+    "disabledProfileSources": 
     [
         "Windows.Terminal.Azure"
     ],
     "initialCols": 80,
     "initialRows": 60,
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "antialiasingMode": "cleartype",
             "colorScheme": "One Half Dark",
             "cursorShape": "bar",
-            "font":
+            "font": 
             {
                 "face": "UbuntuMono Nerd Font",
                 "size": 10
@@ -115,7 +115,7 @@
             "scrollbarState": "hidden",
             "useAcrylic": true
         },
-        "list":
+        "list": 
         [
             {
                 "altGrAliasing": true,
@@ -216,33 +216,9 @@
             }
         ]
     },
-    "schemes":
-    [
-        {
-            "background": "#300A24",
-            "black": "#171421",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#08458F",
-            "brightCyan": "#2C9FB3",
-            "brightGreen": "#26A269",
-            "brightPurple": "#A347BA",
-            "brightRed": "#C01C28",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#A2734C",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#3A96DD",
-            "foreground": "#FFFFFF",
-            "green": "#26A269",
-            "name": "Ubuntu-ColorScheme",
-            "purple": "#881798",
-            "red": "#C21A23",
-            "selectionBackground": "#FFFFFF",
-            "white": "#CCCCCC",
-            "yellow": "#A2734C"
-        }
-    ],
+    "schemes": [],
     "tabWidthMode": "compact",
     "themes": [],
     "useAcrylicInTabRow": true
 }
+{{- /* eof */ -}}
