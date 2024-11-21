@@ -143,11 +143,12 @@
   pipx = [
     "python-lsp-server[all]",
     "notify-py",
+    "meson",
   ]
 
 [node]
   npm = [
     "bash-language-server",
     "vim-language-server",
-    "vscode-json-languageservice"
+    "vscode-langservers-extracted"
   ]
