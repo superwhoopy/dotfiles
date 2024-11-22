@@ -587,6 +587,17 @@ P.plugins = {
   'ngg/vim-gn', -- syntax highlighting
   'NoahTheDuke/vim-just',
   'ntpeters/vim-better-whitespace',
+
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true
+  },
+
   {'neovim/nvim-lspconfig', config=lspconfig_fn},
   'neovimhaskell/haskell-vim',
   'nvim-lua/plenary.nvim',
@@ -625,16 +636,17 @@ P.plugins = {
   'psliwka/vim-smoothie', -- smooth scrolling
   "rafamadriz/friendly-snippets", -- snippets
   'raimon49/requirements.txt.vim', -- syntax highlighting
+
   'sainnhe/everforest', -- colorscheme
 
   'sindrets/diffview.nvim',
 
   {'shortcuts/no-neck-pain.nvim', opts=noneckpain_opts},
-  'tmhedberg/SimpylFold', -- better Python folding
+  -- 'tmhedberg/SimpylFold', -- better Python folding
   'tomtom/tlib_vim',
   'tpope/vim-dispatch', -- use :Make instead of :make to run in background
   'tpope/vim-commentary',
-  'tpope/vim-fugitive',
+  -- 'tpope/vim-fugitive', -- Trying Neogit now
   'tpope/vim-surround',
   'vim-latex/vim-latex',
   'vim-python/python-syntax',
