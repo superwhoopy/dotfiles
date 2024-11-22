@@ -646,7 +646,7 @@ P.plugins = {
   'tomtom/tlib_vim',
   'tpope/vim-dispatch', -- use :Make instead of :make to run in background
   'tpope/vim-commentary',
-  -- 'tpope/vim-fugitive', -- Trying Neogit now
+  'tpope/vim-fugitive', -- Trying Neogit now
   'tpope/vim-surround',
   'vim-latex/vim-latex',
   'vim-python/python-syntax',
