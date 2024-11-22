@@ -52,3 +52,6 @@ $sh = Join-Path $(scoop prefix msys2) "usr\bin\sh"
 {{- if .node.npm }}
 npm install -g {{range .node.npm}}{{ . }} {{end}}
 {{- end }}
+{{- if .node.windows }}
+npm install -g {{range .node.windows}}{{ . }} {{end}}
+{{- end }}

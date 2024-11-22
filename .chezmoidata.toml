@@ -102,31 +102,39 @@
   ]
 
 [apt]
-  install = [
-    "firefox",
-    "flatpak",
+  base = [
     "git",
-    "rclone",
     "zsh",
   ]
-  # TODO: reduced list for WSL?
+  extras = [
+    "firefox",
+    "flatpak",
+    "rclone",
+  ]
 
 [brew]
-  install = [
+  base = [
     "bash-language-server",
+    "eza",
     "fzf",
     "lua-language-server",
-    "neovide",
     "neovim",
     "node",
     "pipx",
     "python",
+    "starship",
     "tree-sitter",
     "typescript-language-server",
+    "zoxide",
+  ]
+  extras = [
+    "neovide",
   ]
 
 [flatpak]
-  install = [
+  base = [
+  ]
+  extras = [
     "com.mattermost.Desktop",
     "it.mijorus.smile",
     "md.obsidian.Obsidian",
@@ -148,7 +156,9 @@
 
 [node]
   npm = [
-    "bash-language-server",
     "vim-language-server",
     "vscode-langservers-extracted"
+  ]
+  windows = [
+    "bash-language-server",
   ]

@@ -20,28 +20,68 @@ function _chezmoiprint() {
 
 _chezmoiprint "Default packages installation"
 
-{{- if .apt.install }}
+{{- /* find out if extras packages must be installed: for now, only true if we
+       are NOT running in WSL */}}
+{{- $is_wsl := and (eq .chezmoi.os "linux")
+                   (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{- $install_extras := not $is_wsl }}
+
+
+################################################################################
+# APT
+################################################################################
+{{- $apt_pkgs := .apt.base }}
+{{- if and .apt.extras $install_extras }}
+  {{- $apt_pkgs = concat $apt_pkgs .apt.extras }}
+{{- end }}
+{{- if $apt_pkgs }}
 if _command_exists apt;
 then
-  sudo apt install --yes {{ range .apt.install }}{{ . }} {{ end }}
+  sudo apt install --yes {{ range $apt_pkgs }}{{ . }} {{ end }}
 fi
 {{- end }}
 
-{{- if .brew.install }}
-brew install --quiet {{ range .brew.install }}{{ . }} {{ end }}
+
+################################################################################
+# BREW
+################################################################################
+{{- $brew_pkgs := .brew.base }}
+{{- if and .brew.extras $install_extras }}
+  {{- $brew_pkgs = concat $brew_pkgs .brew.extras }}
+{{- end }}
+{{- if $brew_pkgs }}
+brew install --quiet {{ range $brew_pkgs }}{{ . }} {{ end }}
 {{- end }}
 
-{{- if .flatpak.install }}
-flatpak install --assumeyes {{ range .flatpak.install }}{{ . }} {{ end }}
+
+################################################################################
+# FLATPAK
+################################################################################
+{{- $flatpak_pkgs := .flatpak.base }}
+{{- if and .flatpak.extras $install_extras }}
+  {{- $flatpak_pkgs = concat $flatpak_pkgs .flatpak.extras }}
+{{- end }}
+{{- if $flatpak_pkgs }}
+flatpak install --assumeyes {{ range $flatpak_pkgs }}{{ . }} {{ end }}
 {{- end }}
 
 
+################################################################################
+# PYTHON (pip & pipx)
+################################################################################
 {{- if .python.pip }}
 python3 -m pip install --user {{ range .python.pip }}{{ . }} {{ end }}
 {{- end }}
-
 {{- if .python.pipx }}
 pipx install {{ range .python.pipx }}{{ . }} {{ end }}
+{{- end }}
+
+
+################################################################################
+# NODE
+################################################################################
+{{- if .node.npm }}
+npm install -g {{range .node.npm}}{{ . }} {{end}}
 {{- end }}
 
 # TODO: find a way to install nerdfonts decently
