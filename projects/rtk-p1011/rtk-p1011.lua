@@ -1,6 +1,8 @@
--- set CPP options for ALE
-vim.g.ale_c_cc_options = '-Wall -Wextra -DAST_K2_ -D_DIAB_TOOL -DAST_ARCH_E500 -Ibundle/include -Ibundle/lib/include -Ibundle/include/arch/e500 -Isources_bundle/include -Isources_bundle/include/sources/xt_source'
-
+-- disable ale linting for C files
+local ale_linters = vim.g.ale_linters
+ale_linters.c = {}
+vim.g.ale_linters = ale_linters
+--
 -- disable linting of assembly files
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   pattern = {"*.inc",},
