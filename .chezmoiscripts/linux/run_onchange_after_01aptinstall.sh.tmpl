@@ -72,8 +72,18 @@ flatpak install --assumeyes {{ range $flatpak_pkgs }}{{ . }} {{ end }}
 {{- if .python.pip }}
 python3 -m pip install --user {{ range .python.pip }}{{ . }} {{ end }}
 {{- end }}
+
 {{- if .python.pipx }}
-pipx install {{ range .python.pipx }}{{ . }} {{ end }}
+# install pipx primary packages
+pipx install {{range .python.pipx}}{{ .pkg }}
+      {{- if hasKey . "opt" }}{{ .opt }}{{ end }} {{end}}
+
+  {{- range .python.pipx }}
+    {{- if hasKey . "deps"}}
+# inject dependencies for {{ .pkg }}
+pipx inject {{ .pkg }} {{range .deps}}{{ . }} {{end}}
+    {{- end}}
+  {{- end}}
 {{- end }}
 
 

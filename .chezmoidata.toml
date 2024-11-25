@@ -148,11 +148,21 @@
     "colorama",
     "icecream",
   ]
-  pipx = [
-    "python-lsp-server[all]",
-    "notify-py",
-    "meson",
-  ]
+
+[[python.pipx]]
+  pkg = "python-lsp-server"
+  opt = "[all]"
+  deps = [
+        "python-lsp-ruff",
+        "pylsp-rope",
+        "pylsp-mypy",
+      ]
+
+[[python.pipx]]
+  pkg = "notify-py"
+
+[[python.pipx]]
+  pkg = "meson"
 
 [node]
   npm = [
