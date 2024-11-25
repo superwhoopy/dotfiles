@@ -2,6 +2,7 @@
 
 ## TODO-List
 
+* Correct setup of Python LSP server, with extensions
 * Setup fetching of sensitive files from KeePassXC: require to download the
     database somewhere on disk first, then get from there:
     * OpenVPN configuration

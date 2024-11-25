@@ -232,4 +232,5 @@ parser_config['psyc'] = {
 }
 
 -- increase verbosity level for LS logs
-vim.lsp.log.set_level(vim.lsp.log.levels.DEBUG)
+-- vim.lsp.log.set_level(vim.lsp.log.levels.DEBUG)
+vim.lsp.log.set_level(vim.lsp.log.levels.INFO)

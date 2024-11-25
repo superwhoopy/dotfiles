@@ -450,7 +450,7 @@ local function lspconfig_fn()
           autopep8 = { enabled=false },
           pyflakes = { enabled=false },
 
-          yapf = { enabled=true },
+          yapf = { enabled=false },
           ruff = { enabled=true },
         }
       }
