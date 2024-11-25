@@ -158,7 +158,7 @@
   npm = [
     "vim-language-server",
     "vscode-langservers-extracted"
-  ]
+  ],
   windows = [
     "bash-language-server",
-  ]
+  ],
