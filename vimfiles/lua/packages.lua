@@ -636,7 +636,6 @@ P.plugins = {
   'psliwka/vim-smoothie', -- smooth scrolling
   "rafamadriz/friendly-snippets", -- snippets
   'raimon49/requirements.txt.vim', -- syntax highlighting
-
   'sainnhe/everforest', -- colorscheme
 
   'sindrets/diffview.nvim',
@@ -646,7 +645,7 @@ P.plugins = {
   'tomtom/tlib_vim',
   'tpope/vim-dispatch', -- use :Make instead of :make to run in background
   'tpope/vim-commentary',
-  'tpope/vim-fugitive', -- Trying Neogit now
+  'tpope/vim-fugitive',
   'tpope/vim-surround',
   'vim-latex/vim-latex',
   'vim-python/python-syntax',

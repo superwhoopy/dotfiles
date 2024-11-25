@@ -157,8 +157,8 @@
 [node]
   npm = [
     "vim-language-server",
-    "vscode-langservers-extracted"
-  ],
+    "vscode-langservers-extracted",
+  ]
   windows = [
     "bash-language-server",
-  ],
+  ]

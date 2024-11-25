@@ -1,0 +1,7 @@
+# Configuration file for Python pycodestyle, used by Python LSP server. See list
+# of errors and documentation here:
+# https://pycodestyle.pycqa.org/en/latest/intro.html#configuration
+
+[pycodestyle]
+# 80 chars instead of 79 recommended in PEP8 (!!)
+max-line-length=80

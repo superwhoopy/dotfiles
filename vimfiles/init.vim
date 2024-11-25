@@ -260,6 +260,8 @@ let g:ale_linters = {
             \ 'python': [],
             \ 'rust': [],
             \ }
+" don't use ALE LSP: we already use nvim client
+let g:ale_disable_lsp = 1
 
 " vim-asterios #################################################################
 
