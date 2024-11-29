@@ -1,0 +1,10 @@
+{
+    "defaultConfig": {
+        "codeFolding": true,
+        "highlightActiveLine": true,
+        "highlightTrailingWhitespace": true,
+        "rulers": [
+            80
+        ]
+    }
+}

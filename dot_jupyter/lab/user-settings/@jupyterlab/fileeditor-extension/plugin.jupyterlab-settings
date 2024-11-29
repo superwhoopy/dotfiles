@@ -1,0 +1,9 @@
+{
+    "editorConfig": {
+        "codeFolding": true,
+        "highlightActiveLine": true,
+        "highlightTrailingWhitespace": true
+    },
+    "scrollPastEnd": true,
+    "toolbar": []
+}

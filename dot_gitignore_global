@@ -22,3 +22,5 @@ pyrightconfig.json
 .lfsconfig
 .ignore
 .nvim.lua
+compile_commands.json
+.cache/clangd
