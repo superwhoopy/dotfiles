@@ -12,10 +12,9 @@
   [[default]]
     visible_bell = True
     background_color = "#002b36"
-    background_darkness = 0.89
-    background_type = transparent
+    background_darkness = 0.95
     cursor_shape = ibeam
-    font = UbuntuMono Nerd Font 11
+    font = UbuntuMono Nerd Font 13
     foreground_color = "#839496"
     show_titlebar = False
     scrollbar_position = hidden
