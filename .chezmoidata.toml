@@ -104,6 +104,7 @@
 [apt]
   base = [
     "clangd",
+    "exuberant-ctags",
     "git",
     "zsh",
   ]
