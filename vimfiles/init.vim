@@ -245,6 +245,8 @@ xmap   s <Plug>VSurround
 set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
+            \ 'cpp' : [],
+            \ 'c' : [],
             \ 'sh': ['shellcheck'],
             \ 'haskell': ['hls', 'ghc'],
             \ 'python': [],
