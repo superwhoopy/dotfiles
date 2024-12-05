@@ -103,6 +103,7 @@
 
 [apt]
   base = [
+    "clangd",
     "git",
     "zsh",
   ]
