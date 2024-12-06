@@ -105,6 +105,7 @@
   base = [
     "clangd",
     "exuberant-ctags",
+    "gcc",
     "git",
     "zsh",
   ]
@@ -117,6 +118,7 @@
 [brew]
   base = [
     "bash-language-server",
+    "bat",
     "eza",
     "fzf",
     "lua-language-server",
