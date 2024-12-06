@@ -107,6 +107,7 @@
     "exuberant-ctags",
     "gcc",
     "git",
+    "ripgrep",
     "zsh",
   ]
   extras = [
