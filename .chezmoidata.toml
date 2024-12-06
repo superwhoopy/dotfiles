@@ -124,6 +124,7 @@
     "fzf",
     "lua-language-server",
     "neovim",
+    "ninja",
     "node",
     "pipx",
     "python",
