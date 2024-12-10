@@ -3,7 +3,7 @@ local fs_augroup = vim.api.nvim_create_augroup("filesystem-proj", {})
 
 vim.api.nvim_create_autocmd({"FileType"}, {
   group   = fs_augroup,
-  pattern = {"c",},
+  pattern = {"c", "cpp"},
   callback = function(_)
     vim.o.textwidth = 110
   end
