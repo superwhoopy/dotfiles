@@ -81,6 +81,7 @@
     "windows-terminal",
     "xmind",
     "xnview",
+    "yazi",
     "zoxide",
   ]
   su_packages = [

@@ -21,6 +21,7 @@ projects
 .config/rofi
 .config/terminator
 .config/nvim
+.config/yazi
 .chezmoiscripts/linux/*
 {{ end }}
 
