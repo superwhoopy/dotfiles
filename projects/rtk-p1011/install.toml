@@ -1,3 +1,4 @@
 "rtk-p1011.lua" = ".nvim.lua"
+"ignore" = ".ignore"
 "gen-compile-commands.py" = ".gen-compile-commands.py"
 
