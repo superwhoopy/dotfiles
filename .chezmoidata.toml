@@ -105,6 +105,7 @@
 [apt]
   base = [
     "clangd",
+    "direnv",
     "exuberant-ctags",
     "gcc",
     "git",
@@ -122,6 +123,7 @@
     "bash-language-server",
     "bat",
     "eza",
+    "fd",
     "fzf",
     "lua-language-server",
     "neovim",
