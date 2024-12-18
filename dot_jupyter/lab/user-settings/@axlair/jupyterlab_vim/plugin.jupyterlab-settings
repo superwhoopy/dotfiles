@@ -1,6 +1,19 @@
 {
-    "enabled": true,
+    // Notebook Vim
+    // @axlair/jupyterlab_vim:plugin
+    // Notebook Vim Settings
+    // *****************************
+
+    // Enabled
+    // Enable/disable vim extension (may require a page refresh)
+    "enabled": false,
+
+    // Enabled in Text Editor
+    // Enable/disable vim in text editors (may require a page refresh)
     "enabledInEditors": true,
+
+    // Extra Vim Keybindings
+    // [missing schema description]
     "extraKeybindings": [
         {
             "command": "jj",
