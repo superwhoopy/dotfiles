@@ -27,7 +27,7 @@ $time\
 [ ](fg:color_prompt_6_bg bg:none)\
 $line_break$character"""
 
-palette = 'gruvbox_dark'
+palette = 'custom'
 
 [palettes.gruvbox_dark]
 color_prompt_1_fg = '#fbf1c7'
@@ -40,6 +40,20 @@ color_prompt_4_fg = '#fbf1c7'
 color_prompt_4_bg = '#458588'
 color_prompt_5_fg = '#fbf1c7'
 color_prompt_5_bg = '#3A405A'
+color_prompt_6_fg = '#fbf1c7'
+color_prompt_6_bg = '#3c3836'
+
+[palettes.custom]
+color_prompt_1_fg = 'black'
+color_prompt_1_bg = '#AF929D'
+color_prompt_2_fg = 'black'
+color_prompt_2_bg = '#C1B4C6'
+color_prompt_3_fg = 'black'
+color_prompt_3_bg = '#D2D6EF'
+color_prompt_4_fg = 'black'
+color_prompt_4_bg = '#7FB285'
+color_prompt_5_fg = 'black'
+color_prompt_5_bg = '#F2DC5D'
 color_prompt_6_fg = '#fbf1c7'
 color_prompt_6_bg = '#3c3836'
 
