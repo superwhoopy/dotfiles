@@ -2,8 +2,7 @@
 
 format = """
 [](fg:color_prompt_1_bg)\
-$os\
-$username\
+[$os ](bg:color_prompt_1_bg)\
 [](bg:color_prompt_2_bg fg:color_prompt_1_bg)\
 $directory\
 [](fg:color_prompt_2_bg bg:color_prompt_3_bg)\
@@ -22,6 +21,7 @@ $python\
 $direnv\
 [](fg:color_prompt_4_bg bg:color_prompt_5_bg)\
 $cmd_duration\
+[$status](fg:color_prompt_5_fg bg:color_prompt_5_bg)\
 [](fg:color_prompt_5_bg bg:color_prompt_6_bg)\
 $time\
 [ ](fg:color_prompt_6_bg bg:none)\
@@ -57,13 +57,29 @@ color_prompt_5_bg = '#F2DC5D'
 color_prompt_6_fg = '#fbf1c7'
 color_prompt_6_bg = '#3c3836'
 
+[palettes.custom2]
+clear_gray = '#3c3836'
+color_prompt_1_fg = '#3c3836'
+color_prompt_1_bg = '#7247FF'
+color_prompt_2_fg = '#3c3836'
+color_prompt_2_bg = '#4792FF'
+color_prompt_3_fg = '#3c3836'
+color_prompt_3_bg = '#4757FF'
+color_prompt_4_fg = '#3c3836'
+color_prompt_4_bg = '#AE47FF'
+color_prompt_5_fg = '#3c3836'
+color_prompt_5_bg = '#B39CFF'
+color_prompt_6_fg = '#fbf1c7'
+color_prompt_6_bg = '#3c3836'
+
+
 [os]
 disabled = false
 style = "fg:color_prompt_1_fg bg:color_prompt_1_bg"
 
 [os.symbols]
 # Windows = " "
-Windows = " "
+Windows = ""
 # Windows = "󰖳 "
 Ubuntu = "󰕈"
 SUSE = ""
@@ -183,13 +199,21 @@ time_format = "%R"
 style = "fg:color_prompt_6_fg bg:color_prompt_6_bg"
 format = '[ 🕑 $time ]($style)'
 
+[status]
+disabled = false
+# style = 'bg:blue'
+# symbol = '🔴 '
+# success_symbol = '🟢 SUCCESS'
+format = '$symbol $common_meaning$signal_name$maybe_int '
+map_symbol = true
+
 [line_break]
 disabled = false
 
 [character]
 disabled = false
 success_symbol            = '[❯](bold fg:green)'
-error_symbol              = '[❯](bold fg:red)'
+error_symbol              = '[✗](bold fg:red)'
 vimcmd_symbol             = '[ ](bold fg:green)'
 vimcmd_replace_one_symbol = '[ ](bold fg:purple)'
 vimcmd_replace_symbol     = '[ ](bold fg:purple)'
