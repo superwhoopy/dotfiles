@@ -217,7 +217,7 @@ for type, icon in pairs(signs) do
 end
 
 -- configure PsyC tree-sitter grammar and Language Server
-local treesitter_psyc_path = vim.fn.expand('$HOME/workspace/tree-sitter-psyc')
+local treesitter_psyc_path = vim.fn.expand('$HOME/workspace/psyls/tree-sitter-psyc')
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config['psyc'] = {
   install_info = {

@@ -648,7 +648,6 @@ P.plugins = {
   'tpope/vim-fugitive',
   'tpope/vim-surround',
   'vim-latex/vim-latex',
-  'vim-python/python-syntax',
   'w0rp/ale',
   {
     'xvzc/chezmoi.nvim',

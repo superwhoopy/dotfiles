@@ -214,11 +214,6 @@ nmap <F10>  <Cmd>StripWhitespace<CR>
 let g:strip_whitespace_on_save = 0
 let g:strip_whitespace_confirm = 0
 
-" python-syntax ################################################################
-
-" enable Python highlighting plugin
-let g:python_highlight_all = 1
-
 
 " EasyAlign ####################################################################
 
