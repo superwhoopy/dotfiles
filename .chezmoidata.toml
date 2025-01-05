@@ -30,6 +30,7 @@
     "fzf",
     "gh",
     "git",
+    "glazewm",
     "graphviz",
     "Hack-NF-Mono",
     "hexyl",
@@ -83,6 +84,7 @@
     "xmind",
     "xnview",
     "yazi",
+    "zebar",
     "zoxide",
   ]
   su_packages = [
