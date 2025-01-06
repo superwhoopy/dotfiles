@@ -178,6 +178,8 @@
 
 [node]
   npm = [
+    "typescript",
+    "typescript-language-server",
     "vim-language-server",
     "vscode-langservers-extracted",
   ]
