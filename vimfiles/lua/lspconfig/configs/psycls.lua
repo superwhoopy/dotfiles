@@ -4,10 +4,10 @@ local server_log_file = vim.fn.expand('$HOME/psy-ls.log')
 return {
   default_config = {
     cmd = {
-      vim.fn.expand('$HOME/workspace/psyls/target/debug/psy-ls.exe'),
-      "-K", vim.fn.expand('$KRONOSAFE_INSTALL_DIR/ksim-9.5.0'),
-      "-I", vim.fn.expand('$KRONOSAFE_INSTALL_DIR/psyko-9.5.0/bin/psyko.exe'),
-      "-L", server_log_file,
+      vim.fn.expand('$HOME/workspace/psyls/target/debug/psy-ls.exe')
+      -- "-K", vim.fn.expand('$KRONOSAFE_INSTALL_DIR/ksim-9.5.0'),
+      -- "-I", vim.fn.expand('$KRONOSAFE_INSTALL_DIR/psyko-9.5.0/bin/psyko.exe'),
+      -- "-L", server_log_file,
     },
     filetypes = { 'psy' },
     root_dir = function(fname)
