@@ -110,6 +110,9 @@ plugins=(vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
 
 _iswin || plugins+=(direnv)
 
+# put zcompdump file away from the root of the home dir
+export ZSH_COMPDUMP=${HOME}/.cache/zsh/.zcompdump-${HOST}
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
