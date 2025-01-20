@@ -116,7 +116,9 @@ window_rules:
       - window_process: { equals: 'msrdc' }
       - window_process: { equals: 'vlc' }
       - window_process: { equals: 'KeePassXC' }
-      - window_process: { regex: 'Telegram|ApplicationFrameHost|ScreenToGif|AutoHotkeyUX|xnview' }
+      - window_process: { regex: 'Telegram|ScreenToGif|AutoHotkeyUX|xnview' }
+      # Settings is actually Windows Settings
+      - window_title:   { regex: 'WhatsApp|Settings|Calculator|Snipping Tool' }
       - window_process: { regex: 'Taskmgr|ScreenClippingHost' }
       - window_process: { regex: 'HWMonitor_x64' }
       - window_process: { equals: 'POWERPNT' }
