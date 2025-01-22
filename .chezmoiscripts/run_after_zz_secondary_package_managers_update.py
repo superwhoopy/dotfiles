@@ -29,6 +29,8 @@ class ProgressContext(typing.NamedTuple):
 async def _run_command(progress: ProgressContext, cmd, args):
     progress.ctx.start_task(progress.task_id)
 
+    # call 'which' on the command to execute: if it does not exist, simply
+    # return: nothing will appear on screen
     fullcmd = await asyncio.to_thread(shutil.which, cmd)
     if fullcmd is None:
         progress.ctx.remove_task(progress.task_id)
