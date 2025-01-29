@@ -20,7 +20,7 @@ local lualine_opts = {
     },
     ignore_focus = {},
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -28,15 +28,22 @@ local lualine_opts = {
     }
   },
   sections = {
-    lualine_a = {'searchcount'},
-    lualine_b = {'branch',
-                 {'diagnostics', sources = {'ale', 'nvim_lsp'}}
-                },
-    lualine_c = {{'filename',
-                  path = 1}},
+    lualine_a = {
+      'branch',
+    },
+    lualine_b = {
+      {'filename', path = 1},
+    },
+    lualine_c = {
+      {'diagnostics', sources = {'ale', 'nvim_lsp'}},
+      -- show current function signature when available
+      function()
+        return vim.fn['tagbar#currenttag']('%s', '', 'f')
+      end,
+    },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {'location', 'searchcount'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -418,10 +425,10 @@ local function nvim_cmp_fn()
       sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
-          { name = 'vsnip' }, -- For vsnip users.
-          { name = 'buffer',
-            option = { get_bufnrs = vim.api.nvim_list_bufs },
-          },
+          -- { name = 'vsnip' }, -- For vsnip users.
+          -- { name = 'buffer',
+          --   option = { get_bufnrs = vim.api.nvim_list_bufs },
+          -- },
       }),
       completion = {
         autocomplete = false

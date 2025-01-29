@@ -246,6 +246,7 @@ let g:ale_linters = {
             \ 'haskell': ['hls', 'ghc'],
             \ 'python': [],
             \ 'rust': [],
+            \ 'psy': [],
             \ }
 " don't use ALE LSP: we already use nvim client
 let g:ale_disable_lsp = 1
