@@ -77,6 +77,9 @@ vim.keymap.set({ 'n', }, '<C-p>',
 vim.keymap.set({ 'n', }, '<C-S-p>',
                require("telescope.builtin").tags,
                { desc = 'Telescope: Tags' })
+vim.keymap.set({ 'n', }, '<C-{>',
+               require("telescope.builtin").lsp_workspace_symbols,
+               { desc = 'Telescope: LSP Workspace Symbols' })
 vim.keymap.set({ 'n', }, '<C-S-g>',
                require("telescope").extensions.live_grep_args.live_grep_args,
                { desc = 'Telescope: Live Grep' })

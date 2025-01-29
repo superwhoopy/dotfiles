@@ -526,7 +526,7 @@ local function lspconfig_fn()
   end
 
   -- psyc
-  require('lspconfig').psycls.setup({})
+  require('lspconfig').psyls.setup({})
 end
 
 -- #############################################################################
