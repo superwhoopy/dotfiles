@@ -148,7 +148,7 @@
 
             <div className="center">
               <i className="nf nf-fa-calendar"></i>
-              {output.date?.formatted}
+              <div className="date">{output.date?.formatted}</div>
               {output.weather && (
                 <div className="weather">
                   {getWeatherIcon(output.weather)}

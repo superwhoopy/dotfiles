@@ -56,6 +56,7 @@ body,
 .network,
 .memory,
 .cpu,
+.date,
 .battery {
   margin-right: 20px;
 }
