@@ -32,6 +32,7 @@
       import * as zebar from 'https://esm.sh/zebar@2';
 
       const providers = zebar.createProviderGroup({
+        audio: { type: 'audio' },
         network: { type: 'network' },
         glazewm: { type: 'glazewm' },
         cpu: { type: 'cpu' },
@@ -39,6 +40,7 @@
         battery: { type: 'battery' },
         memory: { type: 'memory' },
         weather: { type: 'weather' },
+        media: { type: 'media' },
       });
 
       createRoot(document.getElementById('root')).render(<App />);
@@ -123,6 +125,13 @@
           }
         }
 
+        function truncate(str, maxLength) {
+          if (str.length > maxLength) {
+              return str.substring(0, maxLength) + '…';
+          }
+          return str;
+        }
+
         return (
           <div className="app">
             <div className="left">
@@ -147,8 +156,10 @@
             </div>
 
             <div className="center">
-              <i className="nf nf-fa-calendar"></i>
-              <div className="date">{output.date?.formatted}</div>
+              <div className="date">
+                <i className="nf nf-fa-calendar"></i>
+                {output.date?.formatted}
+              </div>
               {output.weather && (
                 <div className="weather">
                   {getWeatherIcon(output.weather)}
@@ -185,26 +196,6 @@
                 </div>
               )}
 
-              {output.memory && (
-                <div className="memory">
-                  <i className="nf nf-fae-chip"></i>
-                  {Math.round(output.memory.usage)}%
-                </div>
-              )}
-
-              {output.cpu && (
-                <div className="cpu">
-                  <i className="nf nf-oct-cpu"></i>
-
-                  {/* Change the text color if the CPU usage is high. */}
-                  <span
-                    className={output.cpu.usage > 85 ? 'high-usage' : ''}
-                  >
-                    {Math.round(output.cpu.usage)}%
-                  </span>
-                </div>
-              )}
-
               {output.battery && (
                 <div className="battery">
                   {/* Show icon for whether battery is charging. */}
@@ -213,6 +204,20 @@
                   )}
                   {getBatteryIcon(output.battery)}
                   {Math.round(output.battery.chargePercent)}%
+                </div>
+              )}
+
+              {output.audio?.defaultPlaybackDevice && (
+                <div class="memory">
+                  <i className="nf nf-seti-audio"></i>
+                  {truncate(output.audio.defaultPlaybackDevice.name, 10)}
+                </div>
+              )}
+
+              {output.audio?.defaultRecordingDevice && (
+                <div class="chip">
+                  <i className="nf nf-cod-mic_filled"></i>
+                  {truncate(output.audio.defaultRecordingDevice.name, 10)}
                 </div>
               )}
 
