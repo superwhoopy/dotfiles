@@ -426,9 +426,9 @@ local function nvim_cmp_fn()
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
           -- { name = 'vsnip' }, -- For vsnip users.
-          -- { name = 'buffer',
-          --   option = { get_bufnrs = vim.api.nvim_list_bufs },
-          -- },
+          { name = 'buffer',
+            option = { get_bufnrs = vim.api.nvim_list_bufs },
+          },
       }),
       completion = {
         autocomplete = false
