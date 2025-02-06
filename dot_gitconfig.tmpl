@@ -85,7 +85,10 @@
            {{- else }}libsecret{{ end }}
 {{ if eq .chezmoi.os "windows" -}}
 [credential "helperselector"]
-	selected = manager
+  selected = manager
+[http]
+  sslBackend = openssl
+  sslVerify = true
 {{ end -}}
 [credential "http://dev.ks.int"]
   provider = generic
