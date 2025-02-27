@@ -24,7 +24,9 @@ fi
 # PATH MANIPULATION
 ################################################################################
 
-export PATH="${HOME}/.local/bin:${HOME}/.local/node_modules/bin:${PATH}"
+_texlive="${HOME}/.local/share/texlive/2024/bin/x86_64-linux/"
+export PATH="${HOME}/.local/bin:${HOME}/.local/node_modules/bin:${_texlive}:${PATH}"
+unset _texlive
 
 # brew -------------------------------------------------------------------------
 _brew="/home/linuxbrew/.linuxbrew/bin/brew"
