@@ -41,29 +41,54 @@
   sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
   {{- end }}
 
+[commit]
+  verbose = true # show full diff in commit message comment
+
 [diff]
-  tool = nvimdiff
+  # better diff algorithm
+  algorithm = histogram
+  renames = true
+  # improved visualization
+  colorMoved = plain
+  mnemonicPrefix = true # use meaningful prefixes instead of a/ b/ and c/
+  # color whitespaces
   wsErrorHighlight = all
+  # tool
+  tool = nvimdiff
 
 [difftool]
   prompt=False
 
+[init]
+  defaultBranch = master
+
 [merge]
   tool = nvimdiff
-  guitool = gvimdiff
+  conflictstyle = zdiff3 # in conflict resolution, show the base as well as
+                         # theirs and ours
 
 [user]
   name  = Emmanuel Ohayon
   email = eohayon@mail.ks.int
 
 [push]
-  default = simple
-  autoSetupRemote = true
+  default = simple        # by default push to the single remote
+  autoSetupRemote = true  # auto set-upstream when needed
 
 [color]
   ui     = always
   status = always
   branch = always
+
+[column]
+  # show columns whenever in terminal (status, branch, ...)
+  ui = always
+
+# better sorting defaults
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
 
 [status]
   submoduleSummary = true
