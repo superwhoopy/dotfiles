@@ -1,0 +1,9 @@
+{{/* vim: set ft=perl */ -}}
+
+{{- if eq .chezmoi.os "windows" }}
+$pdf_previewer = 'start "SumatraPDF.exe" %O %S';
+{{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+$pdf_previewer = 'evince %O %S';
+{{- end }}
