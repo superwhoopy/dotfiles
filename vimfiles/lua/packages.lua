@@ -582,6 +582,7 @@ P.plugins = {
                                -- for C, flex, bison
   'krono-safe/vim-asterios',
   'lepture/vim-velocity',
+  'levrag/vimtex',
   { 'lewis6991/gitsigns.nvim', opts = gitsigns_opts },
   'LnL7/vim-nix', -- syntax highlighting
   'Lokaltog/vim-easymotion',
@@ -653,7 +654,6 @@ P.plugins = {
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
   'tpope/vim-surround',
-  'vim-latex/vim-latex',
   'w0rp/ale',
   {
     'xvzc/chezmoi.nvim',
