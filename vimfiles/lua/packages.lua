@@ -123,8 +123,8 @@ local function nvim_treesitter_fn()
   require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = {
-      "c", "rst", "bash", "javascript", "json", "hjson", "lua", "powershell",
-      "python", "rust", "tlaplus", "toml", "vimdoc",
+      "c", "rst", "bash", "javascript", "json", "hjson", "latex", "lua",
+      "powershell", "python", "rust", "tlaplus", "toml", "vimdoc",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -582,7 +582,7 @@ P.plugins = {
                                -- for C, flex, bison
   'krono-safe/vim-asterios',
   'lepture/vim-velocity',
-  'levrag/vimtex',
+  'lervag/vimtex',
   { 'lewis6991/gitsigns.nvim', opts = gitsigns_opts },
   'LnL7/vim-nix', -- syntax highlighting
   'Lokaltog/vim-easymotion',
