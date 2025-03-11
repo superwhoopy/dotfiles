@@ -246,13 +246,12 @@ let g:ale_linters = {
             \ 'haskell': ['hls', 'ghc'],
             \ 'python': [],
             \ 'rust': [],
-            \ 'psy': [],
             \ }
 " don't use ALE LSP: we already use nvim client
 let g:ale_disable_lsp = 1
 
 " don't use ALE for PsyC for now
-let g:ast_ale_enabled = 0
+" let g:ast_ale_enabled = 0
 
 " vim-asterios #################################################################
 
