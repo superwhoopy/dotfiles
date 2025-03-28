@@ -154,6 +154,7 @@
     "md.obsidian.Obsidian",
     "net.xmind.XMind",
     "org.telegram.desktop",
+    "com.jgraph.drawio.desktop",
   ]
 
 [python]
