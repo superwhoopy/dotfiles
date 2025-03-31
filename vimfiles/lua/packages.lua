@@ -123,7 +123,7 @@ local function nvim_treesitter_fn()
   require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = {
-      "c", "rst", "bash", "javascript", "json", "hjson", "latex", "lua",
+      "c", "rst", "bash", "javascript", "json", "hjson", "lua",
       "powershell", "python", "rust", "tlaplus", "toml", "vimdoc",
     },
 
