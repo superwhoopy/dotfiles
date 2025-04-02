@@ -212,12 +212,19 @@ vim.filetype.add({
   }
 })
 
--- Define gutter symbols for diagnostics
-local signs = { Error = "⛔", Warn = "⚠", Hint = "💡", Info = "ℹ" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+-- Define diagnostics configuration
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "⛔",
+      [vim.diagnostic.severity.WARN] = "⚠",
+      [vim.diagnostic.severity.HINT] = "💡",
+      [vim.diagnostic.severity.INFO] = "ℹ"
+    },
+  },
+  virtual_text  = false, -- hide warn/error messages by default
+  virtual_lines = true,
+})
 
 -- configure PsyC tree-sitter grammar and Language Server
 local treesitter_psyc_path = vim.fn.expand('$HOME/workspace/psyls/tree-sitter-psyc')

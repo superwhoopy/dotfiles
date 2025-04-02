@@ -239,6 +239,8 @@ xmap   s <Plug>VSurround
 
 set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_enabled = 1
+let g:ale_use_neovim_diagnostics_api = 1
+let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_linters = {
             \ 'cpp' : [],
             \ 'c' : [],
@@ -246,6 +248,7 @@ let g:ale_linters = {
             \ 'haskell': ['hls', 'ghc'],
             \ 'python': [],
             \ 'rust': [],
+            \ 'tex': ['chktex'],
             \ }
 " don't use ALE LSP: we already use nvim client
 let g:ale_disable_lsp = 1
@@ -271,12 +274,6 @@ endif
 
 :lua << EOF
 EOF
-
-" pretty signs
-" sign define DiagnosticSignError text=🔴 texthl=DiagnosticSignError linehl= numhl=
-" sign define DiagnosticSignWarn text=⚠ texthl=DiagnosticSignWarn linehl= numhl=
-" sign define DiagnosticSignInfo text=ℹ texthl=DiagnosticSignInfo linehl= numhl=
-" sign define DiagnosticSignHint text=👉 texthl=DiagnosticSignHint linehl= numhl=
 
 " vim-vsnip ####################################################################
 " the base snippet dir is set in init.lua: go see ther
