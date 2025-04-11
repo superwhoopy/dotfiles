@@ -80,7 +80,7 @@ set laststatus=2
 " it
 " let s:colorscheme = 'everforest'
 " let s:colorscheme = 'gruvbox'
-let s:colorscheme = 'tokyonight'
+let s:colorscheme = 'tokyonight-night'
 execute("colorscheme " . s:colorscheme)
 
 " Show tabs, trailing and non-breakable spaces
