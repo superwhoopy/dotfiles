@@ -6,8 +6,8 @@ data:
   machine: "{{ $machine }}"
 
   {{- if eq $machine "work" }}
-  main_monitor: 0
-  secondary_monitor: 1
+  main_monitor: 1
+  secondary_monitor: 0
   {{- else if eq $machine "home" }}
   main_monitor: 1
   secondary_monitor: 0
