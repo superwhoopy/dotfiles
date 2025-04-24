@@ -135,6 +135,7 @@
     "ninja",
     "node",
     "pipx",
+    "plantuml",
     "python",
     "starship",
     "tree-sitter",
