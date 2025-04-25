@@ -73,19 +73,6 @@ FrenchMyRide()
   Hotkey _INSECABLE_SPACE_HK, Toggle
 }
 
-; be sure to toggle on FrenchMyRide mode on startup
-; TODO: Maybe delete entirely, use Linux shortcuts instead?
-; FrenchMyRide()
-
-; Switch on/off FrenchMyRide mode
-FrenchMyRideStatus := true
-^+F::
-{
-  global FrenchMyRideStatus := not FrenchMyRideStatus
-  TrayTip("French My Ride mode: " (FrenchMyRideStatus ? "ON" : "OFF"))
-  FrenchMyRide()
-}
-
 ; ##############################################################################
 ; HOTKEYS
 ; ##############################################################################
@@ -126,18 +113,30 @@ Capslock::
 ; https://cogito-ergo-dev.fr/blog/17445/la-typographie-sous-linux/ )
 <^>!w::  Send("« ")
 <^>!x::  Send(" »")
-<^>!+,:: Send("…")
 <^>!o::  Send("œ")
 <^>!+o:: Send("Œ")
 <^>!+2:: Send("É")
 <^>!+7:: Send("È")
 <^>!+9:: Send("Ç")
 <^>!+0:: Send("À")
-<^>!+Space:: Send(" ")
-<^>!+4:: Send("—")
-<^>!+5:: Send("–")
-<^>!+6:: Send("‑")
 
+; Some characters common to French and English, adapted to both layouts
+; In english layout, there is no AltGr key, instead specify "the right Alt key",
+; which is symbolized with >! (see AHK documentation, Hotkey Modifier Symbols)
+<^>!+Space:: Send(" ")
+>!+Space:: Send(" ")
+
+<^>!+,:: Send("…")
+>!+m:: Send("…")
+
+<^>!+4:: Send("—")
+>!+4:: Send("—")
+
+<^>!+5:: Send("–")
+>!+5:: Send("–")
+
+<^>!+6:: Send("‑")
+>!+6:: Send("‑")
 
 ; Reload this script, useful when debugging/prototyping
 ; #r:: Reload
