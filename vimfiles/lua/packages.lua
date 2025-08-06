@@ -124,11 +124,13 @@ local function nvim_treesitter_fn()
     -- A list of parser names, or "all"
     ensure_installed = {
       "c", "rst", "bash", "javascript", "json", "hjson", "lua",
-      "powershell", "python", "rust", "tlaplus", "toml", "vimdoc",
+      "markdown", "powershell", "python", "rust", "tlaplus", "toml", "vimdoc",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
+
+    auto_install = false,
 
     -- List of parsers to ignore installing (for "all")
     -- ignore_install = { "all" },
@@ -141,7 +143,7 @@ local function nvim_treesitter_fn()
       -- example if you want to disable highlighting for the `tex` filetype, you
       -- need to include `latex` in this list as this is the name of the parser)
       -- list of language that will be disabled
-      disable = { "markdown", "vimdoc" },
+      -- disable = { "markdown", "vimdoc" },
 
       -- Setting this to true will run `:h syntax` and tree-sitter at the same
       -- time. Set this to `true` if you depend on 'syntax' being enabled (like
