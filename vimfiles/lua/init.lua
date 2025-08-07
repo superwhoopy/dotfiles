@@ -7,6 +7,21 @@ vim.o.winblend = 30
 -- popup-menu default transparency
 vim.o.pumblend = 30
 
+-- colorscheme setting
+local colorschemes = {
+  Night = 'tokyonight-night',
+  Day = 'tokyonight-day',
+}
+-- by default, stick to dark
+vim.cmd("colorscheme " .. colorschemes.Night)
+-- commands to switch from light to dark colorscheme
+for cmdname, colscheme in pairs(colorschemes) do
+  vim.api.nvim_create_user_command(cmdname,
+    'colorscheme ' .. colscheme,
+    { desc = 'Switch to light colorscheme ' .. colscheme, })
+end
+
+
 -- #############################################################################
 -- MAPPINGS
 -- #############################################################################

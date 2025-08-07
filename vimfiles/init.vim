@@ -76,13 +76,6 @@ set termguicolors
 " always have a status line for each window
 set laststatus=2
 
-" set colorscheme once in this variable, and use it for all plugins that require
-" it
-" let s:colorscheme = 'everforest'
-" let s:colorscheme = 'gruvbox'
-let s:colorscheme = 'tokyonight-night'
-execute("colorscheme " . s:colorscheme)
-
 " Show tabs, trailing and non-breakable spaces
 set list
 set listchars=tab:>\ ,trail:-,nbsp:·
