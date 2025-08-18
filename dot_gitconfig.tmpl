@@ -33,7 +33,7 @@
   pager    = less -r
   editor   = nvim
   whitespace = blank-at-eol,blank-at-eof,space-before-tab,tab-in-indent
-  hooksPath = .githooks
+  ; hooksPath = .githooks
   untrackedCache = true
   autocrlf = {{ if eq .chezmoi.os "windows" }}true{{ else }}input{{ end }}
   {{- if eq .chezmoi.os "windows" }}
