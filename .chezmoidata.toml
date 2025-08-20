@@ -55,6 +55,7 @@
     "openjdk",
     "openjdk17",
     "openssl",
+    "pandoc",
     "patch",
     "pdftk",
     "perl",
