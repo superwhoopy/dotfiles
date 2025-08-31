@@ -58,7 +58,7 @@ else
 fi
 alias tlc="java -XX:+UseParallelGC -jar ${_tlatools} -workers auto"
 alias pcal="java -cp ${_tlatools} pcal.trans"
-alias tla2tex="java -cp ${_tlatools} tla2tex.TLA -shade"
+alias tla2tex="java -cp ${_tlatools} tla2tex.TLA -shade -latexCommand lualatex"
 alias sany="java -cp ${_tlatools} tla2sany.SANY"
 
 # psyko
