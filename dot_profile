@@ -25,7 +25,7 @@ fi
 ################################################################################
 
 _texlive="${HOME}/.local/share/texlive/2024/bin/x86_64-linux/"
-export PATH="${HOME}/.local/bin:${HOME}/.local/node_modules/bin:${_texlive}:${PATH}"
+export PATH="${HOME}/.local/bin:${_texlive}:${PATH}"
 unset _texlive
 
 # brew -------------------------------------------------------------------------
