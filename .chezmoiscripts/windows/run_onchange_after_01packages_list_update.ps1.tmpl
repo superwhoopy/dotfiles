@@ -59,8 +59,12 @@ $sh = Join-Path $(scoop prefix msys2) "usr\bin\sh"
 {{- end }}
 
 {{- if .node.npm }}
+Set-StrictMode -Off
 npm install -g {{range .node.npm}}{{ . }} {{end}}
+Set-StrictMode -Version Latest
 {{- end }}
 {{- if .node.windows }}
+Set-StrictMode -Off
 npm install -g {{range .node.windows}}{{ . }} {{end}}
+Set-StrictMode -Version Latest
 {{- end }}
