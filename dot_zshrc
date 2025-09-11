@@ -201,6 +201,19 @@ else
   _warnmsg "Consider installing FzF"
 fi
 
+# opam (ocaml) #################################################################
+if ! _iswin;
+then
+  if _command_exists opam;
+  then
+    [[ ! -r ${HOME}/.opam/opam-init/init.zsh ]] || \
+      source ${HOME}/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+    eval "$(opam env)"
+  else
+    _warnmsg "Consider installing opam"
+  fi
+fi
+
 # ##############################################################################
 
 # prompt user for global upgrade
