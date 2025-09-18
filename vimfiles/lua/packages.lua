@@ -422,15 +422,6 @@ end
 
 -- lspconfig for various languages
 local function lspconfig_fn()
-  -- clangd
-  require'lspconfig'.clangd.setup{}
-
-  -- Rust LS
-  require'lspconfig'.rust_analyzer.setup{}
-
-  -- Vimscript LS
-  require'lspconfig'.vimls.setup{}
-
   -- JSON LS
   --Enable (broadcasting) snippet capability for completion
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -439,19 +430,19 @@ local function lspconfig_fn()
     'vscode-json-language-server' .. (haswin32 and '.cmd' or ''),
     '--stdio'
   }
-  require'lspconfig'.jsonls.setup {
-      capabilities = capabilities,
-      cmd = cmd,
-  }
+  vim.lsp.config('jsonls', {
+    capabilities = capabilities,
+    cmd = cmd,
+  })
 
   -- CSS LS
-  require'lspconfig'.cssls.setup {
+  vim.lsp.config('cssls',{
     capabilities = capabilities,
-  }
+  })
 
   -- Python LS
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-  require'lspconfig'.pylsp.setup{
+  vim.lsp.config('pylsp', {
     settings = {
       pylsp = {
         plugins = {
@@ -464,10 +455,10 @@ local function lspconfig_fn()
       }
     },
     capabilities = capabilities,
-  }
+  })
 
   -- Lua
-  require'lspconfig'.lua_ls.setup {
+  vim.lsp.config('lua_ls', {
     settings = {
       Lua = {
         runtime = {
@@ -490,29 +481,35 @@ local function lspconfig_fn()
         },
       },
     }
-  }
+  })
 
   -- Bash
-  local _bash_opts = {
+  vim.lsp.config('bashls', {
     cmd = {
       "bash-language-server" .. (haswin32 and '.cmd' or ''),
       "start"
     },
-  }
-  require('lspconfig').bashls.setup(_bash_opts)
-
-  -- typescript / javascript
-  require'lspconfig'.ts_ls.setup{}
+  })
 
   -- powershell
   if haswin32 then
-    require'lspconfig'.powershell_es.setup{
+    vim.lsp.config('powershell_es', {
       bundle_path = os.getenv('USERPROFILE') .. '\\.local\\share\\powershell_es',
-    }
+    })
   end
 
-  -- psyc
-  require('lspconfig').psyls.setup({})
+  -- enable all LS
+  vim.lsp.enable({
+    'clangd',
+    'rust_analyzer',
+    'vimls',
+    'jsonls',
+    'cssls',
+    'pylsp',
+    'lua_ls',
+    'bashls',
+    'ts_ls'
+  })
 end
 
 -- #############################################################################
