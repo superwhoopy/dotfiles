@@ -166,19 +166,20 @@
     "icecream",
   ]
 
-[[python.pipx]]
+[[python.tool]]
   pkg = "python-lsp-server"
   opt = "[all]"
+  python = "3.9"
   deps = [
         "python-lsp-ruff",
         "pylsp-rope",
         "pylsp-mypy",
       ]
 
-[[python.pipx]]
+[[python.tool]]
   pkg = "notify-py"
 
-[[python.pipx]]
+[[python.tool]]
   pkg = "meson"
 
 [node]

@@ -42,9 +42,9 @@ python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}
 # install python tools (executable)
   {{- range .python.tool }}
 uv tool install `
-  {{if haskey . "python"}}--python {{.python}}{{end}} `
-  {{range .deps}}--with {{.}} {{end}} `
-  {{.pkg}}{{if haskey . "opt"}}{{.opt}}{{end}}
+  {{if hasKey . "python"}}--python {{.python}}{{end}} `
+  {{if hasKey . "deps"}}{{range .deps}}--with {{.}} {{end}}{{end}} `
+  {{.pkg}}{{if hasKey . "opt"}}{{.opt}}{{end}}
   {{- end }}
 {{- end }}
 
