@@ -20,7 +20,31 @@ function Write-Blue {
   Write-Host $Message -ForegroundColor $color
 }
 
-Write-Chezmoi "SSH Keys & Symbolic links"
+function Add-UserPath {
+    param (
+        [Parameter(Mandatory=$true)]
+        [string[]]$Paths
+    )
+    # Get the current user PATH
+    $currentPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+    foreach ($path in $Paths) {
+        # Skip if the path is already in PATH
+        if ($currentPath -notlike "*$path*") {
+            # Append the new path
+            $newPath = $currentPath + ";" + $path
+            [System.Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+            Write-Host "Added '$path' to user Path."
+        } else {
+            Write-Host "'$path' is already in user Path."
+        }
+    }
+    # Broadcast the environment change to all processes
+    $env:PATH = [System.Environment]::GetEnvironmentVariable("Path", "User")
+}
+
+################################################################################
+
+Write-Chezmoi "First Setup Script (post)"
 
 # refresh Path environment variable, in case a setup script ran before
 $env:Path = `
@@ -29,17 +53,26 @@ $env:Path = `
 
 ################################################################################
 
-# TODO: put this in a Python script common to Windows & Linux instead
+# TODO: put this in a Python script common to Windows & Linux instead?
 Write-Blue "SSH keys verification"
 $ssh_private_key = Join-Path $env:USERPROFILE ".ssh/id_ecdsa"
 if (! (Test-Path $ssh_private_key)) {
-  # generate the SSH key with empty passphrase
-  Write-Blue "No SSH key found: generate one in $ssh_private_key"
-  ssh-keygen -t ecdsa -P '' -f $ssh_private_key
+  # generate the SSH key with empty passphrase - note that ssh-keygen is not in
+  # the PATH at this point
+  Write-Output "No SSH key found: generate one in $ssh_private_key"
+  sh -c "ssh-keygen -t ecdsa -P '' -f `$(cygpath `$USERPROFILE/.ssh/id_ecdsa)"
+} else {
+  Write-Output "SSH key exists - doing nothing"
 }
 
-# TODO: add msys2/ucrt64/bin to PATH
-# [System.Environment]::SetEnvironmentVariable('ResourceGroup','AZ_Resource_Group')
+################################################################################
+
+Write-Blue "Setting global Environment Variables"
+$msys2_bin  = Join-Path $(scoop prefix msys2) "usr/bin"
+$ucrt64_bin = Join-Path $(scoop prefix msys2) "ucrt64/bin"
+$local_bin  = Join-Path $env:USERPROFILE ".local/bin"
+$scoop      = Join-Path $(scoop prefix scoop) "../"
+Add-UserPath -Paths @("$scoop", "$local_bin", "$ucrt64_bin", "$msys2_bin")
 
 ################################################################################
 
@@ -56,11 +89,12 @@ if (Test-Path $destconf) {
       Select-Object -ExpandProperty Target -ErrorAction SilentlyContinue
     if ($linkTarget -eq $srcconf) {
         # If the link already exists, do nothing
+        Write-Output "The link already exists - nothing to do."
     } elseif (-not $linkTarget) {
         Remove-Item $destconf
         New-Item -ItemType SymbolicLink -Path $destconf -Target $srcconf
         Write-Output "File has been replaced with a symbolic link."
-    }
+    } else {}
 } else {
     # If adir/config.json does not exist, create the symbolic link
     New-Item -ItemType SymbolicLink -Path $destconf -Target $srcconf

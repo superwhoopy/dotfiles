@@ -33,6 +33,9 @@ scoop install {{ . }}
 {{- if .scoop.su_packages }}
 sudo scoop install {{ range .scoop.su_packages }}{{ . }} {{ end }}
 {{- end }}
+{{- if .scoop.hold }}
+scoop hold {{ range .scoop.hold }}{{ . }} {{ end }}
+{{- end }}
 
 {{- if .python.pip }}
 python3 -m pip install --user {{range .python.pip}}{{ . }} {{end}}

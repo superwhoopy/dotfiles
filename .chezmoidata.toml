@@ -93,6 +93,9 @@
   su_packages = [
     # "openvpn"
   ]
+  hold = [
+    "msys2",
+  ]
 
 [msys2]
   packages = [

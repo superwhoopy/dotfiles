@@ -2,10 +2,8 @@
 
 ## TODO-List
 
-* Replace pipx with uv tool entirely
-* Correct setup of Python LSP server, with extensions
 * Setup fetching of sensitive files from KeePassXC: require to download the
-    database somewhere on disk first, then get from there:
+    database somewhere on disk first, then get stuff from there?
 * SSH
     * Version known hosts?
 * Windows scripts:
@@ -20,7 +18,6 @@
 * Linux/WSL setup
     * FIND A WAY TO TEST IT (DOCKER?)
     * Setup /etc/hosts
-    * Setup OpenVPN?
     * Install nerdfonts
     * Must be `sudo` to install *brew*: force INTERACTIVE
     * brew dir not in PATH after install, fails everything
@@ -46,5 +43,9 @@ chezmoi init --apply superwhoopy
 ```
 
 ### Linux
+
+TODO
+
+## Test
 
 TODO
