@@ -181,8 +181,10 @@ augroup vimrc
     " auto-resize all windows when GUI or term is resized
     autocmd VimResized * wincmd =
 
-    " disable trailing whitespaces highlighting in terminal windows
-    autocmd TermOpen * DisableWhitespace
+    " disable trailing whitespaces highlighting and spellchecking in terminal
+    " windows
+    autocmd TermOpen * DisableWhitespace nospell
+    autocmd TermOpen * setlocal nospell
     " enter insertion mode immediately when opening/focusing the terminal
     autocmd BufWinEnter,WinEnter term://* startinsert
 augroup END
