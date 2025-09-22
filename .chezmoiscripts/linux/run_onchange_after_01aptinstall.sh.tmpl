@@ -73,19 +73,14 @@ flatpak install --assumeyes {{ range $flatpak_pkgs }}{{ . }} {{ end }}
 python3 -m pip install --user {{ range .python.pip }}{{ . }} {{ end }}
 {{- end }}
 
-{{- if .python.pipx }}
-# install pipx primary packages
-pipx install {{range .python.pipx}}{{ .pkg }}
-      {{- if hasKey . "opt" }}{{ .opt }}{{ end }} {{end}}
-
-  {{- range .python.pipx }}
-    {{- if hasKey . "deps"}}
-# inject dependencies for {{ .pkg }}
-pipx inject {{ .pkg }} {{range .deps}}{{ . }} {{end}}
-    {{- end}}
-  {{- end}}
+{{- if .python.tool }}
+# install python tools (executable)
+{{- range .python.tool }}
+uv tool install \
+  {{if haskey . "python"}}--python {{.python}}{{end}} \
+  {{range .deps}}--with {{.}} {{end}} \
+  {{.pkg}}{{if haskey . "opt"}}{{.opt}}{{end}}
 {{- end }}
-
 
 ################################################################################
 # NODE

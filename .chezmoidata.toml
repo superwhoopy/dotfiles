@@ -59,7 +59,7 @@
     "patch",
     "pdftk",
     "perl",
-    "pipx",
+    # "pipx",
     "plantuml",
     "pwsh",
     "python",

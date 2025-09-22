@@ -14,7 +14,7 @@
     * Google Drive App
     * Environment & PATH manipulation:
         * Append `/ucrt64/bin` to PATH to have a working gcc
-        * Append `$env:USERPROFILE\.local\bin` to PATH for pipx
+        * Append `$env:USERPROFILE\.local\bin` to PATH for uv
         * Setup `SCOOP` environment variable
     * Find a way to prevent msys2 scoop update (auto-freeze?): fucks up everything
 * Linux/WSL setup

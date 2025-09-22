@@ -93,7 +93,7 @@ async def main():
 
         "npm": ('update', '-g'),
 
-        'pipx': ('upgrade-all',),
+        'uv': ('tool', 'upgrade', '--all'),
 
         'rustup': ('update',),
         })
