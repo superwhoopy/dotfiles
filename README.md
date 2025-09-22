@@ -2,14 +2,13 @@
 
 ## TODO-List
 
+* Replace pipx with uv tool entirely
 * Correct setup of Python LSP server, with extensions
 * Setup fetching of sensitive files from KeePassXC: require to download the
     database somewhere on disk first, then get from there:
-    * OpenVPN configuration
 * SSH
     * Version known hosts?
 * Windows scripts:
-    * Get and setup OpenVPN configuration?
     * Install WSL
     * Set symlink authorization
     * Google Drive App
