@@ -11,7 +11,6 @@
     * Set symlink authorization
     * Google Drive App
 * Linux/WSL setup
-    * Setup /etc/hosts
     * Install nerdfonts
     * Try to continue on error in install scripts?
     * Mattermost fails to install with flatpak
