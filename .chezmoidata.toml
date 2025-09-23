@@ -138,7 +138,7 @@
     "neovim",
     "ninja",
     "node",
-    "pipx",
+    # "pipx",
     "plantuml",
     "python",
     "starship",
