@@ -68,11 +68,16 @@ if (! (Test-Path $ssh_private_key)) {
 ################################################################################
 
 Write-Blue "Setting global Environment Variables"
-$msys2_bin  = Join-Path $(scoop prefix msys2) "usr/bin"
 $ucrt64_bin = Join-Path $(scoop prefix msys2) "ucrt64/bin"
 $local_bin  = Join-Path $env:USERPROFILE ".local/bin"
-$scoop      = Join-Path $(scoop prefix scoop) "../"
-Add-UserPath -Paths @("$scoop", "$local_bin", "$ucrt64_bin", "$msys2_bin")
+$scoop      = Resolve-Path (Join-Path $(scoop prefix scoop) "../")
+Add-UserPath -Paths @("$local_bin", "$ucrt64_bin")
+if (-not $env:SCOOP) {
+  Write-Output "Defining SCOOP environment variable to '$scoop'"
+  [System.Environment]::SetEnvironmentVariable("SCOOP", $scoop, "User")
+} else {
+  Write-Output "SCOOP environment variable is already set."
+}
 
 ################################################################################
 
