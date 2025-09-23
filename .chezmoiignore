@@ -36,5 +36,6 @@ AppData
 .glzr
 ctags.d
 .chezmoiscripts/windows/*
+_netrc
 {{ end }}
 key.txt.age

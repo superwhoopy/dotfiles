@@ -1,3 +1,8 @@
+################################################################################
+# CAUTION: this script is not meant to be executed directly, but within and
+# Sandboxed Windows environment.
+################################################################################
+
 # safe PowerShell mode
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest

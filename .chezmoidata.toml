@@ -144,6 +144,7 @@
     "starship",
     "tree-sitter",
     "typescript-language-server",
+    "uv",
     "zoxide",
   ]
   extras = [

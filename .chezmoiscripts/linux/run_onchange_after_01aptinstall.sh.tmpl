@@ -50,6 +50,15 @@ fi
   {{- $brew_pkgs = concat $brew_pkgs .brew.extras }}
 {{- end }}
 {{- if $brew_pkgs }}
+# Source the output of 'brew shellenv' in case we don't have brew environment
+# vaariables set up yet. This typically happens on first setup.
+_brewbin="/home/linuxbrew/.linuxbrew/bin/brew"
+if ! [ -f ${_brewbin} ];
+then
+  echo "Did not find brew executable in '${_brewbin}'!"
+  exit 1
+fi
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install --quiet {{ range $brew_pkgs }}{{ . }} {{ end }}
 {{- end }}
 

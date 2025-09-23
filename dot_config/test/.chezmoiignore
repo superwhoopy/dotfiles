@@ -1,4 +1,5 @@
 {{ if eq .chezmoi.os "linux" }}
 *.ps1
 *.wsb
+*-wsl.*
 {{ end }}
