@@ -183,7 +183,7 @@ augroup vimrc
 
     " disable trailing whitespaces highlighting and spellchecking in terminal
     " windows
-    autocmd TermOpen * DisableWhitespace nospell
+    autocmd TermOpen * DisableWhitespace
     autocmd TermOpen * setlocal nospell
     " enter insertion mode immediately when opening/focusing the terminal
     autocmd BufWinEnter,WinEnter term://* startinsert
