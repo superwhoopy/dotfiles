@@ -63,9 +63,6 @@ vim.keymap.set({ 'n' }, '<Leader>dt', '<Cmd>diffthis<CR>',
 vim.keymap.set({ 'n' }, '<Leader>do', '<Cmd>diffoff!<CR>',
   { desc = 'Disable diff mode globally' })
 
-vim.keymap.set({ 'n' }, '<Leader>np', '<Cmd>NoNeckPain<CR>',
-  { desc = 'Toggle NoNeckPain mode' })
-
 vim.keymap.set({ 'i', 'n' }, '<A-d>', '<Cmd>call utils#DiffSwitch()<CR>',
   { desc = 'Switch diff mode on and off for the current buffer' })
 

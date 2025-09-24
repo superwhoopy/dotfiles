@@ -517,14 +517,14 @@ end
 -- #############################################################################
 
 P.plugins = {
-  'aklt/plantuml-syntax',
+  { 'aklt/plantuml-syntax', ft = { "plantuml" } },
   'azabiong/vim-highlighter',
-  'cespare/vim-toml',
-  'dhruvasagar/vim-table-mode',
+  { 'cespare/vim-toml', ft = { "toml" }},
+  { 'dhruvasagar/vim-table-mode' },
 
-  'dstein64/vim-startuptime', -- profiling: run nvim --startuptime
+  { 'dstein64/vim-startuptime' },
 
-  'editorconfig/editorconfig-vim',
+  { 'editorconfig/editorconfig-vim', ft = { "editorconfig" } },
 
   {'folke/tokyonight.nvim', branch='main'}, -- colorscheme
 
@@ -543,30 +543,24 @@ P.plugins = {
   },
 
   {
-    'ggandor/leap.nvim',
-    init=function()
-      require('leap').set_default_keymaps()
-    end
-  }, -- easymotion-like (s)
-
-  {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = alphanvim_fn,
   },
 
-  'hiphish/jinja.vim',
+  { 'hiphish/jinja.vim', ft = { "jinja" }},
 
   {'hrsh7th/nvim-cmp', config=nvim_cmp_fn},
   'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-nvim-lsp-signature-help',
+  { 'hrsh7th/cmp-nvim-lsp'},
+  { 'hrsh7th/cmp-nvim-lsp-signature-help'},
   'hrsh7th/cmp-vsnip',
   { 'hrsh7th/vim-vsnip' },
   {
     'iamcco/markdown-preview.nvim',
     build = ':call mkdp#util#install()',
-    config = markdown_preview_fn
+    config = markdown_preview_fn,
+    ft = { "markdown" },
   },
   {
     'itchyny/vim-cursorword', -- underline the word under the cursor
@@ -574,24 +568,28 @@ P.plugins = {
   },
   'jeffkreeftmeijer/vim-numbertoggle', -- disable relative line number on
                                        -- disabled buffers
-  'jenterkin/vim-autosource',
-  'jremmen/vim-ripgrep',
+  -- 'jremmen/vim-ripgrep',
   'junegunn/vim-easy-align',
   'justinmk/vim-syntax-extra', -- extraneous enhanced(?) syntax highlighting,
                                -- for C, flex, bison
-  'krono-safe/vim-asterios',
-  'lepture/vim-velocity',
-  'lervag/vimtex',
-  { 'lewis6991/gitsigns.nvim', opts = gitsigns_opts },
+  { 'krono-safe/vim-asterios', ft = { "bgt", "psy" } },
+  { 'lervag/vimtex', ft = {"tex"} },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = gitsigns_opts,
+  },
   'LnL7/vim-nix', -- syntax highlighting
-  'Lokaltog/vim-easymotion',
-  { 'lukas-reineke/indent-blankline.nvim', config = indent_blankline_fn },
+  { 'Lokaltog/vim-easymotion' },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = indent_blankline_fn,
+  },
   'MarcWeber/vim-addon-mw-utils',
-  'martinda/Jenkinsfile-vim-syntax', -- syntax highlighting
-  'majutsushi/tagbar',
+  { 'martinda/Jenkinsfile-vim-syntax', ft = { "Jenkinsfile" } }, -- syntax highlighting
+  { 'majutsushi/tagbar' },
   'morhetz/gruvbox', -- colorscheme
-  'ngg/vim-gn', -- syntax highlighting
-  'NoahTheDuke/vim-just',
+  { 'ngg/vim-gn', ft = {"gn"} }, -- syntax highlighting
+  { 'NoahTheDuke/vim-just', ft = { "just" } },
   'ntpeters/vim-better-whitespace',
 
   {
@@ -601,14 +599,18 @@ P.plugins = {
       "sindrets/diffview.nvim",        -- optional - Diff integration
       "nvim-telescope/telescope.nvim", -- optional
     },
-    config = true
+    config = true,
+    cmd = "Neogit",
   },
 
-  {'neovim/nvim-lspconfig', config=lspconfig_fn},
-  'neovimhaskell/haskell-vim',
+  {'neovim/nvim-lspconfig', config = lspconfig_fn},
+  { 'neovimhaskell/haskell-vim', ft = {"haskell"} },
   'nvim-lua/plenary.nvim',
 
-  {'nvim-lualine/lualine.nvim', opts=lualine_opts},
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = lualine_opts,
+  },
 
   {
     'nvim-neo-tree/neo-tree.nvim',
@@ -617,43 +619,51 @@ P.plugins = {
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim"
     },
-    opts = P.neotree_opts
+    opts = P.neotree_opts,
   },
 
   -- Visual search and replace
   {
     'nvim-pack/nvim-spectre',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
-  {'nvim-telescope/telescope.nvim', config=telescope_fn},
-  'nvim-telescope/telescope-symbols.nvim',
-  'nvim-telescope/telescope-file-browser.nvim',
-  'nvim-telescope/telescope-live-grep-args.nvim',
-  'nvim-telescope/telescope-project.nvim',
-  'nvim-tree/nvim-web-devicons',
+  { 'nvim-telescope/telescope.nvim', config=telescope_fn, lazy = true},
+  { 'nvim-telescope/telescope-symbols.nvim', lazy = true },
+  { 'nvim-telescope/telescope-file-browser.nvim', lazy = true },
+  { 'nvim-telescope/telescope-live-grep-args.nvim', lazy = true },
+  { 'nvim-telescope/telescope-project.nvim', lazy = true },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
 
   {
     'nvim-treesitter/nvim-treesitter',
-    build=':TSUpdate',
-    config=nvim_treesitter_fn
+    build = ':TSUpdate',
+    config = nvim_treesitter_fn,
   },
 
   'psliwka/vim-smoothie', -- smooth scrolling
   "rafamadriz/friendly-snippets", -- snippets
-  'raimon49/requirements.txt.vim', -- syntax highlighting
   'sainnhe/everforest', -- colorscheme
 
-  'sindrets/diffview.nvim',
+  {
+    'sindrets/diffview.nvim',
+    cmd = "DiffviewOpen",
+  },
 
-  {'shortcuts/no-neck-pain.nvim', opts=noneckpain_opts},
+  {
+    'shortcuts/no-neck-pain.nvim',
+    opts=noneckpain_opts,
+    keys = {
+      { "<Leader>nnp", "<cmd>NoNeckPain<cr>", desc = "Toggle NoNeckPain mode" },
+    },
+  },
   -- 'tmhedberg/SimpylFold', -- better Python folding
-  'tomtom/tlib_vim',
-  'tpope/vim-dispatch', -- use :Make instead of :make to run in background
-  'tpope/vim-commentary',
-  'tpope/vim-fugitive',
+  -- 'tomtom/tlib_vim',
+  { 'tpope/vim-dispatch', lazy = true }, -- use :Make instead of :make to run in background
+  { 'tpope/vim-commentary', lazy = true },
+  -- { 'tpope/vim-fugitive', lazy = true },
   'tpope/vim-surround',
-  'w0rp/ale',
+  { 'w0rp/ale' },
   {
     'xvzc/chezmoi.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -663,9 +673,10 @@ P.plugins = {
           watch = true
         }
       }
-    end
+    end,
+    lazy = true,
   },
-  'zchee/vim-flatbuffers', -- syntax highlighting
+  { 'zchee/vim-flatbuffers', ft = "fbs" }, -- syntax highlighting
 
   { url='ssh://git@dev.ks.int:7999/prot/vim-ks.git' },
 }
