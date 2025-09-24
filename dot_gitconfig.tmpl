@@ -106,11 +106,9 @@
 [pull]
   rebase = false
 [credential]
-  helper = {{ if eq .chezmoi.os "windows" }}manager-core
+  helper = {{ if eq .chezmoi.os "windows" }}manager
            {{- else }}libsecret{{ end }}
 {{ if eq .chezmoi.os "windows" -}}
-[credential "helperselector"]
-  selected = manager
 [http]
   sslBackend = openssl
   sslVerify = true
