@@ -72,12 +72,21 @@ end
 -- next character on the first non-blank character on the line above
 function P.ShiftTab()
   local pos = vim.fn.getpos('.')
-  local bufnum = pos[1]
-  local lnum   = pos[2]
-  local col    = pos[3]
+  local bufnum     = pos[1]
+  local lnum       = pos[2]
+  local col        = pos[3]
+
+  -- find the line number of the first non-empty line above the current position
+  local lnum_above = (function()
+    local l = lnum - 1
+    while vim.fn.getline(l) == '' and l > 0 do
+      l = l - 1
+    end
+    return l
+  end)()
 
   local current_line = vim.fn.getline(lnum)
-  local line_above_content = vim.fn.getline(lnum - 1)
+  local line_above_content = vim.fn.getline(lnum_above)
   local spaces_to_insert = ''
   while line_above_content:sub(col, col) == ' ' do
     spaces_to_insert = spaces_to_insert .. ' '
