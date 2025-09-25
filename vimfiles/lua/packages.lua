@@ -654,7 +654,7 @@ P.plugins = {
     'shortcuts/no-neck-pain.nvim',
     opts=noneckpain_opts,
     keys = {
-      { "<Leader>nnp", "<cmd>NoNeckPain<cr>", desc = "Toggle NoNeckPain mode" },
+      { "<Leader>np", "<cmd>NoNeckPain<cr>", desc = "Toggle NoNeckPain mode" },
     },
   },
   -- 'tmhedberg/SimpylFold', -- better Python folding
