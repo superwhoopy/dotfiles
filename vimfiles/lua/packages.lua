@@ -586,6 +586,13 @@ P.plugins = {
   },
   'MarcWeber/vim-addon-mw-utils',
   { 'martinda/Jenkinsfile-vim-syntax', ft = { "Jenkinsfile" } }, -- syntax highlighting
+  {
+    'martineausimon/nvim-lilypond-suite',
+    config = function()
+      require("nvls").setup {}
+    end
+
+  },
   { 'majutsushi/tagbar' },
   'morhetz/gruvbox', -- colorscheme
   { 'ngg/vim-gn', ft = {"gn"} }, -- syntax highlighting
