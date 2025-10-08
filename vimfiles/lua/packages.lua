@@ -415,11 +415,6 @@ local function nvim_cmp_fn()
   })
 end
 
--- markdown preview
-local function markdown_preview_fn()
-  -- nothing for now
-end
-
 -- lspconfig for various languages
 local function lspconfig_fn()
   -- JSON LS
@@ -437,23 +432,6 @@ local function lspconfig_fn()
 
   -- CSS LS
   vim.lsp.config('cssls',{
-    capabilities = capabilities,
-  })
-
-  -- Python LS
-  capabilities = require('cmp_nvim_lsp').default_capabilities()
-  vim.lsp.config('pylsp', {
-    settings = {
-      pylsp = {
-        plugins = {
-          autopep8 = { enabled=false },
-          pyflakes = { enabled=false },
-
-          yapf = { enabled=false },
-          ruff = { enabled=true },
-        }
-      }
-    },
     capabilities = capabilities,
   })
 
