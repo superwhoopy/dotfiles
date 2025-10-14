@@ -42,8 +42,20 @@ local lualine_opts = {
       end,
     },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location', 'searchcount'}
+    lualine_y = {{
+      function()
+        local msg = 'No Active Lsp'
+        local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+        local clients = vim.lsp.get_clients({ bufnr = 0})
+        if next(clients) == nil then
+          return msg
+        end
+        return clients[1].name
+      end,
+      icon = '',
+      -- color = { fg = '#ffffff', gui = 'bold' },
+    }},
+    lualine_z = {'progress', 'location', 'searchcount'}
   },
   inactive_sections = {
     lualine_a = {},
