@@ -42,7 +42,7 @@
     "libreoffice",
     "llvm",
     "lua",
-    "lua-language-server",
+    # "lua-language-server",
     "luarocks",
     "marp",
     "mattermost",
@@ -115,7 +115,7 @@
 
 [apt]
   base = [
-    "clangd",
+    # "clangd",
     "direnv",
     "exuberant-ctags",
     "gcc",
@@ -131,13 +131,13 @@
 
 [brew]
   base = [
-    "bash-language-server",
+    # "bash-language-server",
     "bat",
     "eza",
     "fd",
     "fzf",
     "git-delta",
-    "lua-language-server",
+    # "lua-language-server",
     "neovim",
     "ninja",
     "node",
@@ -146,7 +146,7 @@
     "python",
     "starship",
     "tree-sitter",
-    "typescript-language-server",
+    # "typescript-language-server",
     "uv",
     "zoxide",
   ]
@@ -191,11 +191,11 @@
 
 [node]
   npm = [
-    "vim-language-server",
-    "vscode-langservers-extracted",
+    # "vim-language-server",
+    # "vscode-langservers-extracted",
   ]
   windows = [
-    "bash-language-server",
+    # "bash-language-server",
     "typescript",
-    "typescript-language-server",
+    # "typescript-language-server",
   ]

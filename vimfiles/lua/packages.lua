@@ -429,24 +429,6 @@ end
 
 -- lspconfig for various languages
 local function lspconfig_fn()
-  -- JSON LS
-  --Enable (broadcasting) snippet capability for completion
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  local cmd = {
-    'vscode-json-language-server' .. (haswin32 and '.cmd' or ''),
-    '--stdio'
-  }
-  vim.lsp.config('jsonls', {
-    capabilities = capabilities,
-    cmd = cmd,
-  })
-
-  -- CSS LS
-  vim.lsp.config('cssls',{
-    capabilities = capabilities,
-  })
-
   -- Lua
   vim.lsp.config('lua_ls', {
     settings = {
@@ -473,33 +455,6 @@ local function lspconfig_fn()
     }
   })
 
-  -- Bash
-  vim.lsp.config('bashls', {
-    cmd = {
-      "bash-language-server" .. (haswin32 and '.cmd' or ''),
-      "start"
-    },
-  })
-
-  -- powershell
-  if haswin32 then
-    vim.lsp.config('powershell_es', {
-      bundle_path = os.getenv('USERPROFILE') .. '\\.local\\share\\powershell_es',
-    })
-  end
-
-  -- enable all LS
-  vim.lsp.enable({
-    'clangd',
-    'rust_analyzer',
-    'vimls',
-    'jsonls',
-    'cssls',
-    'pylsp',
-    'lua_ls',
-    'bashls',
-    'ts_ls'
-  })
 end
 
 -- #############################################################################
@@ -584,6 +539,26 @@ P.plugins = {
 
   },
   { 'majutsushi/tagbar' },
+
+  {
+      "mason-org/mason-lspconfig.nvim",
+      opts = {
+          ensure_installed = {
+            "clangd",
+            "rust_analyzer",
+            "lua_ls",
+            "jedi_language_server",
+            "jsonls",
+            "texlab",
+            "powershell_es",
+          },
+          automatic_enable = true,
+      },
+      dependencies = {
+          { "mason-org/mason.nvim", opts = {} },
+          {'neovim/nvim-lspconfig', config = lspconfig_fn},
+      },
+  },
   'morhetz/gruvbox', -- colorscheme
   { 'ngg/vim-gn', ft = {"gn"} }, -- syntax highlighting
   { 'NoahTheDuke/vim-just', ft = { "just" } },
@@ -600,7 +575,6 @@ P.plugins = {
     cmd = "Neogit",
   },
 
-  {'neovim/nvim-lspconfig', config = lspconfig_fn},
   { 'neovimhaskell/haskell-vim', ft = {"haskell"} },
   'nvim-lua/plenary.nvim',
 
