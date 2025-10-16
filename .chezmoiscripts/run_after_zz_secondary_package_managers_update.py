@@ -89,7 +89,10 @@ async def main():
         })
 
     await run_batch({
-        "nvim": ('--headless', "+Lazy! sync", '+qa'),
+        "nvim": ('--headless',
+                 "+Lazy! sync",
+                 "+MasonUpdate",
+                 '+qa'),
 
         "npm": ('update', '-g'),
 
