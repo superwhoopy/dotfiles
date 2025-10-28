@@ -16,64 +16,6 @@ RunAndFocus(cmdStr, optStr:="")
 }
 
 ; ##############################################################################
-; FrenchMyRide Mode
-; ##############################################################################
-
-; insecable space; originally disabled, will be toggled on when calling
-; FrenchMyRide()
-_INSECABLE_SPACE_HK := "^+Space"
-_insecable(*)
-{
-  SendText(" ")
-}
-Hotkey(_INSECABLE_SPACE_HK, _insecable, "Off")
-
-
-FrenchMyRide()
-{
-  ; reminder on modifiers:
-  ;
-  ;   * means no need for an ending character
-  ;   ? means that the hotstring is triggered even inside other words
-  ;   O means the ending character will be removed
-  ;   C means the hotstring is case sensitive
-
-  ; French guillemets, with insecable space
-  _guillemets(*)
-  {
-    SendText("«  »")
-    Send("{Left}{Left}")
-  }
-
-  Toggle := "Toggle"
-
-  Hotstring(":*?:`"`"`"`"", _guillemets, Toggle)
-
-  Hotstring(":?: ?",  " ?" A_EndChar, Toggle)
-  Hotstring(":?: !",  " {!}" A_EndChar, Toggle)
-  Hotstring(":?: `:", " :" A_EndChar, Toggle)
-  Hotstring(":?: `;", " ;" A_EndChar, Toggle)
-  Hotstring(":?C:Ca", "Ça" A_EndChar, Toggle)
-  Hotstring(":?CO:oe", "œ", Toggle)
-  Hotstring(":?CO:OE", "Œ", Toggle)
-
-
-  ; accented characters
-  Hotstring ":*C:`'E", "É",            Toggle
-  Hotstring ":*C:``E", "È",            Toggle
-  Hotstring ":*C:``A", "À",            Toggle
-
-  ; Ellipsis
-  Hotstring ":?:...", "…",            Toggle
-
-  ; tiret large
-  Hotstring ":*?:--- ", "― ",         Toggle
-
-  ; insecable space
-  Hotkey _INSECABLE_SPACE_HK, Toggle
-}
-
-; ##############################################################################
 ; HOTKEYS
 ; ##############################################################################
 
@@ -120,11 +62,14 @@ Capslock::
 <^>!+9:: Send("Ç")
 <^>!+0:: Send("À")
 
-; Some characters common to French and English, adapted to both layouts
-; In english layout, there is no AltGr key, instead specify "the right Alt key",
+; Some characters common to French and English, adapted to both layouts In
+; english layout, there is no AltGr key, instead specify "the right Alt key",
 ; which is symbolized with >! (see AHK documentation, Hotkey Modifier Symbols)
-<^>!+Space:: Send(" ")
->!+Space:: Send(" ")
+
+; Narrow non-breaking space (espace fine)
+<^>!+Space:: Send("{U+202F}")
+; Non-breaking space
+<!Space:: Send("{U+00a0}")
 
 <^>!+,:: Send("…")
 >!+m:: Send("…")
@@ -140,6 +85,19 @@ Capslock::
 
 ; Reload this script, useful when debugging/prototyping
 ; #r:: Reload
+
+; Reload zebar
+#+z::
+{
+  if (PID := ProcessExist("zebar.exe")) {
+    TrayTip("Restarting Zebar", , "Iconi")
+    ProcessClose(PID)
+    ProcessWaitClose(PID)
+  } else {
+    TrayTip("Launching Zebar", , "Iconi")
+  }
+  Run("cmd /c zebar.exe", , "Hide")
+}
 
 ; ##############################################################################
 ; HOTSTRINGS
@@ -160,4 +118,3 @@ Capslock::
 ;   #    for Meta
 ;   <^>! for AltGr
 
-::astetech::ASTERIOS Technologies
