@@ -78,7 +78,7 @@ unset ZSH_THEME
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -109,9 +109,9 @@ HISTFILE="${HOME}/.cache/zsh/.zsh_history"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(vi-mode colored-man-pages zsh-syntax-highlighting)
 
-_iswin || plugins+=(direnv)
+_iswin || plugins+=(direnv zsh-autosuggestions)
 
 # put zcompdump file away from the root of the home dir
 export ZSH_COMPDUMP=${HOME}/.cache/zsh/.zcompdump-${HOST}
