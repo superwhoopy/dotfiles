@@ -131,8 +131,8 @@ window_rules:
 
       # Ignore rules for various 3rd-party apps.
       - window_process: { equals: 'PowerToys.PowerAccent' }
-      - window_process: { equals: 'Lively' }
-        window_class: { regex: 'HwndWrapper*' }
+      - window_process: { equals: 'PowerToys.PowerAccent' }
+      - window_process: { equals: 'wfica32' }
 
   - commands: ["move --workspace 5"]
     match:
