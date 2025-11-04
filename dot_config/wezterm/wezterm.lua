@@ -4,6 +4,7 @@ local config = wezterm.config_builder()
 config.color_scheme = 'OneHalfDark'
 config.font = wezterm.font('UbuntuMono Nerd Font')
 config.font_size = 11
+config.adjust_window_size_when_changing_font_size = false
 
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
@@ -11,57 +12,73 @@ config.tab_bar_at_bottom = true
 local IS_WIN = (wezterm.target_triple == 'x86_64-pc-windows-msvc')
 local IS_NUX = (wezterm.target_triple == 'x86_64-unknown-linux-gnu')
 
+local osconfig
+if IS_WIN then
+  osconfig = require 'win'
+elseif IS_NUX then
+  osconfig = require 'nux'
+end
+
 -- #############################################################################
 
-local SCOOP_DIR = os.getenv("SCOOP") or ''
-local UCRT64_zsh = {
-  label = 'UCRT64 zsh',
+config.default_prog = osconfig.default_prog
+config.set_environment_variables = osconfig.set_environment_variables
 
-  -- The argument array specifying the command and its arguments.
-  -- If omitted, the default program for the target domain will be
-  -- spawned.
-  args = {
-    SCOOP_DIR .. '/apps/msys2/current/usr/bin/zsh.exe',
-    '--login',
-    '--interactive',
-  },
-
-  -- The current working directory to set for the command.
-  -- If omitted, wezterm will infer a value based on the active pane
-  -- at the time this action is triggered.  If the active pane
-  -- matches the domain specified in this `SpawnCommand` instance
-  -- then the current working directory of the active pane will be
-  -- used.
-  -- If the current working directory cannot be inferred then it
-  -- will typically fall back to using the home directory of
-  -- the current user.
-  -- cwd = '/some/path',
-
-  -- Sets additional environment variables in the environment for
-  -- this command invocation.
-  set_environment_variables = {
-    MSYS = 'winsymlinks:nativestrict',
-    MSYS2_PATH_TYPE = 'inherit',
-    MSYSTEM = 'UCRT64',
-    MSYSCON = 'defterm',
-    CHERE_INVOKING = 'enabled_from_arguments',
-  },
-}
-
-config.default_prog = UCRT64_zsh.args
-config.set_environment_variables = UCRT64_zsh.set_environment_variables
-
-config.launch_menu = {
-  UCRT64_zsh
-}
+config.launch_menu = osconfig.launch_menu
 
 -- #############################################################################
 
 config.keys = {
-  { key = 't', mods = 'CTRL|SHIFT',
+  -- NEW TAB
+  {
+    key = 't', mods = 'CTRL|SHIFT',
     action = wezterm.action.ShowLauncherArgs(
-      { flags = 'FUZZY|TABS|LAUNCH_MENU_ITEMS' })
-  }
+      { flags = 'TABS|LAUNCH_MENU_ITEMS' })
+  },
+
+  -- SPLIT
+  {
+    key = 'i', mods = 'CTRL|SHIFT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+  },
+  {
+    key = 'e', mods = 'CTRL|SHIFT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
+  },
+
+  -- MOVE AROUND AND ZOOM
+  {
+    key = 'h', mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Left',
+  },
+  {
+    key = 'j', mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Down',
+  },
+  {
+    key = 'k', mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Up',
+  },
+  {
+    key = 'l', mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection 'Right',
+  },
+  {
+    key = 'z', mods = 'CTRL|SHIFT',
+    action = wezterm.action.TogglePaneZoomState
+  },
+
+  -- CLOSE
+  {
+    key = 'w', mods = 'CTRL|SHIFT',
+    action = wezterm.action.CloseCurrentPane { confirm = false }
+  },
+
+  -- fullscreen
+  {
+    key = 'F11',
+    action = wezterm.action.ToggleFullScreen
+  },
 }
 
 return config
