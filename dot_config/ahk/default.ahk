@@ -27,7 +27,7 @@ RunAndFocus(cmdStr, optStr:="")
 #b:: Run("firefox", , "Max")
 
 ; Windows Terminal
-#Enter:: RunAndFocus("wt")
+#Enter:: RunAndFocus("wezterm-gui")
 
 ; Switch keyboard layout
 Capslock::
