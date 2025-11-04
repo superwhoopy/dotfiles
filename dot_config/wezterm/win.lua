@@ -56,6 +56,24 @@ config.launch_menu = {
       'Ubuntu'
     }
   },
+  {
+    label = 'PowerShell (Core) 7',
+    args = {
+      'pwsh.exe'
+    }
+  },
+  {
+    label = 'Windows PowerShell',
+    args = {
+      'powershell.exe'
+    }
+  },
+  {
+    label = 'Cmd',
+    args = {
+      'cmd.exe'
+    }
+  },
   msys_profile('MINGW64'),
   msys_profile('MSYS'),
 }
