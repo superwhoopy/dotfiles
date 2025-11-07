@@ -16,6 +16,11 @@ alias ll="eza -al --icons --group-directories-first"
 alias la="eza -a --git --icons --group-directories-first"
 alias lt="eza --tree --git --icons --group-directories-first"
 
+# alias l="ls --color --group-directories-first"
+# alias ll="ls --color -al --group-directories-first"
+# alias la="ls --color -a --group-directories-first"
+# alias lt="ls --color --group-directories-first"
+
 alias grep='grep --color'
 alias du='/usr/bin/du -hc --max-depth=1'
 alias df='df -h'
@@ -147,27 +152,8 @@ function _okmsg() {
   printf "\033[1;32m%s\033[0m\n" "${*}"
 }
 
-function _pacmanupdate() (
-  set -euo pipefail
-  pacman="pacman"
-  ${pacman} -Syu --noconfirm # update all
-  orphans=$(${pacman} -Qtdq || exit 0)
-  [ "${orphans}" ] && { \
-    echo ${orphans} | xargs ${pacman} -Rns --noconfirm \
-  }
-  ${pacman} -Sc --noconfirm # clear cache
-)
-
-function _scoopupdate() (
-  set -euo pipefail
-  scoop update
-  scoop update "*"
-  scoop cleanup "*"
-  scoop cache rm -a
-)
-
-function fullupdate() (
-  set -euo pipefail
+function fullupdate() {
+  ( set -euo pipefail
   _lastupdate_file="${HOME}/.config/.last_update"
   _pendingupdate_lockfile="${HOME}/.config/.pending_fullupdate"
 
@@ -188,7 +174,8 @@ function fullupdate() (
   rm -f "${_pendingupdate_lockfile}"
 
   _okmsg "All done."
-)
+  )
+}
 
 function maybeupdate()
 {
