@@ -28,56 +28,58 @@ config.launch_menu = osconfig.launch_menu
 
 -- #############################################################################
 
+local act = wezterm.action
+
 config.keys = {
   -- NEW TAB
   {
     key = 't', mods = 'CTRL|SHIFT',
-    action = wezterm.action.ShowLauncherArgs(
+    action = act.ShowLauncherArgs(
       { flags = 'TABS|LAUNCH_MENU_ITEMS' })
   },
 
   -- SPLIT
   {
     key = 'i', mods = 'CTRL|SHIFT',
-    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' }
+    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   {
     key = 'e', mods = 'CTRL|SHIFT',
-    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' }
+    action = act.SplitVertical { domain = 'CurrentPaneDomain' }
   },
 
   -- MOVE AROUND AND ZOOM
   {
     key = 'h', mods = 'CTRL|SHIFT',
-    action = wezterm.action.ActivatePaneDirection 'Left',
+    action = act.ActivatePaneDirection 'Left',
   },
   {
     key = 'j', mods = 'CTRL|SHIFT',
-    action = wezterm.action.ActivatePaneDirection 'Down',
+    action = act.ActivatePaneDirection 'Down',
   },
   {
     key = 'k', mods = 'CTRL|SHIFT',
-    action = wezterm.action.ActivatePaneDirection 'Up',
+    action = act.ActivatePaneDirection 'Up',
   },
   {
     key = 'l', mods = 'CTRL|SHIFT',
-    action = wezterm.action.ActivatePaneDirection 'Right',
+    action = act.ActivatePaneDirection 'Right',
   },
   {
     key = 'z', mods = 'CTRL|SHIFT',
-    action = wezterm.action.TogglePaneZoomState
+    action = act.TogglePaneZoomState
   },
 
   -- CLOSE
   {
     key = 'w', mods = 'CTRL|SHIFT',
-    action = wezterm.action.CloseCurrentPane { confirm = false }
+    action = act.CloseCurrentPane { confirm = false }
   },
 
   -- fullscreen
   {
     key = 'F11',
-    action = wezterm.action.ToggleFullScreen
+    action = act.ToggleFullScreen
   },
 }
 

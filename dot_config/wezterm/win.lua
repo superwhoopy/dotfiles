@@ -4,7 +4,7 @@ local SCOOP_DIR = os.getenv("SCOOP") or ''
 
 local function msys_profile(profile)
   if type(profile) == "string" then
-    profile = { system = profile, shell = "zsh" }
+    profile = { system = profile, shell = "zsh", args = nil }
   end
 
   return {
@@ -13,7 +13,7 @@ local function msys_profile(profile)
     -- The argument array specifying the command and its arguments.
     -- If omitted, the default program for the target domain will be
     -- spawned.
-    args = {
+    args = profile.args or {
       SCOOP_DIR .. '/apps/msys2/current/usr/bin/' .. profile.shell .. '.exe',
       '--login',
       '--interactive',
@@ -43,8 +43,8 @@ local function msys_profile(profile)
 end
 
 local UCRT64_zsh = msys_profile('UCRT64')
-config.default_prog = UCRT64_zsh.args
-config.set_environment_variables = UCRT64_zsh.set_environment_variables
+-- config.default_prog = UCRT64_zsh.args
+-- config.set_environment_variables = UCRT64_zsh.set_environment_variables
 
 config.launch_menu = {
   UCRT64_zsh,
@@ -76,6 +76,10 @@ config.launch_menu = {
   },
   msys_profile('MINGW64'),
   msys_profile('MSYS'),
+  msys_profile({ system = 'MINGW32', shell = 'bash (Core)', args = {
+    'C:/msys32-core/usr/bin/bash.exe',
+    '--login',
+  }})
 }
 
 return config
