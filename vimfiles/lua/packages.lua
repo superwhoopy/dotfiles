@@ -614,6 +614,7 @@ P.plugins = {
 
   'psliwka/vim-smoothie', -- smooth scrolling
   "rafamadriz/friendly-snippets", -- snippets
+  "rcarriga/nvim-notify",
   'sainnhe/everforest', -- colorscheme
 
   {
