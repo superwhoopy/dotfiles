@@ -14,7 +14,8 @@ end
 -- #############################################################################
 
 config.color_scheme = 'OneHalfDark'
-config.font = IS_WIN and wezterm.font('UbuntuMono Nerd Font')
+config.font = IS_WIN
+  and wezterm.font('UbuntuMono Nerd Font')
   or wezterm.font('UbuntuMono')
 config.font_size = 11
 config.adjust_window_size_when_changing_font_size = false

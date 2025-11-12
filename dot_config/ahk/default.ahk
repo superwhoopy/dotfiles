@@ -27,7 +27,7 @@ RunAndFocus(cmdStr, optStr:="")
 #b:: Run("firefox", , "Max")
 
 ; Windows Terminal
-#Enter:: RunAndFocus("wezterm-gui")
+#Enter:: Run("wezterm start -- msys2.bat -ucrt64 -defterm -here -full-path -shell zsh", , "Hide")
 
 ; Switch keyboard layout
 Capslock::

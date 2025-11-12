@@ -60,8 +60,19 @@ local UNSET_DEFAULT_ENV_VARS = (function ()
   return env
 end)()
 
-config.default_prog = UCRT64_zsh.args
-config.set_environment_variables = UCRT64_zsh.set_environment_variables
+-- config.default_prog = UCRT64_zsh.args
+config.default_prog = {
+  "cmd.exe",
+  -- "/C msys2.bat",
+  -- "msys2.bat",
+  -- "-ucrt64",
+  -- "-defterm",
+  -- "-here",
+  -- "-full-path",
+  -- "-shell",
+  -- "zsh",
+}
+-- config.set_environment_variables = UCRT64_zsh.set_environment_variables
 
 -- TODO: it looks like set_environment_variables is broken in the launcher menu:
 -- cannot override an environment variable that was defined through
