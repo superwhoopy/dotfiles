@@ -1,14 +1,6 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.color_scheme = 'OneHalfDark'
-config.font = wezterm.font('UbuntuMono Nerd Font')
-config.font_size = 11
-config.adjust_window_size_when_changing_font_size = false
-
-config.hide_tab_bar_if_only_one_tab = true
-config.tab_bar_at_bottom = true
-
 local IS_WIN = (wezterm.target_triple == 'x86_64-pc-windows-msvc')
 local IS_NUX = (wezterm.target_triple == 'x86_64-unknown-linux-gnu')
 
@@ -18,6 +10,17 @@ if IS_WIN then
 elseif IS_NUX then
   osconfig = require 'nux'
 end
+
+-- #############################################################################
+
+config.color_scheme = 'OneHalfDark'
+config.font = IS_WIN and wezterm.font('UbuntuMono Nerd Font')
+  or wezterm.font('UbuntuMono')
+config.font_size = 11
+config.adjust_window_size_when_changing_font_size = false
+
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 
 -- #############################################################################
 

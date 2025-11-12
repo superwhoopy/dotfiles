@@ -42,9 +42,26 @@ local function msys_profile(profile)
   }
 end
 
+
 local UCRT64_zsh = msys_profile('UCRT64')
--- config.default_prog = UCRT64_zsh.args
--- config.set_environment_variables = UCRT64_zsh.set_environment_variables
+local MINGW32_core = msys_profile {
+  system = 'MINGW32',
+  shell = 'bash (Core)',
+  args = {
+    'C:/msys32-core/usr/bin/bash.exe',
+    '--login',
+  }
+}
+local UNSET_DEFAULT_ENV_VARS = (function ()
+  local env = {}
+  for k in pairs(UCRT64_zsh.set_environment_variables) do
+    env[k] = ""
+  end
+  return env
+end)()
+
+config.default_prog = UCRT64_zsh.args
+config.set_environment_variables = UCRT64_zsh.set_environment_variables
 
 config.launch_menu = {
   UCRT64_zsh,
@@ -54,32 +71,27 @@ config.launch_menu = {
       'C:/Windows/system32/wsl.exe',
       '-d',
       'Ubuntu'
-    }
+    },
+    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   {
     label = 'PowerShell (Core) 7',
-    args = {
-      'pwsh.exe'
-    }
+    args = { 'pwsh.exe' },
+    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   {
     label = 'Windows PowerShell',
-    args = {
-      'powershell.exe'
-    }
+    args = { 'powershell.exe' },
+    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   {
     label = 'Cmd',
-    args = {
-      'cmd.exe'
-    }
+    args = { 'cmd.exe' },
+    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   msys_profile('MINGW64'),
   msys_profile('MSYS'),
-  msys_profile({ system = 'MINGW32', shell = 'bash (Core)', args = {
-    'C:/msys32-core/usr/bin/bash.exe',
-    '--login',
-  }})
+  MINGW32_core,
 }
 
 return config
