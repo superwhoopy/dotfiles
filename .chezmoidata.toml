@@ -117,6 +117,10 @@
     "ucrt64/mingw-w64-ucrt-x86_64-gcc",
   ]
 
+# NOTE: 'extras' is a special key to identify packages that should not be
+# installed in a WSL2 environment, but should be installed in any other Linux
+# environment
+
 [apt]
   base = [
     # "clangd",
@@ -134,6 +138,9 @@
   ]
 
 [brew]
+  tap = [
+    'wezterm/wezterm-linuxbrew',
+  ]
   base = [
     # "bash-language-server",
     "bat",
@@ -152,6 +159,7 @@
     "tree-sitter",
     # "typescript-language-server",
     "uv",
+    "wezterm/wezterm-linuxbrew/wezterm",
     "zoxide",
   ]
   extras = [

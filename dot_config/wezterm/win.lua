@@ -63,6 +63,10 @@ end)()
 config.default_prog = UCRT64_zsh.args
 config.set_environment_variables = UCRT64_zsh.set_environment_variables
 
+-- TODO: it looks like set_environment_variables is broken in the launcher menu:
+-- cannot override an environment variable that was defined through
+-- config.set_environment_variables?
+
 config.launch_menu = {
   UCRT64_zsh,
   {
