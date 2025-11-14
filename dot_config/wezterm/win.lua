@@ -1,4 +1,5 @@
 local config = {}
+local wezterm = require 'wezterm'
 
 local SCOOP_DIR = os.getenv("SCOOP") or ''
 
@@ -44,6 +45,7 @@ end
 
 
 local UCRT64_zsh = msys_profile('UCRT64')
+
 local MINGW32_core = msys_profile {
   system = 'MINGW32',
   shell = 'bash (Core)',
@@ -52,31 +54,6 @@ local MINGW32_core = msys_profile {
     '--login',
   }
 }
-local UNSET_DEFAULT_ENV_VARS = (function ()
-  local env = {}
-  for k in pairs(UCRT64_zsh.set_environment_variables) do
-    env[k] = ""
-  end
-  return env
-end)()
-
--- config.default_prog = UCRT64_zsh.args
-config.default_prog = {
-  "cmd.exe",
-  -- "/C msys2.bat",
-  -- "msys2.bat",
-  -- "-ucrt64",
-  -- "-defterm",
-  -- "-here",
-  -- "-full-path",
-  -- "-shell",
-  -- "zsh",
-}
--- config.set_environment_variables = UCRT64_zsh.set_environment_variables
-
--- TODO: it looks like set_environment_variables is broken in the launcher menu:
--- cannot override an environment variable that was defined through
--- config.set_environment_variables?
 
 config.launch_menu = {
   UCRT64_zsh,
@@ -87,26 +64,41 @@ config.launch_menu = {
       '-d',
       'Ubuntu'
     },
-    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   {
     label = 'PowerShell (Core) 7',
     args = { 'pwsh.exe' },
-    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   {
     label = 'Windows PowerShell',
     args = { 'powershell.exe' },
-    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   {
     label = 'Cmd',
     args = { 'cmd.exe' },
-    set_environment_variables = UNSET_DEFAULT_ENV_VARS,
   },
   msys_profile('MINGW64'),
   msys_profile('MSYS'),
   MINGW32_core,
 }
+
+-- CAUTION, WIZARDRY AHEAD #####################################################
+--
+-- We don't want to set the default_prog/set_environment_variables to match
+-- UCRT64_zsh, because if we do that all the spawn process will share the same
+-- environment variables. In particular, the MSYSTEM variable will be forwarded
+-- to all children processes (MSYS or not, btw). To prevent this from happening,
+-- we keep a default default_prog (cmd), but instead we define a callback on the
+-- event 'gui-startup', to spawn the command that we want. This way, all the
+-- processes spawn through SpawnCommand (e.g. when splitting into pane) will
+-- only inherit from the default environment variables, not from those of MSYS2.
+-- #############################################################################
+
+config._default_spawn_cmd = UCRT64_zsh
+
+wezterm.on('gui-startup', function(_)
+  wezterm.mux.spawn_window(config._default_spawn_cmd)
+end)
+
 
 return config
