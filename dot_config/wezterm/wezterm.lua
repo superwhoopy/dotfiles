@@ -34,7 +34,7 @@ config.launch_menu = osconfig.launch_menu
 -- `InputSelector` action, identical to the choices listed in the launch_menu
 local launch_menu_choices = (function ()
   local ret = {}
-  for i, v in ipairs(config.launch_menu) do
+  for i, v in ipairs(config.launch_menu or {}) do
     table.insert (ret, {
       label = v.label,
       id = tostring(i),
