@@ -43,7 +43,6 @@
     "libreoffice",
     "llvm",
     "lua",
-    # "lua-language-server",
     "luarocks",
     "marp",
     "mattermost",
@@ -62,7 +61,6 @@
     "patch",
     "pdftk",
     "perl",
-    # "pipx",
     "plantuml",
     "pwsh",
     "python",
@@ -89,7 +87,7 @@
     "wezterm",
     "wget",
     "windirstat",
-    "windows-terminal",
+    # "windows-terminal",
     "xmind",
     "xnview",
     "yazi",
@@ -142,22 +140,18 @@
     'wezterm/wezterm-linuxbrew',
   ]
   base = [
-    # "bash-language-server",
     "bat",
     "eza",
     "fd",
     "fzf",
     "git-delta",
-    # "lua-language-server",
     "neovim",
     "ninja",
     "node",
-    # "pipx",
     "plantuml",
     "python",
     "starship",
     "tree-sitter",
-    # "typescript-language-server",
     "uv",
     "wezterm/wezterm-linuxbrew/wezterm",
     "zoxide",
@@ -203,11 +197,7 @@
 
 [node]
   npm = [
-    # "vim-language-server",
-    # "vscode-langservers-extracted",
   ]
   windows = [
-    # "bash-language-server",
     "typescript",
-    # "typescript-language-server",
   ]
