@@ -73,8 +73,9 @@ config.keys = {
   -- NEW TAB
   {
     key = 't', mods = 'CTRL|SHIFT',
-    action = act.ShowLauncherArgs(
-      { flags = 'TABS|LAUNCH_MENU_ITEMS' })
+    action = config.launch_menu == nil
+      and act.SpawnTab('CurrentPaneDomain')
+      or  act.ShowLauncherArgs({ flags = 'TABS|LAUNCH_MENU_ITEMS' })
   },
 
   -- SPLIT
