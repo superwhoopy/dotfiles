@@ -104,7 +104,17 @@ config.keys = {
     },
   },
 
-  -- MOVE AROUND AND ZOOM
+  -- SCROLLING
+  {
+    key = 'u', mods = 'CTRL|SHIFT',
+    action = act.ScrollByPage(-0.5)
+  },
+  {
+    key = 'd', mods = 'CTRL|SHIFT',
+    action = act.ScrollByPage(0.5)
+  },
+
+  -- MOVE AROUND PANES AND ZOOM
   {
     key = 'h', mods = 'CTRL|SHIFT',
     action = act.ActivatePaneDirection 'Left',
