@@ -12,7 +12,7 @@ tags
 git-ci.tmp
 .idea
 .vscode
-.venv
+.venv*
 git-ci.txt
 .direnv
 .envrc
