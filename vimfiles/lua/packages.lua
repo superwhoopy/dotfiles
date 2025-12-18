@@ -130,7 +130,7 @@ end
 
 -- NEOGIT ----------------------------------------------------------------------
 
-local neogit_opts = {
+P.neogit_opts = {
   process_spinner = true,
   kind = "float",
   commit_editor = {
@@ -557,8 +557,9 @@ P.plugins = {
             "clangd",
             "rust_analyzer",
             "lua_ls",
-            "jedi_language_server",
             "jsonls",
+            "ruff",
+            "ty",
             "texlab",
             "powershell_es",
           },
