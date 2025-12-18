@@ -128,6 +128,16 @@ local function telescope_fn()
   require("telescope").load_extension('chezmoi')
 end
 
+-- NEOGIT ----------------------------------------------------------------------
+
+local neogit_opts = {
+  process_spinner = true,
+  kind = "float",
+  commit_editor = {
+    kind = "float",
+    staged_diff_split_kind = "vsplit",
+  },
+}
 
 -- TREESITTER ------------------------------------------------------------------
 
@@ -572,6 +582,7 @@ P.plugins = {
       "nvim-telescope/telescope.nvim", -- optional
     },
     config = true,
+    opts = P.neogit_opts,
     cmd = "Neogit",
   },
 
