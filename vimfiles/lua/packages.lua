@@ -132,9 +132,9 @@ end
 
 P.neogit_opts = {
   process_spinner = true,
-  kind = "float",
+  kind = "floating",
   commit_editor = {
-    kind = "float",
+    kind = "floating",
     staged_diff_split_kind = "vsplit",
   },
 }
