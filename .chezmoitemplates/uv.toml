@@ -2,7 +2,7 @@
 [[index]]
 name = "ks"
 url = "http://dev.ks.int/store/repository/pypi/simple"
-publish_url = "http://dev.ks.int/store/repository/pypi/simple"
+publish-url = "http://dev.ks.int/store/repository/pypi/simple"
 
 # always use system Python interpreter - do not install managed interpreters –
 # at least for now...
