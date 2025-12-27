@@ -239,7 +239,7 @@ let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_linters = {
             \ 'cpp' : [],
             \ 'c' : [],
-            \ 'sh': ['shellcheck'],
+            \ 'sh': [],
             \ 'haskell': ['hls', 'ghc'],
             \ 'python': [],
             \ 'rust': [],
