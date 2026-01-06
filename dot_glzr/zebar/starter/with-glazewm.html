@@ -35,6 +35,7 @@
         audio: { type: 'audio' },
         network: { type: 'network' },
         glazewm: { type: 'glazewm' },
+        keyboard: { type: 'keyboard' },
         cpu: { type: 'cpu' },
         date: { type: 'date', formatting: 'EEE d MMM t' },
         battery: { type: 'battery' },
@@ -207,19 +208,10 @@
                 </div>
               )}
 
-              {output.audio?.defaultPlaybackDevice && (
-                <div class="memory">
-                  <i className="nf nf-seti-audio"></i>
-                  {truncate(output.audio.defaultPlaybackDevice.name, 10)}
-                </div>
-              )}
-
-              {output.audio?.defaultRecordingDevice && (
-                <div class="chip">
-                  <i className="nf nf-cod-mic_filled"></i>
-                  {truncate(output.audio.defaultRecordingDevice.name, 10)}
-                </div>
-              )}
+              <div class="keyboard">
+                <i class="nf nf-md-keyboard"></i>
+                {output.keyboard?.layout}
+              </div>
 
             </div>
           </div>
