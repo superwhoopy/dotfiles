@@ -641,8 +641,6 @@ P.plugins = {
       { "<Leader>np", "<cmd>NoNeckPain<cr>", desc = "Toggle NoNeckPain mode" },
     },
   },
-  -- 'tmhedberg/SimpylFold', -- better Python folding
-  -- 'tomtom/tlib_vim',
   { 'tpope/vim-dispatch', lazy = true }, -- use :Make instead of :make to run in background
   { 'tpope/vim-commentary', lazy = true },
   -- { 'tpope/vim-fugitive', lazy = true },
