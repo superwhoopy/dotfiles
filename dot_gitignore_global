@@ -24,3 +24,5 @@ pyrightconfig.json
 .nvim.lua
 compile_commands.json
 .cache/clangd
+ruff.toml
+ty.toml
