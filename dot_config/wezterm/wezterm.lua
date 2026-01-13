@@ -13,7 +13,7 @@ end
 
 -- #############################################################################
 
-config.color_scheme = 'OneHalfDark'
+config.color_scheme = 'Afterglow (Gogh)'
 config.font = IS_WIN
   and wezterm.font('UbuntuMono Nerd Font')
   or wezterm.font('UbuntuMono')
