@@ -231,8 +231,7 @@ let g:easy_align_delimiters = {
 xmap   s <Plug>VSurround
 
 " ALE ##########################################################################
-
-set omnifunc=ale#completion#OmniFunc
+"set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_enabled = 1
 let g:ale_use_neovim_diagnostics_api = 1
 let g:ale_virtualtext_cursor = 'disabled'
@@ -248,8 +247,8 @@ let g:ale_linters = {
 " don't use ALE LSP: we already use nvim client
 let g:ale_disable_lsp = 1
 
-" don't use ALE for PsyC for now
-" let g:ast_ale_enabled = 0
+" disable ALE altogether for now
+let g:ast_ale_enabled = 0
 
 " vim-asterios #################################################################
 
