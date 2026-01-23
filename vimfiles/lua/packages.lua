@@ -398,6 +398,53 @@ P.neotree_opts = {
   buffers = { follow_current_file = { enabled = true } }
 }
 
+-- SNACKS ----------------------------------------------------------------------
+
+-- @type snacks.Config
+local snacks_opts = {
+    bigfile = { enabled = true },
+    -- dashboard = { enabled = true },
+    -- explorer = { enabled = true },
+    gitbrowse = {
+      enabled = true,
+      remote_patterns = {
+        {
+          "^ssh://git@dev.ks.int:7999/~(.*)/(.*).git",
+          "dev.ks.int/stash/users/%1/repos/%2"
+        },
+        {
+          "^ssh://git@dev.ks.int:7999/(.*)/(.*).git",
+          "dev.ks.int/stash/projects/%1/repos/%2"
+        },
+      },
+      url_patterns = {
+        ["dev.ks.int"] = {
+          branch = "/browse?at={branch}",
+          file = "/browse/{file}?at={branch}#{line_start}-{line_end}",
+          permalink = "/browse/{file}?at={commit}#{line_start}-{line_end}",
+          commit = "/commits/{commit}",
+        }
+      }
+    },
+    -- indent = { enabled = true },
+    input = { enabled = true },
+    picker = { enabled = true },
+    notifier = { enabled = true },
+    -- quickfile = { enabled = true },
+    -- scope = { enabled = true },
+    -- scroll = { enabled = true },
+    -- statuscolumn = { enabled = true },
+    terminal = {
+      enabled = true,
+      win = {
+        style = 'terminal',
+        stack = true,
+      },
+      shell = { 'ucrt64', '-no-start', '-full-path', '-shell', 'zsh' }
+    },
+    words = { enabled = true },
+}
+
 -- LSP SERVERS -----------------------------------------------------------------
 
 -- nvim-cmp (autocompletion)
@@ -508,6 +555,14 @@ P.plugins = {
 
   { 'editorconfig/editorconfig-vim', ft = { "editorconfig" } },
 
+  {
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    -- @type snacks.Config
+    opts = snacks_opts,
+  },
+
   {'folke/tokyonight.nvim', branch='main'}, -- colorscheme
 
   {
@@ -517,11 +572,6 @@ P.plugins = {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
   },
 
   {
@@ -541,7 +591,7 @@ P.plugins = {
   {
     'iamcco/markdown-preview.nvim',
     build = ':call mkdp#util#install()',
-    config = markdown_preview_fn,
+    -- config = markdown_preview_fn,
     ft = { "markdown" },
   },
   {

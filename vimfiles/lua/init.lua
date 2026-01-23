@@ -25,6 +25,7 @@ end
 -- #############################################################################
 -- MAPPINGS
 -- #############################################################################
+local Snacks = require('snacks')
 
 vim.keymap.set({ 'i', 'n' }, '<C-s>', '<Cmd>w<CR>',
                { desc = "Save current file" })
@@ -53,11 +54,12 @@ vim.keymap.set('n', '<Leader>sb',
 vim.keymap.set('i', '<C-f>', '<Cmd>call utils#FillLine()<CR>',
    { desc = 'Fill the remaining of the line with a repeated string' })
 
+vim.keymap.set('n', '<C-S-w>', '<Cmd>tabclose<CR>',
+  { desc = 'Close the current tab' })
+
 require('which-key').add({
   { "<Leader>d", group = "Diff tools…" },
 })
-vim.keymap.set({ 'n' }, '<Leader>dg', '<Cmd>Gvdiff<CR>',
-  { desc = 'Run git diff on the current file (Gvdiffsplit)' })
 vim.keymap.set({ 'n' }, '<Leader>dt', '<Cmd>diffthis<CR>',
   { desc = 'Enable diff mode on the current buffer' })
 vim.keymap.set({ 'n' }, '<Leader>do', '<Cmd>diffoff!<CR>',
@@ -81,37 +83,74 @@ vim.keymap.set(
   '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
   { desc = "Search current word in Spectre" }
 )
+
+vim.keymap.set(
+  { 'n', 'v' }, '<leader>gb',
+  function() Snacks.gitbrowse() end,
+  { desc = "Git Browse that file at the current location" }
+)
+
 -- TELESCOPE MAPPINGS ##########################################################
 
 vim.keymap.set({ 'n', }, '<C-p>',
-               require("telescope.builtin").fd,
-               { desc = 'Telescope: Find File' })
+               Snacks.picker.files,
+               { desc = 'Snacks: Find File' })
 vim.keymap.set({ 'n', }, '<C-S-p>',
-               require("telescope.builtin").tags,
-               { desc = 'Telescope: Tags' })
+               Snacks.picker.tags,
+               { desc = 'Snacks: Tags' })
 vim.keymap.set({ 'n', }, '<C-{>',
-               require("telescope.builtin").lsp_workspace_symbols,
-               { desc = 'Telescope: LSP Workspace Symbols' })
+               Snacks.picker.lsp_workspace_symbols,
+               { desc = 'Snacks: LSP Workspace Symbols' })
 vim.keymap.set({ 'n', }, '<C-S-g>',
-               require("telescope").extensions.live_grep_args.live_grep_args,
-               { desc = 'Telescope: Live Grep' })
+               function() Snacks.picker.grep({ cmd = "rg" }) end,
+               { desc = 'Snacks: Live Grep' })
+
 vim.keymap.set({ 'n', }, '<C-b>',
-               function()
-                 require("telescope.builtin").buffers({ sort_mru = true })
-               end,
-               { desc = 'Telescope: Buffers' })
+               Snacks.picker.buffers,
+               { desc = 'Snacks: Buffers' })
+
 vim.keymap.set({ 'n', }, '<Leader>p',
                require("telescope").extensions.project.project,
                { desc = 'Telescope: Projects' })
 vim.keymap.set({ 'n', }, '<Leader>g',
-               require("telescope.builtin").grep_string,
-               { desc = 'Telescope: Grep word under the cursor' })
+               Snacks.picker.grep_word,
+               { desc = 'Snacks: Grep word under the cursor' })
 vim.keymap.set({ 'n', }, '<Leader>D',
-               require("telescope.builtin").diagnostics,
-               { desc = 'Telescope: Diagnostics' })
+               Snacks.picker.diagnostics_buffer,
+               { desc = 'Snacks: Diagnostics' })
 vim.keymap.set('n', '<leader>cz',
                require("telescope").extensions.chezmoi.find_files,
                { desc = 'Telescope: chezmoi files' })
+
+-- vim.keymap.set({ 'n', }, '<C-p>',
+--                require("telescope.builtin").fd,
+--                { desc = 'Telescope: Find File' })
+-- vim.keymap.set({ 'n', }, '<C-S-p>',
+--                require("telescope.builtin").tags,
+--                { desc = 'Telescope: Tags' })
+-- vim.keymap.set({ 'n', }, '<C-{>',
+--                require("telescope.builtin").lsp_workspace_symbols,
+--                { desc = 'Telescope: LSP Workspace Symbols' })
+-- vim.keymap.set({ 'n', }, '<C-S-g>',
+--                require("telescope").extensions.live_grep_args.live_grep_args,
+--                { desc = 'Telescope: Live Grep' })
+-- vim.keymap.set({ 'n', }, '<C-b>',
+--                function()
+--                  require("telescope.builtin").buffers({ sort_mru = true })
+--                end,
+--                { desc = 'Telescope: Buffers' })
+-- vim.keymap.set({ 'n', }, '<Leader>p',
+--                require("telescope").extensions.project.project,
+--                { desc = 'Telescope: Projects' })
+-- vim.keymap.set({ 'n', }, '<Leader>g',
+--                require("telescope.builtin").grep_string,
+--                { desc = 'Telescope: Grep word under the cursor' })
+-- vim.keymap.set({ 'n', }, '<Leader>D',
+--                require("telescope.builtin").diagnostics,
+--                { desc = 'Telescope: Diagnostics' })
+-- vim.keymap.set('n', '<leader>cz',
+--                require("telescope").extensions.chezmoi.find_files,
+--                { desc = 'Telescope: chezmoi files' })
 
 
 -- TERMINAL MAPPINGS ###########################################################
