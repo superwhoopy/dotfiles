@@ -23,8 +23,15 @@ RunAndFocus(cmdStr, optStr:="")
 #v:: RunAndFocus(ScoopDir "\apps\neovide\current\neovide.exe")
 #+v:: RunAndFocus(ScoopDir "\apps\neovide\current\neovide.exe --fullscreen")
 
+{{ if eq .machine "work" }}
+; Browser, work profile
+#b:: Run('firefox --profile "C:\Users\Manu\AppData\Roaming\Mozilla\Firefox\Profiles\OgQKutJJ.Profile 1" ', , "Max")
+; Browser, personal profile
+#+b:: Run('firefox --profile "C:\Users\Manu\AppData\Roaming\Mozilla\Firefox\Profiles\0r49itt6.default-release-1731408840409" ', , "Max")
+{{ else }}
 ; Browser
 #b:: Run("firefox", , "Max")
+{{ end }}
 
 ; Windows Terminal
 #Enter:: Run("wezterm-gui")
@@ -118,3 +125,4 @@ Capslock::
 ;   #    for Meta
 ;   <^>! for AltGr
 
+; vim: set ft=autohotkey:
