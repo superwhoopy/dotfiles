@@ -25,9 +25,13 @@ RunAndFocus(cmdStr, optStr:="")
 
 {{ if eq .machine "work" }}
 ; Browser, work profile
-#b:: Run('firefox --profile "C:\Users\Manu\AppData\Roaming\Mozilla\Firefox\Profiles\OgQKutJJ.Profile 1" ', , "Max")
+#b:: Run('firefox --profile "C:\Users\Manu\AppData\Roaming\Mozilla\Firefox\Profiles\OgQKutJJ.Profile 1"', , "Max")
 ; Browser, personal profile
-#+b:: Run('firefox --profile "C:\Users\Manu\AppData\Roaming\Mozilla\Firefox\Profiles\0r49itt6.default-release-1731408840409" ', , "Max")
+#+b::
+{
+  KeyWait("Shift")
+  Run('firefox --profile "C:\Users\Manu\AppData\Roaming\Mozilla\Firefox\Profiles\0r49itt6.default-release-1731408840409"', , "Max")
+}
 {{ else }}
 ; Browser
 #b:: Run("firefox", , "Max")
