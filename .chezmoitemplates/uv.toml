@@ -1,4 +1,5 @@
 # additional index (for work)
+index-strategy = "unsafe-best-match"
 [[index]]
 name = "ks"
 url = "http://dev.ks.int/store/repository/pypi/simple"
