@@ -1,3 +1,7 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = []
+# ///
 """Installation script: from a file install.json that gives a list of
 source/destination paths relative to resp. the source and the installation
 directory, create symbolic links."""
@@ -5,7 +9,7 @@ directory, create symbolic links."""
 import argparse
 import os
 import sys
-import tomlkit as tomllib
+import tomllib
 from pathlib import Path
 
 HERE = Path(__file__).parent

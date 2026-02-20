@@ -6,7 +6,7 @@
 
     // Enabled
     // Enable/disable vim extension (may require a page refresh)
-    "enabled": true,
+    "enabled": false,
 
     // Enabled in Text Editor
     // Enable/disable vim in text editors (may require a page refresh)
