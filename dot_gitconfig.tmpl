@@ -115,13 +115,15 @@
   required = true
 [pull]
   rebase = false
-[credential]
-  helper = {{ if eq .chezmoi.os "windows" }}manager
-           {{- else }}libsecret{{ end }}
 {{ if eq .chezmoi.os "windows" -}}
 [http]
   sslBackend = openssl
   sslVerify = true
-{{ end -}}
+[credential "helperselector"]
+  selected = wincred
+{{ else }}
+[credential]
+  helper = libsecret
+{{ end }}
 [credential "http://dev.ks.int"]
   provider = generic
