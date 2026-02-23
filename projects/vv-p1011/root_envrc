@@ -31,8 +31,8 @@ function _isversion() {
 # Interactive function to switch between AsteK versions
 function verswitch() {
   echo "Select a version:"
-  echo "  [1] K19.5   $(_isversion ${RTK_PKG_REG_195})"
-  echo "  [2] K19.5   coverage $(_isversion ${RTK_PKG_DEV_195})"
+  echo "  [1] K19.6   $(_isversion ${RTK_PKG_REG_195})"
+  echo "  [2] K19.6   coverage $(_isversion ${RTK_PKG_DEV_195})"
   read -r _select
 
   case ${_select} in
@@ -82,27 +82,26 @@ export KS_HAAS_TOKEN="ffb4068cfea67f85eff848141f5f5317dccb6c824085fc13f36ee3c3c8
 export JENKINS_USER="eohayon"
 export JENKINS_TOKEN="11d3c39220afa89701e26e7bfa885e9980"
 
-export HAAS_BOARDS="ganav,ganav-llt"
+export HAAS_BOARDS="p1011-utr"
 
 # psyko version
-export PSYKO_PKG_195="psyko-9.5.0"
-export PSYKO_PKG="${PSYKO_PKG_195}"
+export PSYKO_PKG_196="psyko-9.6.2"
+export PSYKO_PKG="${PSYKO_PKG_196}"
 
 { _iswin && export T32="${T32_DIR}/bin/windows64/t32mppc.exe"; } || \
   export T32="${T32_DIR}/bin/pc_linux64/t32mppc"
 
-export VARIANT="power-qoriq-p1011-ganav800-p"
-export VARIANT_COV="power-qoriq-p1011-ganav800-p-mcdc"
+export VARIANT="power-qoriq-p1011-ganav667-p"
+export VARIANT_COV="power-qoriq-p1011-ganav667-p-mcdc"
 
 # RTK version
-export RTK_PKG_REG_195="rtk-power-qoriq-p1011-ganav800-2.6.1"
-export RTK_PKG_DEV_195="rtk-power-qoriq-p1011-ganav800-dev-2.6.1"
-# export RTK_PKG_DEV_1954="rtk-power-mpc5777m-module-dev-7.2.0"
+export RTK_PKG_REG_196="rtk-power-qoriq-p1011-ganav667-3.1.9"
+export RTK_PKG_DEV_196="rtk-power-qoriq-p1011-ganav667-dev-3.1.9"
 
 ################################################################################
 
-# set default version to K19.5.4 regular (no coverage)
-_setversion ${RTK_PKG_REG_195} ${VARIANT}
+# set default version to K19.6 regular (no coverage)
+_setversion ${RTK_PKG_DEV_196} ${VARIANT}
 _echogray "Use function 'verswitch' to switch between RTK versions."
 
 # define some useful aliases
