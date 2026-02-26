@@ -177,6 +177,7 @@ augroup vimrc
     autocmd FileType vim       setlocal tabstop=4 shiftwidth=4
     autocmd FileType dashboard setlocal colorcolumn=
     autocmd FileType dashboard DisableWhitespace
+    " autocmd FileType python    setlocal indentexpr=lua\ require'nvim-treesitter'.indentexpr()
 
     " auto-resize all windows when GUI or term is resized
     autocmd VimResized * wincmd =

@@ -174,6 +174,8 @@ local function nvim_treesitter_fn()
       -- list of languages
       additional_vim_regex_highlighting = false,
     },
+
+    indent = { enable = true, },
   }
 end
 
