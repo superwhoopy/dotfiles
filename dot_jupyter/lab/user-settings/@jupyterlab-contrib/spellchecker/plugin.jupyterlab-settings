@@ -1,0 +1,24 @@
+{
+    "theme": "background-box",
+    "language": "en-us",
+    "checkComments": false,
+    "checkStrings": false,
+    "debounceTime": 200,
+    "ignore": [
+        "JupyterLab",
+        "Jupyter",
+        "JupyterHub",
+        "Voilà",
+        "Xeus",
+        "IPython"
+    ],
+    "mimeTypes": [
+        "text/plain",
+        "text/x-ipythongfm",
+        "text/x-rst",
+        "text/x-latex",
+        "text/x-ipython",
+        "text/x-rsrc"
+    ],
+    "onlineDictionaries": []
+}
