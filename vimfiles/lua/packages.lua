@@ -703,16 +703,16 @@ P.plugins = {
     config = nvim_treesitter_fn,
   },
 
-  'psliwka/vim-smoothie', -- smooth scrolling
+  -- 'psliwka/vim-smoothie', -- smooth scrolling
 
-  {
-    'QuantEcon/myst-markdown-tree-sitter.nvim',
-    dependencies = {'nvim-treesitter/nvim-treesitter'},
-    ft = {"markdown", "myst"},
-    config = function()
-      require('myst-markdown').setup()
-    end,
-  },
+  -- {
+  --   'QuantEcon/myst-markdown-tree-sitter.nvim',
+  --   dependencies = {'nvim-treesitter/nvim-treesitter'},
+  --   ft = {"markdown", "myst"},
+  --   config = function()
+  --     require('myst-markdown').setup()
+  --   end,
+  -- },
 
   "rafamadriz/friendly-snippets", -- snippets
   "rcarriga/nvim-notify",
