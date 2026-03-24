@@ -247,6 +247,9 @@ let g:ale_linters = {
             \ }
 " don't use ALE LSP: we already use nvim client
 let g:ale_disable_lsp = 1
+let g:ale_linters_ignore = {
+\   'markdown': ['all'],
+\}
 
 " disable ALE altogether for now
 let g:ast_ale_enabled = 0
