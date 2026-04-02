@@ -142,40 +142,9 @@ P.neogit_opts = {
 -- TREESITTER ------------------------------------------------------------------
 
 local function nvim_treesitter_fn()
-  require'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all"
-    ensure_installed = {
+  require'nvim-treesitter'.install {
       "c", "rst", "bash", "javascript", "json", "hjson", "lua",
       "markdown", "powershell", "python", "rust", "tlaplus", "toml", "vimdoc",
-    },
-
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
-
-    auto_install = false,
-
-    -- List of parsers to ignore installing (for "all")
-    -- ignore_install = { "all" },
-
-    highlight = {
-      -- `false` will disable the whole extension
-      enable = true,
-
-      -- NOTE: these are the names of the parsers and not the filetype. (for
-      -- example if you want to disable highlighting for the `tex` filetype, you
-      -- need to include `latex` in this list as this is the name of the parser)
-      -- list of language that will be disabled
-      -- disable = { "markdown", "vimdoc" },
-
-      -- Setting this to true will run `:h syntax` and tree-sitter at the same
-      -- time. Set this to `true` if you depend on 'syntax' being enabled (like
-      -- for indentation). Using this option may slow down your editor, and you
-      -- may see some duplicate highlights. Instead of true it can also be a
-      -- list of languages
-      additional_vim_regex_highlighting = false,
-    },
-
-    indent = { enable = true, },
   }
 end
 
@@ -699,20 +668,10 @@ P.plugins = {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
-    config = nvim_treesitter_fn,
+    -- config = nvim_treesitter_fn,
   },
-
-  -- 'psliwka/vim-smoothie', -- smooth scrolling
-
-  -- {
-  --   'QuantEcon/myst-markdown-tree-sitter.nvim',
-  --   dependencies = {'nvim-treesitter/nvim-treesitter'},
-  --   ft = {"markdown", "myst"},
-  --   config = function()
-  --     require('myst-markdown').setup()
-  --   end,
-  -- },
 
   "rafamadriz/friendly-snippets", -- snippets
   "rcarriga/nvim-notify",

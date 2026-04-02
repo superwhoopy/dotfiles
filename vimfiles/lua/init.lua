@@ -90,7 +90,7 @@ vim.keymap.set(
   { desc = "Git Browse that file at the current location" }
 )
 
--- TELESCOPE MAPPINGS ##########################################################
+-- SNACKS MAPPINGS ##########################################################
 
 vim.keymap.set({ 'n', }, '<C-p>',
                Snacks.picker.files,
@@ -121,37 +121,6 @@ vim.keymap.set({ 'n', }, '<Leader>D',
 vim.keymap.set('n', '<leader>cz',
                require("telescope").extensions.chezmoi.find_files,
                { desc = 'Telescope: chezmoi files' })
-
--- vim.keymap.set({ 'n', }, '<C-p>',
---                require("telescope.builtin").fd,
---                { desc = 'Telescope: Find File' })
--- vim.keymap.set({ 'n', }, '<C-S-p>',
---                require("telescope.builtin").tags,
---                { desc = 'Telescope: Tags' })
--- vim.keymap.set({ 'n', }, '<C-{>',
---                require("telescope.builtin").lsp_workspace_symbols,
---                { desc = 'Telescope: LSP Workspace Symbols' })
--- vim.keymap.set({ 'n', }, '<C-S-g>',
---                require("telescope").extensions.live_grep_args.live_grep_args,
---                { desc = 'Telescope: Live Grep' })
--- vim.keymap.set({ 'n', }, '<C-b>',
---                function()
---                  require("telescope.builtin").buffers({ sort_mru = true })
---                end,
---                { desc = 'Telescope: Buffers' })
--- vim.keymap.set({ 'n', }, '<Leader>p',
---                require("telescope").extensions.project.project,
---                { desc = 'Telescope: Projects' })
--- vim.keymap.set({ 'n', }, '<Leader>g',
---                require("telescope.builtin").grep_string,
---                { desc = 'Telescope: Grep word under the cursor' })
--- vim.keymap.set({ 'n', }, '<Leader>D',
---                require("telescope.builtin").diagnostics,
---                { desc = 'Telescope: Diagnostics' })
--- vim.keymap.set('n', '<leader>cz',
---                require("telescope").extensions.chezmoi.find_files,
---                { desc = 'Telescope: chezmoi files' })
-
 
 -- TERMINAL MAPPINGS ###########################################################
 
@@ -227,6 +196,35 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- TREE-SITTER #################################################################
+
+local function _ts_setup()
+  local additional_filetypes = {
+    "bash",
+    "hjson",
+    "javascript",
+    "json",
+    "powershell",
+    "python",
+    "rst",
+    "rust",
+    "tlaplus",
+    "toml",
+  }
+  require('nvim-treesitter').install(additional_filetypes)
+
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = additional_filetypes,
+    callback = function()
+      vim.treesitter.start()
+      vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo[0][0].foldmethod = 'expr'
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  })
+
+end
+_ts_setup()
 
 -- OTHER STUFF #################################################################
 
@@ -276,23 +274,3 @@ vim.diagnostic.config({
   virtual_text  = false, -- hide warn/error messages by default
   virtual_lines = true,
 })
-
--- configure PsyC tree-sitter grammar and Language Server
-local treesitter_psyc_path = vim.fn.expand('$HOME/workspace/psyls/tree-sitter-psyc')
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
--- parser_config['psyc'] = {
---   install_info = {
---     url = treesitter_psyc_path, -- local path or git repo
---     files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
---     -- optional entries:
---     -- branch = "main", -- default branch in case of git repo if different from master
---     -- generate_requires_npm = false, -- if stand-alone parser without npm dependencies
---     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
---   },
---   filetype = "psy",
--- }
-
--- increase verbosity level for LS logs
--- vim.lsp.log.set_level(vim.lsp.log.levels.DEBUG)
--- vim.lsp.set_log_level("INFO")
-vim.lsp.set_log_level("WARN")
