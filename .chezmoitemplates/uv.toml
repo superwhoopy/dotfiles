@@ -1,9 +1,9 @@
 # additional index (for work)
-index-strategy = "unsafe-best-match"
 [[index]]
 name = "ks"
 url = "http://dev.ks.int/store/repository/pypi/simple"
 publish-url = "http://dev.ks.int/store/repository/pypi/simple"
+explicit = true
 
 # always use system Python interpreter - do not install managed interpreters –
 # at least for now...
