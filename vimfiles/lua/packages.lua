@@ -670,6 +670,8 @@ P.plugins = {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ':TSUpdate',
+    config = true,
+    branch = 'main',
     -- config = nvim_treesitter_fn,
   },
 
