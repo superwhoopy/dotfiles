@@ -152,6 +152,9 @@ function () {
   [ -f ${_aliases} ] && source ${_aliases}
 }
 
+# additional vim-mode bindings
+bindkey -M viins 'jj' vi-cmd-mode
+
 # On Windows, .zshenv is evaluated before MSYS2 populates PATH with
 # /usr/local/bin amd /mingw64/bin: update the PATH here to have scoop apps first
 # in the PATH
