@@ -1,5 +1,5 @@
 # safe PowerShell mode
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Inquire"
 Set-StrictMode -Version Latest
 
 function Write-Chezmoi {
