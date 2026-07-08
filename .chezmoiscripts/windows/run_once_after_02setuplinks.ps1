@@ -81,30 +81,3 @@ if (-not $env:SCOOP) {
 
 ################################################################################
 
-Write-Blue "Windows Terminal config. file"
-
-# Define the paths
-$destconf = Join-Path $(scoop prefix windows-terminal) `
-  "..\..\..\persist\windows-terminal\settings\settings.json"
-$srcconf = Join-Path $env:USERPROFILE ".config\windows-terminal-settings.json"
-
-if (Test-Path $destconf) {
-    # Check if it is a symbolic link
-    $linkTarget = Get-Item $destconf | `
-      Select-Object -ExpandProperty Target -ErrorAction SilentlyContinue
-    if ($linkTarget -eq $srcconf) {
-        # If the link already exists, do nothing
-        Write-Output "The link already exists - nothing to do."
-    } elseif (-not $linkTarget) {
-        Remove-Item $destconf
-        New-Item -ItemType SymbolicLink -Path $destconf -Target $srcconf
-        Write-Output "File has been replaced with a symbolic link."
-    } else {}
-} else {
-    # If adir/config.json does not exist, create the symbolic link
-    New-Item -ItemType SymbolicLink -Path $destconf -Target $srcconf
-    Write-Output "Symbolic link created."
-}
-
-################################################################################
-
