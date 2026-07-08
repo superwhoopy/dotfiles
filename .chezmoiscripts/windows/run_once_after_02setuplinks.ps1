@@ -70,7 +70,7 @@ if (! (Test-Path $ssh_private_key)) {
 Write-Blue "Setting global Environment Variables"
 $ucrt64_bin = Join-Path $(scoop prefix msys2) "ucrt64/bin"
 $local_bin  = Join-Path $env:USERPROFILE ".local/bin"
-$scoop      = Resolve-Path (Join-Path $(scoop prefix scoop) "../")
+$scoop      = Resolve-Path (Join-Path $(scoop prefix scoop) "../../../")
 Add-UserPath -Paths @("$local_bin", "$ucrt64_bin")
 if (-not $env:SCOOP) {
   Write-Output "Defining SCOOP environment variable to '$scoop'"
