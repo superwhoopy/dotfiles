@@ -114,6 +114,16 @@
     "ucrt64/mingw-w64-ucrt-x86_64-gcc",
   ]
 
+[winget]
+  ids = [
+    "Google.GoogleDrive",
+    "Microsoft.Office",
+    "Microsoft.OneDrive",
+    "Microsoft.Teams",
+    "Microsoft.VisualStudio.BuildTools",
+    "CyberGhost.CyberGhost",
+  ]
+
 # NOTE: 'extras' is a special key to identify packages that should not be
 # installed in a WSL2 environment, but should be installed in any other Linux
 # environment
@@ -179,15 +189,15 @@
     "icecream",
   ]
 
-[[python.tool]]
-  pkg = "python-lsp-server"
-  opt = "[all]"
-  python = "3.9"
-  deps = [
-        "python-lsp-ruff",
-        "pylsp-rope",
-        "pylsp-mypy",
-      ]
+# [[python.tool]]
+#   pkg = "python-lsp-server"
+#   opt = "[all]"
+#   python = "3.9"
+#   deps = [
+#         "python-lsp-ruff",
+#         "pylsp-rope",
+#         "pylsp-mypy",
+#       ]
 
 [[python.tool]]
   pkg = "notify-py"
@@ -196,8 +206,5 @@
   pkg = "meson"
 
 [node]
-  npm = [
-  ]
-  windows = [
-    "typescript",
-  ]
+  npm = [ ]
+  windows = [ ]

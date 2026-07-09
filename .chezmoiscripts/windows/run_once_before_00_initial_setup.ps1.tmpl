@@ -95,6 +95,23 @@ if (! $private_key_is_decrypted) {
   Write-Blue "Done."
 }
 
+################################################################################
+# WinGet
+################################################################################
+$progressPreference = 'silentlyContinue'
+if (Get-Command winget -ErrorAction SilentlyContinue) {
+  Write-Blue "winget is already installed"
+  winget --version
+} else {
+  Write-Host "Installing WinGet PowerShell module from PSGallery..."
+  Install-PackageProvider -Name NuGet -Force | Out-Null
+  Install-Module -Name Microsoft.WinGet.Client -Force -Scope AllUsers | Out-Null
+  Write-Host "Using Repair-WinGetPackageManager cmdlet to bootstrap WinGet..."
+  Repair-WinGetPackageManager -AllUsers
+  Write-Host "Removing msstore as winget source"
+  winget source remove msstore
+  Write-Host "Done."
+}
 
 ################################################################################
 # WSL

@@ -1,5 +1,5 @@
 # vim:set ft=ps1:
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Inquire"
 Set-StrictMode -Version Latest
 
 function Write-Chezmoi {
@@ -23,7 +23,14 @@ $env:Path = `
   [System.Environment]::GetEnvironmentVariable("Path","Machine") `
   + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
-$ErrorActionPreference = "Inquire"
+{{- if .winget.ids }}
+# install stuff with winget
+  {{- range.winget.ids }}
+winget install --id {{ . }}
+  {{- end }}
+{{- end }}
+
+
 # install scoop packages
 {{- if .scoop.packages }}
 # get the list of all scoop packages already installed
