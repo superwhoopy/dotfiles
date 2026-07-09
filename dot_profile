@@ -24,9 +24,9 @@ fi
 # PATH MANIPULATION
 ################################################################################
 
-_texlive="${HOME}/.local/share/texlive/2024/bin/x86_64-linux/"
-export PATH="${HOME}/.local/bin:${_texlive}:${PATH}"
-unset _texlive
+_miktex="${HOME}/.local/share/miktex"
+export PATH="${HOME}/.local/bin:${_miktex}:${PATH}"
+unset _miktex
 
 # brew -------------------------------------------------------------------------
 _brew="/home/linuxbrew/.linuxbrew/bin/brew"
