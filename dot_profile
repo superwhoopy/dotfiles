@@ -24,7 +24,7 @@ fi
 # PATH MANIPULATION
 ################################################################################
 
-_miktex="${HOME}/.local/share/miktex"
+_miktex="${HOME}/.local/share/miktex/bin"
 export PATH="${HOME}/.local/bin:${_miktex}:${PATH}"
 unset _miktex
 
