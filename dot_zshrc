@@ -180,6 +180,10 @@ fi
 if _command_exists zoxide;
 then
   eval "$(zoxide init zsh)"
+  # fix for 0.10.0
+  function __zoxide_pwd() {
+      builtin pwd -L
+  }
 else
   _warnmsg "Consider installing zoxide"
 fi
