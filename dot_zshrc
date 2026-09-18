@@ -204,6 +204,14 @@ else
   _warnmsg "Consider installing FzF"
 fi
 
+# uv (Python) ##################################################################
+if _command_exists uv;
+then
+  eval "$(uv generate-shell-completion zsh)"
+else
+  _warnmsg "Consider installing uv"
+fi
+
 # opam (ocaml) #################################################################
 if ! _iswin;
 then
