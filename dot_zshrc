@@ -211,6 +211,13 @@ then
 else
   _warnmsg "Consider installing uv"
 fi
+# podman #######################################################################
+if _command_exists podman;
+then
+  eval "$(podman completion zsh)"
+else
+  _warnmsg "Consider installing podman"
+fi
 
 # opam (ocaml) #################################################################
 if ! _iswin;
