@@ -12,8 +12,12 @@ elseif IS_NUX then
 end
 
 -- #############################################################################
+local COLOR_THEME = {
+  dark = 'Afterglow (Gogh)',
+  light = 'Alabaster',
+}
 
-config.color_scheme = 'Afterglow (Gogh)'
+config.color_scheme = COLOR_THEME.dark
 config.font = IS_WIN
   and wezterm.font('UbuntuMono Nerd Font')
   or wezterm.font('UbuntuMono')
@@ -63,6 +67,18 @@ local function split_cb(direction)
       direction = direction,
     }
   end)
+end
+
+-- switch the current color scheme between dark and light
+local function switch_colorscheme(window, _)
+  local overrides = window:get_config_overrides() or {}
+  local current_col = window:effective_config().color_scheme
+  if current_col == COLOR_THEME.dark then
+    overrides.color_scheme = COLOR_THEME.light
+  else
+    overrides.color_scheme = COLOR_THEME.dark
+  end
+  window:set_config_overrides(overrides)
 end
 
 -- #############################################################################
@@ -146,6 +162,12 @@ config.keys = {
   {
     key = 'F11',
     action = act.ToggleFullScreen
+  },
+
+  -- switch colorscheme
+  {
+    key = 'c', mods = 'CTRL|SHIFT',
+    action = wezterm.action_callback(switch_colorscheme),
   },
 }
 
