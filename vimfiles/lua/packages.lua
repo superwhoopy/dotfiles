@@ -287,6 +287,8 @@ local function alphanvim_fn()
         '<cmd>Telescope chezmoi find_files<CR>'),
     mybutton("c", "🧹 Clear all buffers",
         '<cmd>call utils#DeleteAllBuffersButCurrent() | AlphaRedraw<CR>'),
+    mybutton("D", "☀️ Switch to daylight theme",
+        '<cmd>Day<CR>'),
     mybutton("q", "❌ Quit", "<cmd>qa!<CR>"),
   }
 
@@ -399,7 +401,17 @@ local snacks_opts = {
     },
     -- indent = { enabled = true },
     input = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      win = {
+        input = {
+          keys = {
+            ["<c-d>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<c-u>"] = { "preview_scroll_down", mode = { "i", "n" } },
+          }
+        }
+      }
+    },
     notifier = { enabled = true },
     -- quickfile = { enabled = true },
     -- scope = { enabled = true },
@@ -532,6 +544,9 @@ P.plugins = {
     lazy = false,
     -- @type snacks.Config
     opts = snacks_opts,
+    keys = {
+      { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
+    },
   },
 
   {'folke/tokyonight.nvim', branch='main'}, -- colorscheme
