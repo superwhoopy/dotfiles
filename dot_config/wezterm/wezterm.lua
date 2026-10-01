@@ -31,6 +31,7 @@ config.inactive_pane_hsb = {
 
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
+config.window_decorations = "RESIZE"
 
 -- #############################################################################
 
