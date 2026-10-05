@@ -78,6 +78,7 @@ config.launch_menu = {
     args = { 'cmd.exe' },
   },
   msys_profile('MINGW64'),
+  msys_profile('MINGW32'),
   msys_profile('MSYS'),
   MINGW32_core,
 }
